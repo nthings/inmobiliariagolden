@@ -1,0 +1,195 @@
+/*!
+ * Start Bootstrap - SB Admin (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+/* Global Styles */
+html{
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: #222;
+    width: 100%;
+    height: 100%;
+}
+
+/*#wrapper {
+    padding-top: 50px;  
+}*/
+
+.controles { margin-bottom: 40px;   background-color: #1b1b1b;
+    display: none;
+}
+
+.controles a {
+  margin: 0 20px;
+  min-width: 40px;
+  color: #888;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 30px;
+}
+.controles a:hover { color: #FFF; text-decoration: none;}
+
+ .icono{
+    width: 16px;
+    height: 16px;
+ }
+.loading {
+    background: url('../images/loader.gif') no-repeat center center #fff;
+    min-height: 50px;
+    border-radius: 4px;
+    border: 1px dashed #eee
+}
+ #map_container{
+   position: relative;
+ }
+ #map{
+     height: 400px;
+     overflow: hidden;
+     padding-bottom: 22.25%;
+     padding-top: 30px;
+     position: relative;
+ }
+
+.oculto{
+    display: none;
+}
+
+#page-wrapper {
+    width: 100%;
+    padding: 0;
+    background-color: #fff;
+}
+
+.navbar{
+    margin-bottom: 0!important;
+}
+
+.navbar-header{
+    height: 90px!important;
+}
+.navbar-inner {
+    min-height: 0px;
+}
+.navbar-brand,
+.navbar-nav li a {
+    line-height: 50px;
+    height: 50px;
+    padding-top: 0;
+}
+
+.huge {
+    font-size: 50px;
+    line-height: normal;
+}
+
+/*@media(min-width:768px) {
+
+    #page-wrapper {
+        padding: 10px;
+    }
+}*/
+
+
+ul.message-dropdown {
+    padding: 0;
+    max-height: 250px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+li.message-preview {
+    width: 275px;
+    border-bottom: 1px solid rgba(0,0,0,.15);
+}
+
+li.message-preview>a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+li.message-footer {
+    margin: 5px 0;
+}
+
+ul.alert-dropdown {
+    width: 200px;
+}
+
+
+/* Flot Chart Containers */
+
+.flot-chart {
+    display: block;
+    height: 400px;
+}
+
+.flot-chart-content {
+    width: 100%;
+    height: 100%;
+}
+
+/* Custom Colored Panels */
+
+.huge {
+    font-size: 40px;
+}
+
+.panel-green {
+    border-color: #5cb85c;
+}
+
+.panel-green > .panel-heading {
+    border-color: #5cb85c;
+    color: #fff;
+    background-color: #5cb85c;
+}
+
+.panel-green > a {
+    color: #5cb85c;
+}
+
+.panel-green > a:hover {
+    color: #3d8b3d;
+}
+
+.panel-red {
+    border-color: #d9534f;
+}
+
+.panel-red > .panel-heading {
+    border-color: #d9534f;
+    color: #fff;
+    background-color: #d9534f;
+}
+
+.panel-red > a {
+    color: #d9534f;
+}
+
+.panel-red > a:hover {
+    color: #b52b27;
+}
+
+.panel-yellow {
+    border-color: #f0ad4e;
+}
+
+.panel-yellow > .panel-heading {
+    border-color: #f0ad4e;
+    color: #fff;
+    background-color: #f0ad4e;
+}
+
+.panel-yellow > a {
+    color: #f0ad4e;
+}
+
+.panel-yellow > a:hover {
+    color: #df8a13;
+}
+

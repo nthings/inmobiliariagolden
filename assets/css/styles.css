@@ -1,0 +1,167 @@
+/*logo-nav*/
+body {
+    width: 100%;
+    padding-top: 60px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
+}
+
+.navbar-fixed-top .nav {
+    padding: 30px 0;
+}
+
+.navbar-fixed-top .navbar-brand {
+    padding: 0 30px;
+}
+.capitalize {
+    text-transform: capitalize;   
+  }
+
+@media(min-width:768px) {
+    body {
+        padding-top: 80px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
+    }
+
+    .navbar-fixed-top .navbar-brand {
+        padding: 15px 0;
+    }
+}
+.navbar-header{
+    height: 80px!important;
+}
+
+/*full slider*/
+html,
+body {
+    height: 100%;
+}
+.oculto{
+    display: none;
+}
+.carousel,
+.item,
+.active {
+    height: 100%;
+}
+
+.carousel-inner {
+    height: 100%;
+}
+
+/* Background images are set within the HTML using inline CSS, not here */
+
+.fill {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+footer {
+    margin: 50px 0;
+}
+
+/*shop items*/
+/*!
+ * Start Bootstrap - Shop Homepage (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+ .icono{
+    width: 16px;
+    height: 16px;
+ }
+
+.page{
+    padding-top: 50px;
+}
+
+.slide-image {
+    width: 100%;
+}
+
+.carousel-holder {
+    margin-bottom: 30px;
+}
+
+.carousel-control,
+.item {
+    border-radius: 4px;
+}
+
+.caption {
+    height: 150px;
+    overflow: hidden;
+}
+
+.caption h4 {
+    white-space: nowrap;
+}
+
+.thumbnail img {
+    width: 100%;
+}
+
+.ratings {
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #d17581;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+    color: #333;
+}
+
+
+/*Asesores*/
+.portfolio-item {
+    margin-bottom: 25px;
+}
+
+.img-center {
+    margin: 0 auto;
+}
+
+/*Scroll to top*/
+.back-to-top {
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display:none;
+}
+
+/*JPages*/
+.holder {
+    margin: 15px 0;
+
+  }
+  .holder a {
+    font-size: 20px;
+    cursor: pointer;
+    margin: 0 5px;
+    color: #333;
+  }
+  .holder a:hover {
+    background-color: #222;
+    color: #fff;
+  }
+  .holder a.jp-current, a.jp-current:hover {
+    color: #FF4242;
+    font-weight: bold;
+    cursor: default;
+    background: none;
+  }
+  .holder span { margin: 0 5px; }
+  .customBtns { position: relative; }
+  .arrowPrev, .arrowNext { width:29px; height:29px; position: absolute; top: 55px; cursor: pointer; }
+  .arrowPrev { background-image: url('img/back.gif'); left: -45px; }
+  .arrowNext { background-image: url('img/next.gif'); right: -40px; }
+  .arrowPrev.jp-disabled, .arrowNext.jp-disabled { display: none; }
