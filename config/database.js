@@ -1,7 +1,7 @@
 // config/database.js
 module.exports = {
     'connection': {
-        'host': 'localhost',
+        'host': '159.203.16.191',
         'user': 'obari',
         'password': 'casitas'
     },
