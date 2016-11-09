@@ -400,12 +400,6 @@ module.exports = function(app, passport, connection) {
             link:           'https://obari.herokuapp.com/',
             image:          'https://obari.herokuapp.com/logoup.png',
             copyright:      'Copyright © 2016 Obari. All rights reserved',
-
-            author: {
-                name:       'Mauricio Alejandro Martínez Pacheco',
-                email:      'rkdnthings@gmail.com',
-                link:       ''
-            }
         });
 
         // Function requesting the last 5 posts to a database. This is just an
@@ -415,7 +409,8 @@ module.exports = function(app, passport, connection) {
                 feed.item({
                     title:          propiedad.nombrepropiedad,
                     link:           'https://obari.herokuapp.com/propiedad/?id='+propiedad.idpropiedades,
-                    date:           propiedad.fechacreacion
+                    date:           propiedad.fechacreacion,
+                    description:    propiedad.url,
                 });
             });
             // Setting the appropriate Content-Type
