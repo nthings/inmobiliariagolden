@@ -2,6 +2,7 @@
 var multer  = require('multer')
 var fs = require('fs');
 var bcrypt = require('bcrypt-nodejs');
+var Feed = require('feed');
 var gm = require('gm').subClass({ imageMagick: true });
 var upload = multer({ 
     dest: 'assets/fotoscasas/',
@@ -388,6 +389,42 @@ module.exports = function(app, passport, connection) {
                 });  
             });
         });
+    });
+
+    app.get('/rss', function(req, res) {
+
+        // Initializing feed object
+        var feed = new Feed({
+            title:          'Obari',
+            description:    'Propiedades',
+            link:           'https://obari.herokuapp.com/',
+            image:          'https://obari.herokuapp.com/logoup.png',
+            copyright:      'Copyright © 2016 Obari. All rights reserved',
+
+            author: {
+                name:       'Mauricio Alejandro Martínez Pacheco',
+                email:      'rkdnthings@gmail.com',
+                link:       ''
+            }
+        });
+
+        // Function requesting the last 5 posts to a database. This is just an
+        // example, use the way you prefer to get your posts.   
+        connection.query('SELECT * FROM propiedades', function(err, propiedades){
+            propiedades.forEach(function(propiedad) {
+                feed.item({
+                    title:          propiedad.nombrepropiedad,
+                    link:           'https://obari.herokuapp.com/propiedad/?id='+propiedad.idpropiedades,
+                    date:           propiedad.fechacreacion
+                });
+            });
+            // Setting the appropriate Content-Type
+            res.set('Content-Type', 'text/xml');
+
+            // Sending the feed as a response
+            res.send(feed.render('rss-2.0'));
+        });
+
     });
 
     app.get('/logout', function(req, res) {
