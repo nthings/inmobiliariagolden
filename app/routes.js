@@ -267,9 +267,9 @@ module.exports = function(app, passport, connection) {
                             var a = 0;
                             for (var i = 0; i < req.body.fotos.length; i++) {
                                 if(req.body.fotos[i]!=''){
-                                    fs.unlink("assets"+fotos[i].url,function(err) {
-                                        console.log(err);
-                                    });   
+                                        fs.unlink("assets"+fotos[i].url,function(err) {
+                                            console.log(err);
+                                        });   
                                     connection.query('UPDATE fotos SET url = ? WHERE url = ?',['/fotoscasas/'+req.files['image'][a].filename,fotos[i].url], function(err, result){
                                         console.log("updated"); 
                                     });
@@ -288,7 +288,9 @@ module.exports = function(app, passport, connection) {
         }else{
             /*Cambio la foto principal*/
             connection.query('SELECT url FROM propiedades WHERE idpropiedades = ?',[req.body.id], function(err, foto){
-                fs.unlinkSync("assets"+foto[0].url);
+                if(foto[0].url != "../picture.png"){
+                    fs.unlinkSync("assets"+foto[0].url);
+                }
                 connection.query('UPDATE propiedades SET tipo = ?, nombrepropiedad = ?, precio = ?, m2 = ?, recamaras = ?, baños = ?, descripcion = ?, direccion = ?, latitud = ?, longitud = ?, renta = ?, url = ? WHERE idpropiedades = ?',[req.body.tipo, req.body.nombrepropiedad, req.body.precio, req.body.m2, req.body.recamaras, req.body.baños, req.body.descripcion, req.body.direccion, req.body.latitud, req.body.longitud, ventaorenta, '/fotoscasas/'+req.files['principal'][0].filename, req.body.id], function(err, result){
                     console.log(err);
                         if(typeof(req.files['image']) != 'undefined'){
