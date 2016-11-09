@@ -400,6 +400,9 @@ module.exports = function(app, passport, connection) {
             link:           'https://obari.herokuapp.com/',
             image:          'https://obari.herokuapp.com/logoup.png',
             copyright:      'Copyright © 2016 Obari. All rights reserved',
+            author: {
+                    name:       'Obari',
+                }
         });
 
         // Function requesting the last 5 posts to a database. This is just an
