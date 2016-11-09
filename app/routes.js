@@ -410,7 +410,7 @@ module.exports = function(app, passport, connection) {
                     title:          propiedad.nombrepropiedad,
                     link:           'https://obari.herokuapp.com/propiedad/?id='+propiedad.idpropiedades,
                     date:           propiedad.fechacreacion,
-                    description:    propiedad.url,
+                    description:    propiedad.descripcion,
                 });
             });
             // Setting the appropriate Content-Type
