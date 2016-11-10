@@ -57,7 +57,10 @@
                         <a href="/#asesores">Asesores</a>
                     </li>
                     <li>
-                        <a href="#contacto">Contacto</a>
+                        <a href="#contacto" class="animado">Contacto</a>
+                    </li>
+                    <li>
+                         <a href="/panel">Panel</a>
                     </li>
                 </ul>
             </div>
@@ -298,6 +301,15 @@
                     google.maps.event.addDomListener(window, 'load', initialize);
                 
         }
+
+        /*Animación al dar click a menú*/
+        $(document).on('click', '.animado', function(event){
+            event.preventDefault();
+
+            $('html, body').animate({
+                scrollTop: $( $.attr(this, 'href') ).offset().top
+            }, 500);
+        });
 
     </script>
 
