@@ -50,7 +50,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#propiedades" class="animado">Propiedades</a>
+                        <a href="#propiedades" class="animado back-to-top">Propiedades</a>
                     </li>
                     <li>
                         <a href="#asesores" class="animado">Asesores</a>
@@ -265,7 +265,7 @@
                     }
                 });
                 // scroll body to 0px on click
-                $('#back-to-top').click(function () {
+                $('.back-to-top').click(function () {
                     $('#back-to-top').tooltip('hide');
                     $('body,html').animate({
                         scrollTop: 0
@@ -288,6 +288,7 @@
                         $('.list-group-item').removeAttr("style");
                     }, 50);
                 });
+
 
         });
         /*Animación al dar click a menú*/
