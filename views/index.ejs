@@ -50,7 +50,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#propiedades" class="animado back-to-top">Propiedades</a>
+                        <a id="irapropiedades" href="#propiedades" class="animado">Propiedades</a>
                     </li>
                     <li>
                         <a href="#asesores" class="animado">Asesores</a>
@@ -273,6 +273,14 @@
                     return false;
                 });
                 
+                $('#irapropiedades').click(function () {
+                    $('#back-to-top').tooltip('hide');
+                    $('body,html').animate({
+                        scrollTop: 0
+                    }, 800);
+                    return false;
+                });
+
                 $('#back-to-top').tooltip('show');
 
                 $("#holder").jPages({
