@@ -165,3 +165,17 @@ footer {
   .arrowPrev { background-image: url('img/back.gif'); left: -45px; }
   .arrowNext { background-image: url('img/next.gif'); right: -40px; }
   .arrowPrev.jp-disabled, .arrowNext.jp-disabled { display: none; }
+
+  #map_container{
+    position: relative;
+  }
+  #map{
+      height: 350px;
+      overflow: hidden;
+      padding-bottom: 22.25%;
+      padding-top: 30px;
+      position: relative;
+  }
+  .img-center {
+    margin: 0 auto;
+  }

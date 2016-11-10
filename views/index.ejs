@@ -58,6 +58,9 @@
                     <li>
                         <a href="#contacto" class="animado">Contacto</a>
                     </li>
+                    <li>
+                         <a href="/panel">Panel</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -213,16 +216,25 @@
     </div>
     <!-- /.container -->
 
-    <div class="container">
+    <div class="container" id="contacto">
 
         <hr>
 
         <!-- Footer -->
         <footer>
             <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p> <a href="/panel" class="btn btn-danger btn-lg"><span class="fa fa-user"></span> Panel</a>
+                <div class="col-lg-12 text-center">
+                    <h2>Contacto</h2>
                 </div>
+                <div class="col-xs-12 col-sm-6 text-center">
+                    <div id="map_container"></div>
+                    <div id="map"></div>
+                </div>  
+                <div class="col-xs-12 col-sm-6 text-center">
+                    <p>Obari Bienes Raíces</p>
+                    <p>Dirección: </p>
+                    <p>Teléfono: </p>
+                </div>  
             </div>
         </footer>
 
@@ -236,6 +248,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script type="text/javascript" src="../js/jPages.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKDKyJNGPt-XY6RtMdQofhnoAlhVN9ZM8&callback=initialize"
+      async defer>
+    </script>
+
 
 
     <script type="text/javascript">
@@ -282,6 +298,57 @@
                 scrollTop: $( $.attr(this, 'href') ).offset().top
             }, 500);
         });
+
+        /*Mapa google*/
+        function initialize() {
+                /*Dirección de la propiedad del backend*/
+
+                    var latitud = '24.0018685';
+                    var longitud = '-104.6530713';
+                    var myLatlng = new google.maps.LatLng(latitud,longitud);
+                        var icono = 'http://m.schuepfen.ch/icons/helveticons/black/60/Pin-location.png'
+                        var mapOptions = {
+                            zoom: 16,
+                            center: myLatlng,
+                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                        }
+
+                    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+                    //Callout Content
+                    var contentString = 'Obari';
+                    //Set window width + content
+                    var infowindow = new google.maps.InfoWindow({
+                        content: contentString,
+                        maxWidth: 500
+                    });
+
+                    //Add Marker
+                    var marker = new google.maps.Marker({
+                        position: myLatlng,
+                        map: map,
+                        icon: icono,
+                        title: 'image title'
+                    });
+
+                    infowindow.open(map,marker);
+
+                    google.maps.event.addListener(marker, 'click', function() {
+                        infowindow.open(map,marker);
+                    });
+
+                    //Resize Function
+                    google.maps.event.addDomListener(window, "resize", function() {
+                        var center = map.getCenter();
+                        google.maps.event.trigger(map, "resize");
+                        map.setCenter(center);
+
+                    });
+                    google.maps.event.addDomListener(window, 'load', initialize);
+
+                
+        }
+
+        
     </script>
 </body>
 

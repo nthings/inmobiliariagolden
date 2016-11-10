@@ -54,6 +54,16 @@ footer {
     padding-top: 30px;
     position: relative;
 }
+#map_container2{
+  position: relative;
+}
+#map2{
+    height: 350px;
+    overflow: hidden;
+    padding-bottom: 22.25%;
+    padding-top: 30px;
+    position: relative;
+}
 .img-center {
 	margin: 0 auto;
 }
