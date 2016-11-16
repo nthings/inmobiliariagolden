@@ -429,6 +429,10 @@ module.exports = function(app, passport, connection) {
         req.logout();
         res.redirect('/');
     });
+
+    app.get('/prueba', function(req, res) {
+        res.render('prueba.ejs');
+    });
 };
 
 // route middleware to make sure a user is logged in
