@@ -1,7 +1,7 @@
 {
-  "name": "obari",
+  "name": "inmobiliaria",
   "version": "1.0.0",
-  "description": "Obari Web",
+  "description": "Inmobiliaria",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
