@@ -284,13 +284,14 @@
                         <p>Obari Bienes Raíces</p>
                         <p>Dirección: </p>
                         <p>Teléfono: </p>
+
+                        <h3>Desarrollado por:</h3>
+                        <img src="../hittek.png" width="300px" />
                     </div>  
                 </div>
             </footer>
-
         </div>
     </div>
-
     <!-- /.container -->
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
@@ -303,10 +304,8 @@
       async defer>
     </script>
 
-
-
     <script type="text/javascript">
-        /*Scroll top*/
+        // Animación de entrada
         $(window).on('load',function(){
             document.getElementById("family").classList.add("family");
             document.getElementById("house").classList.add("house");
@@ -317,10 +316,7 @@
             }, 4000);
         });
         $(document).ready(function(){
-            // document.getElementById("family").classList.add("family");
-            // document.getElementById("house").classList.add("house");
-            // document.getElementById("body").classList.add("body");
-            
+            /*Scroll top*/
              $(window).scroll(function () {
                     if ($(this).scrollTop() > 50) {
                         $('#back-to-top').fadeIn();
@@ -360,8 +356,6 @@
                         $('.list-group-item').removeAttr("style");
                     }, 50);
                 });
-
-
         });
         /*Animación al dar click a menú*/
         $(document).on('click', '.animado', function(event){
@@ -375,7 +369,6 @@
         /*Mapa google*/
         function initialize() {
                 /*Dirección de la propiedad del backend*/
-
                     var latitud = '24.0018685';
                     var longitud = '-104.6530713';
                     var myLatlng = new google.maps.LatLng(latitud,longitud);
@@ -416,12 +409,8 @@
                         map.setCenter(center);
 
                     });
-                    google.maps.event.addDomListener(window, 'load', initialize);
-
-                
+                    google.maps.event.addDomListener(window, 'load', initialize);                
         }
-
-        
     </script>
 </body>
 
