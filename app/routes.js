@@ -324,7 +324,7 @@ module.exports = function(app, passport, connection) {
         }
     });
 
-    app.post('/eliminarfoto',function(req, res) {
+    app.post('/eliminarfoto',isLoggedIn, function(req, res) {
         connection.query('DELETE FROM fotos WHERE url = ?',[req.body.fotourl], function(err, result){
             fs.unlink("assets"+req.body.fotourl,function(err) {
                 console.log(err);
@@ -428,10 +428,6 @@ module.exports = function(app, passport, connection) {
     app.get('/logout', function(req, res) {
         req.logout();
         res.redirect('/');
-    });
-
-    app.get('/prueba', function(req, res) {
-        res.render('prueba.ejs');
     });
 };
 
