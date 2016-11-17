@@ -6,14 +6,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Obari Bienes Raíces">
+    <meta name="description" content="Tu Inmobiliara">
     <meta name="author" content="<%=propiedad.nombre%>">
     <meta property="og:image" content="https://obari.herokuapp.com<%=propiedad.url%>" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1024" />
     <meta property="og:image:height" content="1024" />
 
-    <title>Obari - <%=propiedad.nombrepropiedad%></title>
+    <title>Inmobiliaria - <%=propiedad.nombrepropiedad%></title>
 
     <!-- Bootstrap Core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
@@ -38,7 +38,8 @@
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <a class="navbar-brand" href="/">
-                        <img src="../logoup.png" id="logo" alt="">
+                        <!-- <img src="../logoup.png" id="logo" alt=""> -->
+                        <img src="http://placehold.it/333x72?text=Logo" id="logo" alt="">
                     </a>
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                         <span class="sr-only">Toggle navigation</span>
@@ -130,7 +131,7 @@
         </div>
         <!-- Related Projects Row -->
         <div class="row">
-            
+
             <div class="col-lg-12">
                 <h3 class="page-header">Más Fotos</h3>
             </div>
@@ -162,7 +163,7 @@
                     <div id="map2"></div>
                 </div>  
                 <div class="col-xs-12 col-sm-6 text-center">
-                    <p>Obari Bienes Raíces</p>
+                    <p>Imobiliaria</p>
                     <p>Dirección: </p>
                     <p>Teléfono: </p>
                     <h3>Desarrollado por:</h3>
@@ -229,7 +230,8 @@ async defer>
         var latitud = <%=propiedad.latitud%>;
         var longitud = <%=propiedad.longitud%>;
         var myLatlng = new google.maps.LatLng(latitud,longitud);
-        var icono = '../pin.png';
+        var icono = 'http://m.schuepfen.ch/icons/helveticons/black/60/Pin-location.png';
+        // var icono = '../pin.png';        
         var mapOptions = {
             zoom: 16,
             center: myLatlng,
@@ -280,7 +282,7 @@ async defer>
 
                     var map2 = new google.maps.Map(document.getElementById('map2'), mapOptions2);
                     //Callout Content
-                    var contentString2 = 'Obari';
+                    var contentString2 = 'Inmobiliaria';
                     //Set window width + content
                     var infowindow2 = new google.maps.InfoWindow({
                         content: contentString2,

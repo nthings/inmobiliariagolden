@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<title>Obari - Editar Propiedad</title>
+	<title>Inmobiliara - Editar Propiedad</title>
 	<!-- Bootstrap Core CSS -->
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
 	<link href="../css/sb-admin.css" rel="stylesheet">
@@ -32,110 +32,111 @@
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                   <a class="navbar-brand" href="/" target="_blank"><img src="../logoup.png" class="img-responsive" id="logo" alt=""></a>
-                   <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Activar Navegación</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+                 <a class="navbar-brand" href="/" target="_blank"><!-- <img src="../logoup.png" id="logo" alt=""> -->
+                    <img src="http://placehold.it/333x72?text=Logo" id="logo" alt=""></a>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Activar Navegación</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
 
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse menu pull-right" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%=user.nombre%><b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="/editarasesor"><i class="fa fa-fw fa-user"></i> Editar Perfil</a>
-                            </li>
-                            <li>
-                                <a href="/logout"><i class="fa fa-fw fa-power-off"></i> Cerrar Sesión</a>
-                            </li>
-
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
-    <div id="page-wrapper">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">
-                        Editar <small>Lo que no quieras cambiar déjalo como está</small>
-                    </h1>
                 </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse menu pull-right" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%=user.nombre%><b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/editarasesor"><i class="fa fa-fw fa-user"></i> Editar Perfil</a>
+                                </li>
+                                <li>
+                                    <a href="/logout"><i class="fa fa-fw fa-power-off"></i> Cerrar Sesión</a>
+                                </li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
             </div>
-            <a id="back-to-top" href="/panel" class="btn btn-default btn-lg back-to-top pull-left" role="button" title="Click para regresar"><span class="glyphicon glyphicon-chevron-left"></span> Regresar Al Panel</a>
-            <form action="/editarpropiedad" enctype='multipart/form-data' id="editar" method="POST">
-              <div class="row">
-                  <div class="form-group col-xs-12">
-                      <label for="ventaorenta"><i class="fa fa-home fa-fw"></i>Venta ó Renta</label>
-                      <input id="ventaorenta" type="checkbox" name="ventaorenta" data-on="success" data-off="sucess" data-on-text="VENTA" data-off-text="RENTA" value="0" <%if(propiedad.renta==0){%>checked<%}%>>
+            <!-- /.container -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Editar <small>Lo que no quieras cambiar déjalo como está</small>
+                        </h1>
+                    </div>
+                </div>
+                <a id="back-to-top" href="/panel" class="btn btn-default btn-lg back-to-top pull-left" role="button" title="Click para regresar"><span class="glyphicon glyphicon-chevron-left"></span> Regresar Al Panel</a>
+                <form action="/editarpropiedad" enctype='multipart/form-data' id="editar" method="POST">
+                  <div class="row">
+                      <div class="form-group col-xs-12">
+                          <label for="ventaorenta"><i class="fa fa-home fa-fw"></i>Venta ó Renta</label>
+                          <input id="ventaorenta" type="checkbox" name="ventaorenta" data-on="success" data-off="sucess" data-on-text="VENTA" data-off-text="RENTA" value="0" <%if(propiedad.renta==0){%>checked<%}%>>
+                      </div>
+                      <div class="form-group col-xs-12">
+                          <label for="propiedad"><i class="fa fa-home fa-fw"></i>Tipo de Propiedad</label>
+                          <select name="tipo" class="form-control" id="tipo">
+                            <option <%if(propiedad.tipo == "casa"){%>selected<%}%> value="casa">Casa</option>
+                            <option <%if(propiedad.tipo == "condominio"){%>selected<%}%> value="condominio">Condominio</option>
+                            <option <%if(propiedad.tipo == "terreno"){%>selected<%}%> value="terreno">Terreno</option>
+                            <option <%if(propiedad.tipo == "comercial"){%>selected<%}%> value="comercial">Comercial</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-xs-12">
+                      <input type="text" name="id" class="oculto" value="<%=propiedad.idpropiedades%>">
+                      <label for="nombrepropiedad"><i class="fa fa-home fa-fw"></i>Nombre de La Propiedad</label>
+                      <input type="text" name="nombrepropiedad" id="nombrepropiedad" class="form-control" value="<%=propiedad.nombrepropiedad%>" required />
                   </div>
                   <div class="form-group col-xs-12">
-                      <label for="propiedad"><i class="fa fa-home fa-fw"></i>Tipo de Propiedad</label>
-                      <select name="tipo" class="form-control" id="tipo">
-                        <option <%if(propiedad.tipo == "casa"){%>selected<%}%> value="casa">Casa</option>
-                        <option <%if(propiedad.tipo == "condominio"){%>selected<%}%> value="condominio">Condominio</option>
-                        <option <%if(propiedad.tipo == "terreno"){%>selected<%}%> value="terreno">Terreno</option>
-                        <option <%if(propiedad.tipo == "comercial"){%>selected<%}%> value="comercial">Comercial</option>
-                    </select>
+                      <label for="precio"><i class="fa fa-usd fa-fw"></i>Precio</label>
+                      <input type="number" name="precio" id="precio" value="<%=propiedad.precio%>" class="form-control" required />
+                  </div>
+                  <div class="form-group col-xs-6 col-md-3">
+                      <label for="m2"><i class="fa fa-home fa-fw"></i> M2</label>
+                      <input type="number" name="m2" id="m2" value="<%=propiedad.m2%>" class="form-control" required />
+                  </div>
+                  <div class="form-group col-xs-6 col-md-3">
+                      <label for="recamaras"><i class="fa fa-bed fa-fw"></i> Recámaras</label>
+                      <input type="number" name="recamaras" id="recamaras" value="<%=propiedad.recamaras%>" class="form-control" required />
+                  </div>
+                  <div class="form-group col-xs-6 col-md-3">
+                      <label for="baños"><object type="image/svg+xml" data="../svg/shower.svg" class="icono"></object> Baños</label>
+                      <input type="number" name="baños" id="baños" value="<%=propiedad.baños%>" class="form-control" required />
+                  </div>
+                  <div class="form-group col-xs-6 col-md-3">
+                    <label for="cochera"><i class="fa fa-car fa-fw"></i> Cochera Para...</label>
+                    <input type="number" name="cochera" id="cochera" value="<%=propiedad.cochera%>" class="form-control" required />
                 </div>
                 <div class="form-group col-xs-12">
-                  <input type="text" name="id" class="oculto" value="<%=propiedad.idpropiedades%>">
-                  <label for="nombrepropiedad"><i class="fa fa-home fa-fw"></i>Nombre de La Propiedad</label>
-                  <input type="text" name="nombrepropiedad" id="nombrepropiedad" class="form-control" value="<%=propiedad.nombrepropiedad%>" required />
+                  <label for="descripcion"><i class="fa fa-reorder fa-fw"></i> Descripción</label>
+                  <textarea class="form-control" rows="5" id="descripcion" name="descripcion" required><%=propiedad.descripcion%></textarea>
               </div>
               <div class="form-group col-xs-12">
-                  <label for="precio"><i class="fa fa-usd fa-fw"></i>Precio</label>
-                  <input type="number" name="precio" id="precio" value="<%=propiedad.precio%>" class="form-control" required />
-              </div>
-              <div class="form-group col-xs-6 col-md-3">
-                  <label for="m2"><i class="fa fa-home fa-fw"></i> M2</label>
-                  <input type="number" name="m2" id="m2" value="<%=propiedad.m2%>" class="form-control" required />
-              </div>
-              <div class="form-group col-xs-6 col-md-3">
-                  <label for="recamaras"><i class="fa fa-bed fa-fw"></i> Recámaras</label>
-                  <input type="number" name="recamaras" id="recamaras" value="<%=propiedad.recamaras%>" class="form-control" required />
-              </div>
-              <div class="form-group col-xs-6 col-md-3">
-                  <label for="baños"><object type="image/svg+xml" data="../svg/shower.svg" class="icono"></object> Baños</label>
-                  <input type="number" name="baños" id="baños" value="<%=propiedad.baños%>" class="form-control" required />
-              </div>
-              <div class="form-group col-xs-6 col-md-3">
-                <label for="cochera"><i class="fa fa-car fa-fw"></i> Cochera Para...</label>
-                <input type="number" name="cochera" id="cochera" value="<%=propiedad.cochera%>" class="form-control" required />
-            </div>
-            <div class="form-group col-xs-12">
-              <label for="descripcion"><i class="fa fa-reorder fa-fw"></i> Descripción</label>
-              <textarea class="form-control" rows="5" id="descripcion" name="descripcion" required><%=propiedad.descripcion%></textarea>
-          </div>
-          <div class="form-group col-xs-12">
-              <label for="direccion"><i class="fa fa-map-marker fa-fw"></i> Dirección</label>
-              <input type="text" name="direccion" id="direccion" value="<%=propiedad.direccion%>" class="form-control" required />
-              <button type="button" data-toggle="tooltip" title="En caso de que el marcador en el mapa, no muestre la ubicación exacta, puedes arrastrarlo" class="btn btn-block btn-warning buscar">MAPEAR</button>
-              <input type="text" name="latitud" id="latitud" class="oculto">
-              <input type="text" name="longitud" id="longitud" class="oculto">
+                  <label for="direccion"><i class="fa fa-map-marker fa-fw"></i> Dirección</label>
+                  <input type="text" name="direccion" id="direccion" value="<%=propiedad.direccion%>" class="form-control" required />
+                  <button type="button" data-toggle="tooltip" title="En caso de que el marcador en el mapa, no muestre la ubicación exacta, puedes arrastrarlo" class="btn btn-block btn-warning buscar">MAPEAR</button>
+                  <input type="text" name="latitud" id="latitud" class="oculto">
+                  <input type="text" name="longitud" id="longitud" class="oculto">
 
-          </div>
-          <div class="form-group col-xs-12">
-             <label><i class="fa fa-map-marker fa-fw"></i> Mapa (Para modificar el mapa, solo arrastra el marcador ó cambia la dirección arriba y presiona MAPEAR</label>
-             <div id="map_container"></div>
-             <div id="map"></div>
-         </div>
+              </div>
+              <div class="form-group col-xs-12">
+               <label><i class="fa fa-map-marker fa-fw"></i> Mapa (Para modificar el mapa, solo arrastra el marcador ó cambia la dirección arriba y presiona MAPEAR</label>
+               <div id="map_container"></div>
+               <div id="map"></div>
+           </div>
 
-         <div class="form-group col-xs-12">
-          <label for="foto"><i class="fa fa-photo fa-fw"></i> Fotos</label>
-          <div class="form-group input-group">
-             <img class="img-responsive" src="<%=propiedad.url%>" alt="">
-             <div>
+           <div class="form-group col-xs-12">
+              <label for="foto"><i class="fa fa-photo fa-fw"></i> Fotos</label>
+              <div class="form-group input-group">
+               <img class="img-responsive" src="<%=propiedad.url%>" alt="">
+               <div>
                 <p>Reemplazar Foto</p>
                 <input class='form-control' accept="image/png, image/jpeg, image/gif" type='file' name='principal'/>
             </div>
@@ -159,11 +160,11 @@
     <div class="form-group col-xs-12">
       <label for="foto"><i class="fa fa-photo fa-fw"></i> Agregar Más Fotos</label>
       <div class="form-group input-group">
-         <input class='form-control' accept="image/png, image/jpeg, image/gif" type='file' name='nuevas'/>
-         <span class="input-group-btn"><button type="button" class="btn btn-default btn-add"><i class="fa fa-plus fa-fw"></i>Agregar Otra Foto</button></span>
-     </div>
- </div>
- <div class="form-group">
+       <input class='form-control' accept="image/png, image/jpeg, image/gif" type='file' name='nuevas'/>
+       <span class="input-group-btn"><button type="button" class="btn btn-default btn-add"><i class="fa fa-plus fa-fw"></i>Agregar Otra Foto</button></span>
+   </div>
+</div>
+<div class="form-group">
     <input type="submit" class="form-control btn btn-success btn-block" value="EDITAR" id="enviar" form="editar">
 </div>
 </div>
@@ -240,178 +241,178 @@ async defer></script>
 </script>
 
 <script type="text/javascript">
-   /*EVENTO PARA BOTON MAPEAR*/
-   $("button.buscar").click(function () {
-       $("#mensaje").removeClass("oculto");
-       /*Geocoder convierte una dirección en coordenadas*/
-       var geocoder = new google.maps.Geocoder();
-       /*Dirección de la propiedad del backend*/
-       var address = $("#direccion").val();
+ /*EVENTO PARA BOTON MAPEAR*/
+ $("button.buscar").click(function () {
+     $("#mensaje").removeClass("oculto");
+     /*Geocoder convierte una dirección en coordenadas*/
+     var geocoder = new google.maps.Geocoder();
+     /*Dirección de la propiedad del backend*/
+     var address = $("#direccion").val();
 
-       geocoder.geocode( { 'address': address}, function(results, status) {
-           /*Dirección convertida con éxito*/
-           if (status == google.maps.GeocoderStatus.OK) {
-               var latitud = results[0].geometry.location.lat();
-               var longitud = results[0].geometry.location.lng();
-               var myLatlng = new google.maps.LatLng(latitud,longitud);
-               $("#latitud").val(latitud);
-               $("#longitud").val(longitud);
-               var icono = 'http://m.schuepfen.ch/icons/helveticons/black/60/Pin-location.png'
-               var mapOptions = {
-                   zoom: 16,
-                   center: myLatlng,
-                   mapTypeId: google.maps.MapTypeId.ROADMAP
-               }
+     geocoder.geocode( { 'address': address}, function(results, status) {
+         /*Dirección convertida con éxito*/
+         if (status == google.maps.GeocoderStatus.OK) {
+             var latitud = results[0].geometry.location.lat();
+             var longitud = results[0].geometry.location.lng();
+             var myLatlng = new google.maps.LatLng(latitud,longitud);
+             $("#latitud").val(latitud);
+             $("#longitud").val(longitud);
+             var icono = 'http://m.schuepfen.ch/icons/helveticons/black/60/Pin-location.png'
+             var mapOptions = {
+                 zoom: 16,
+                 center: myLatlng,
+                 mapTypeId: google.maps.MapTypeId.ROADMAP
+             }
 
-               var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+             var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 	            //Callout Content
 	            var contentString = $("#direccion").val();
 	            //Set window width + content
 	            var infowindow = new google.maps.InfoWindow({
-                   content: contentString,
-                   maxWidth: 500
-               });
+                 content: contentString,
+                 maxWidth: 500
+             });
 
 	            //Add Marker
 	            var marker = new google.maps.Marker({
-                   position: myLatlng,
-                   map: map,
-                   icon: icono,
-                   draggable: true,
-                   title: 'image title'
-               });
+                 position: myLatlng,
+                 map: map,
+                 icon: icono,
+                 draggable: true,
+                 title: 'image title'
+             });
 	            infowindow.open(map, marker);
 	            google.maps.event.addListener(marker, 'dragend', function(evt){
-                   var lat = evt.latLng.lat();
-                   var lang= evt.latLng.lng();
+                 var lat = evt.latLng.lat();
+                 var lang= evt.latLng.lng();
 
-                   $("#latitud").val(lat);
+                 $("#latitud").val(lat);
 
-                   $("#longitud").val(lang);
+                 $("#longitud").val(lang);
 
-                   infowindow.setContent($("#direccion").val());
-                   infowindow.open(map, marker);
-               });
+                 infowindow.setContent($("#direccion").val());
+                 infowindow.open(map, marker);
+             });
 
-         } 
-     }); 
-   });
-   /*Inicializar mapa google*/
-   function initialize() {
-       /*Geocoder convierte una dirección en coordenadas*/
-       var geocoder = new google.maps.Geocoder();
-       /*Dirección de la propiedad del backend*/
-       var address = "<%=propiedad.direccion%>";
+           } 
+       }); 
+ });
+ /*Inicializar mapa google*/
+ function initialize() {
+     /*Geocoder convierte una dirección en coordenadas*/
+     var geocoder = new google.maps.Geocoder();
+     /*Dirección de la propiedad del backend*/
+     var address = "<%=propiedad.direccion%>";
 
-       geocoder.geocode( { 'address': address}, function(results, status) {
-           /*Dirección convertida con éxito*/
-           if (status == google.maps.GeocoderStatus.OK) {
-               var latitud = <%=propiedad.latitud%>;
-               var longitud = <%=propiedad.longitud%>;
-               $("#latitud").val(latitud);
-               $("#longitud").val(longitud);
-               var myLatlng = new google.maps.LatLng(latitud,longitud);
-               var icono = 'http://m.schuepfen.ch/icons/helveticons/black/60/Pin-location.png'
-               var mapOptions = {
-                   zoom: 16,
-                   center: myLatlng,
-                   mapTypeId: google.maps.MapTypeId.ROADMAP
-               }
+     geocoder.geocode( { 'address': address}, function(results, status) {
+         /*Dirección convertida con éxito*/
+         if (status == google.maps.GeocoderStatus.OK) {
+             var latitud = <%=propiedad.latitud%>;
+             var longitud = <%=propiedad.longitud%>;
+             $("#latitud").val(latitud);
+             $("#longitud").val(longitud);
+             var myLatlng = new google.maps.LatLng(latitud,longitud);
+             var icono = 'http://m.schuepfen.ch/icons/helveticons/black/60/Pin-location.png'
+             var mapOptions = {
+                 zoom: 16,
+                 center: myLatlng,
+                 mapTypeId: google.maps.MapTypeId.ROADMAP
+             }
 
-               var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+             var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 	                //Callout Content
 	                var contentString = "<%=propiedad.direccion%>";
 	                //Set window width + content
 	                var infowindow = new google.maps.InfoWindow({
-                       content: contentString,
-                       maxWidth: 500
-                   });
+                     content: contentString,
+                     maxWidth: 500
+                 });
 
 	                //Add Marker
 	                var marker = new google.maps.Marker({
-                       position: myLatlng,
-                       map: map,
-                       icon: icono,
-                       draggable: true,
-                       title: 'image title'
-                   });
+                     position: myLatlng,
+                     map: map,
+                     icon: icono,
+                     draggable: true,
+                     title: 'image title'
+                 });
 
 	                infowindow.open(map, marker);
 
 	                google.maps.event.addListener(marker, 'click', function() {
-                       infowindow.open(map,marker);
-                   });
+                     infowindow.open(map,marker);
+                 });
 
 	                //Resize Function
 	                google.maps.event.addDomListener(window, "resize", function() {
-                       var center = map.getCenter();
-                       google.maps.event.trigger(map, "resize");
-                       map.setCenter(center);
-                   });
+                     var center = map.getCenter();
+                     google.maps.event.trigger(map, "resize");
+                     map.setCenter(center);
+                 });
 	                google.maps.event.addDomListener(window, 'load', initialize);
 
 	                google.maps.event.addListener(marker, 'dragend', function(evt){
-                       var lat = evt.latLng.lat();
-                       var lang= evt.latLng.lng();
+                     var lat = evt.latLng.lat();
+                     var lang= evt.latLng.lng();
 
-                       $("#latitud").val(lat);
-                       $("#longitud").val(lang);
+                     $("#latitud").val(lat);
+                     $("#longitud").val(lang);
 
-                       infowindow.setContent($("#direccion").val());
-                       infowindow.open(map, marker);
-                   });
-             } 
-         }); 
+                     infowindow.setContent($("#direccion").val());
+                     infowindow.open(map, marker);
+                 });
+               } 
+           }); 
 
-   }
+ }
 
 </script>
 <script>
-   $(document).ready(function() {
+ $(document).ready(function() {
 
-       $("[name='ventaorenta']").bootstrapSwitch({onColor: 'success', offColor: 'success'});
-       <%if (typeof(mensaje) != 'undefined') {%>
-           $("#mensajemodal").modal('show');
-           <%}%>
+     $("[name='ventaorenta']").bootstrapSwitch({onColor: 'success', offColor: 'success'});
+     <%if (typeof(mensaje) != 'undefined') {%>
+         $("#mensajemodal").modal('show');
+         <%}%>
 
-           <%if (typeof(fotos) != 'undefined') {%>
-              <%var i=0;%>
-              <% fotos.forEach(function(foto) { %>
-                  $('#input'+<%=i%>).change(function (){
-                    $('#'+<%=i%>).val(<%=i%>);
-                });
-                  $('.eliminarfoto'+<%=i%>).click(function() {
+         <%if (typeof(fotos) != 'undefined') {%>
+          <%var i=0;%>
+          <% fotos.forEach(function(foto) { %>
+              $('#input'+<%=i%>).change(function (){
+                $('#'+<%=i%>).val(<%=i%>);
+            });
+              $('.eliminarfoto'+<%=i%>).click(function() {
      					// body...
      					$('#idfoto').val(<%=propiedad.idpropiedades%>);
      					$('#fotourl').val($(this).attr("id"));
      					$("#eliminarmodal").modal('show');
      				});
-                  <%i++;%>
-                  <% }); %>
-              <%}%>
-          });
+              <%i++;%>
+              <% }); %>
+          <%}%>
+      });
 
-   $( document ).on( 'click', '.btn-add', function ( event ) {
-       event.preventDefault();
+ $( document ).on( 'click', '.btn-add', function ( event ) {
+     event.preventDefault();
 
-       var field = $(this).closest( '.form-group' );
-       var field_new = field.clone();
+     var field = $(this).closest( '.form-group' );
+     var field_new = field.clone();
 
-       $(this)
-       .toggleClass( 'btn-default' )
-       .toggleClass( 'btn-add' )
-       .toggleClass( 'btn-danger' )
-       .toggleClass( 'btn-remove' )
-       .html( '–' );
+     $(this)
+     .toggleClass( 'btn-default' )
+     .toggleClass( 'btn-add' )
+     .toggleClass( 'btn-danger' )
+     .toggleClass( 'btn-remove' )
+     .html( '–' );
 
-       field_new.find( 'input' ).val( '' );
-       field_new.insertAfter( field );
-   } );
+     field_new.find( 'input' ).val( '' );
+     field_new.insertAfter( field );
+ } );
 
-   $( document ).on( 'click', '.btn-remove', function ( event ) {
-       event.preventDefault();
-       $(this).closest( '.form-group' ).remove();
-   } );
+ $( document ).on( 'click', '.btn-remove', function ( event ) {
+     event.preventDefault();
+     $(this).closest( '.form-group' ).remove();
+ } );
 
 </script>
 </body>

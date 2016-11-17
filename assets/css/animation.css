@@ -1,3 +1,4 @@
+
 svg {
   width: 100%;
   height: 100vh;
@@ -9,136 +10,160 @@ svg {
 @-moz-keyframes house {
 	0%{
 		-moz-transform: translateX(100%);
-     	opacity: 0;
-    }
-    50% {
-    	-moz-transform: translateX(0%);
-    	opacity: 1;
-    }
-    100%{
-    	-moz-transform: translateX(0%);
-    	opacity: 0;
-    }
+    opacity: 0;
+  }
+  50% {
+   -moz-transform: translateX(0%);
+   opacity: 1;
+ }
+ 100%{
+   -moz-transform: translateX(0%);
+   opacity: 0;
+ }
 }
 @-webkit-keyframes house {
 	0%{
 		-webkit-transform: translateX(100%);
-     	opacity: 0;
-    }
-    50% {
-    	-webkit-transform: translateX(0%);
-    	opacity: 1;
-    }
-    100%{
-    	-webkit-transform: translateX(0%);
-    	opacity: 0;
-    }
+    opacity: 0;
+  }
+  50% {
+   -webkit-transform: translateX(0%);
+   opacity: 1;
+ }
+ 100%{
+   -webkit-transform: translateX(0%);
+   opacity: 0;
+ }
 }
 @keyframes house {
 	0%{
 		transform: translateX(100%);
-     	opacity: 0;
-    }
-    50% {
-    	transform: translateX(0%);
-    	opacity: 1;
-    }
-    100%{
-    	transform: translateX(0%);
-    	opacity: 0;
-    }
+    opacity: 0;
+  }
+  50% {
+   transform: translateX(0%);
+   opacity: 1;
+ }
+ 100%{
+   transform: translateX(0%);
+   opacity: 0;
+ }
 }
 
 @-moz-keyframes family {
-    0%{
-		-moz-transform: translateX(-100%);
-     	opacity: 0;
-    }
-    50% {
-    	-moz-transform: translateX(0%);
-    	opacity: 1;
-    }
-    100%{
-    	-moz-transform: translateX(0%);
-    	opacity: 0;
-    }
+  0%{
+    -moz-transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+   -moz-transform: translateX(0%);
+   opacity: 1;
+ }
+ 100%{
+   -moz-transform: translateX(0%);
+   opacity: 0;
+ }
 }
 @-webkit-keyframes family {
-    0%{
-		-webkit-transform: translateX(-100%);
-     	opacity: 0;
-    }
-    50% {
-    	-webkit-transform: translateX(0%);
-    	opacity: 1;
-    }
-    100%{
-    	-webkit-transform: translateX(0%);
-    	opacity: 0;
-    }
+  0%{
+    -webkit-transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+   -webkit-transform: translateX(0%);
+   opacity: 1;
+ }
+ 100%{
+   -webkit-transform: translateX(0%);
+   opacity: 0;
+ }
 }
 @keyframes family {
-    0%{
-		transform: translateX(-100%);
-     	opacity: 0;
-    }
-    50% {
-    	transform: translateX(0%);
-    	opacity: 1;
-    }
-    100%{
-    	transform: translateX(0%);
-    	opacity: 0;
-    }
+  0%{
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+   transform: translateX(0%);
+   opacity: 1;
+ }
+ 100%{
+   transform: translateX(0%);
+   opacity: 0;
+ }
 }
 
 @-moz-keyframes body {
-    from{
-		opacity: 0;
-    }
-    to{
-    	opacity: 1;
-    }
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
 }
 @-webkit-keyframes body {
-    from{
-		opacity: 0;
-    }
-    to{
-    	opacity: 1;
-    }
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
 }
 @keyframes body {
-    from{
-		opacity: 0;
-    }
-    to{
-    	opacity: 1;
-    }
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+@-moz-keyframes logo {
+  from{
+    opacity: 1;
+  }
+  to{
+   opacity: 0;
+ }
+}
+@-webkit-keyframes logo {
+  from{
+    opacity: 1;
+  }
+  to{
+   opacity: 0;
+ }
+}
+@keyframes logo {
+  from{
+    opacity: 1;
+  }
+  to{
+   opacity: 0;
+ }
 }
 
 .family {
-	fill: #00F;
-  	-moz-animation: family 3s linear;/* Older versions of Mozila */ 
-  	-webkit-animation: family 3s linear;/* Chrome, Opera, Safari */ 
-  	animation: family 3s linear;/* Standard */
-  	-webkit-animation-fill-mode:forwards; /*Chrome 16+, Safari 4+*/
-  	   -moz-animation-fill-mode:forwards; /*FF 5+*/
-  	   -o-animation-fill-mode:forwards; /*Not implemented yet*/
-  	   -ms-animation-fill-mode:forwards; /*IE 10+*/
-  	   animation-fill-mode:forwards; /*when the spec is finished*/
+	fill: #FF4141;
+ -moz-animation: family 3s linear;/* Older versions of Mozila */ 
+ -webkit-animation: family 3s linear;/* Chrome, Opera, Safari */ 
+ animation: family 3s linear;/* Standard */
+ -webkit-animation-fill-mode:forwards; /*Chrome 16+, Safari 4+*/
+ -moz-animation-fill-mode:forwards; /*FF 5+*/
+ -o-animation-fill-mode:forwards; /*Not implemented yet*/
+ -ms-animation-fill-mode:forwards; /*IE 10+*/
+ animation-fill-mode:forwards; /*when the spec is finished*/
 }
 
 .house {
-	fill: #0F0;
-  	-moz-animation: house 3s linear;/* Older versions of Mozila */ 
-  	-webkit-animation: house 3s linear;/* Chrome, Opera, Safari */ 
-  	animation: house 3s linear;/* Standard */
-  	-webkit-animation-fill-mode:forwards; /*Chrome 16+, Safari 4+*/
-  	   -moz-animation-fill-mode:forwards; /*FF 5+*/
-  	   -o-animation-fill-mode:forwards; /*Not implemented yet*/
-  	   -ms-animation-fill-mode:forwards; /*IE 10+*/
-  	   animation-fill-mode:forwards; /*when the spec is finished*/
+	fill: #41D9FF;
+ -moz-animation: house 3s linear;/* Older versions of Mozila */ 
+ -webkit-animation: house 3s linear;/* Chrome, Opera, Safari */ 
+ animation: house 3s linear;/* Standard */
+ -webkit-animation-fill-mode:forwards; /*Chrome 16+, Safari 4+*/
+ -moz-animation-fill-mode:forwards; /*FF 5+*/
+ -o-animation-fill-mode:forwards; /*Not implemented yet*/
+ -ms-animation-fill-mode:forwards; /*IE 10+*/
+ animation-fill-mode:forwards; /*when the spec is finished*/
 }
 
 .body{
@@ -149,19 +174,49 @@ svg {
 	-moz-animation-duration: 2s; 
 	-webkit-animation-duration: 2s; 
 	animation-duration: 2s; 
-	-moz-animation-delay: 3s;
-	-webkit-animation-delay: 3s;
-	animation-delay: 3s;
+	-moz-animation-delay: 2s;
+	-webkit-animation-delay: 2s;
+	animation-delay: 2s;
 	-moz-animation-direction: linear;
 	-webkit-animation-direction: linear;
 	animation-direction: linear;
 
 	-webkit-animation-fill-mode:forwards; /*Chrome 16+, Safari 4+*/
-	   -moz-animation-fill-mode:forwards; /*FF 5+*/
-	   -o-animation-fill-mode:forwards; /*Not implemented yet*/
-	   -ms-animation-fill-mode:forwards; /*IE 10+*/
-	   animation-fill-mode:forwards; /*when the spec is finished*/
-	/*-moz-animation: body 2s linear ease-out 4 alternate infinite none running;/* Older versions of Mozila */ */
-  	/*-webkit-animation: body 2s linear ease-out 4 alternate infinite none running;/* Chrome, Opera, Safari */ */
-  	/*animation: body 2s linear ease-out 4 alternate infinite none running;/* Standard */*/
+  -moz-animation-fill-mode:forwards; /*FF 5+*/
+  -o-animation-fill-mode:forwards; /*Not implemented yet*/
+  -ms-animation-fill-mode:forwards; /*IE 10+*/
+  animation-fill-mode:forwards; /*when the spec is finished*/
+  /*-moz-animation: body 2s linear ease-out 4 alternate infinite none running;/* Older versions of Mozila */ */
+  /*-webkit-animation: body 2s linear ease-out 4 alternate infinite none running;/* Chrome, Opera, Safari */ */
+  /*animation: body 2s linear ease-out 4 alternate infinite none running;/* Standard */*/
+}
+.logo{
+  -moz-animation-name: logo;
+  -webkit-animation-name: logo;
+  animation-name: logo;
+  -moz-animation-duration: 2s; 
+  -webkit-animation-duration: 2s; 
+  animation-duration: 2s; 
+  -moz-animation-delay: 2s;
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
+  -moz-animation-direction: linear;
+  -webkit-animation-direction: linear;
+  animation-direction: linear;
+
+  -webkit-animation-fill-mode:forwards; /*Chrome 16+, Safari 4+*/
+  -moz-animation-fill-mode:forwards; /*FF 5+*/
+  -o-animation-fill-mode:forwards; /*Not implemented yet*/
+  -ms-animation-fill-mode:forwards; /*IE 10+*/
+  animation-fill-mode:forwards; /*when the spec is finished*/
+  /*-moz-animation: body 2s linear ease-out 4 alternate infinite none running;/* Older versions of Mozila */ */
+  /*-webkit-animation: body 2s linear ease-out 4 alternate infinite none running;/* Chrome, Opera, Safari */ */
+  /*animation: body 2s linear ease-out 4 alternate infinite none running;/* Standard */*/
+}
+
+#fondologo{
+  fill: #9B9B9B;
+}
+#letras{
+  fill:#000;
 }

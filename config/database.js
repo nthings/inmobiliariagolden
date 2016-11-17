@@ -2,9 +2,9 @@
 module.exports = {
     'connection': {
         'host': '159.203.16.191',
-        'user': 'obari',
+        'user': 'inmobiliaria',
         'password': 'casitas'
     },
-	'database': 'obari',
+	'database': 'inmobiliaria',
     'users_table': 'asesores'
 };
