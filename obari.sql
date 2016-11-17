@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : Obari
-Source Server Version : 50713
-Source Host           : 159.203.16.191:3306
+Source Server         : Local
+Source Server Version : 50505
+Source Host           : localhost:3306
 Source Database       : obari
 
 Target Server Type    : MYSQL
-Target Server Version : 50713
+Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2016-11-17 11:42:06
+Date: 2016-11-17 13:24:58
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,12 +29,13 @@ CREATE TABLE `asesores` (
   `foto` varchar(100) DEFAULT '../picture.png',
   PRIMARY KEY (`idasesores`),
   UNIQUE KEY `username_UNIQUE` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of asesores
 -- ----------------------------
 INSERT INTO `asesores` VALUES ('8', 'Asesor de Prueba', '6182587545', 'admin', '$2a$10$XQu./ZFpPAXe7u9rGDkaaujTHcr5htosc3HXAICdxpYuIDXevyqU.', '1', '/fotoscasas/c3ae172f29eb4c32398a43d6dac87f68');
+INSERT INTO `asesores` VALUES ('12', 'Prueba2', '123123123', 'admin2', '$2a$10$n3/EN514ZvOQXwKXi9iF4ewRtTALBUkKGPHdJIJB/TwI2vx4mv6qO', '0', '../picture.png');
 
 -- ----------------------------
 -- Table structure for fotos
@@ -84,10 +85,11 @@ CREATE TABLE `propiedades` (
   `asesores_idasesores` tinyint(1) unsigned NOT NULL,
   PRIMARY KEY (`idpropiedades`,`asesores_idasesores`),
   KEY `fk_propiedades_asesores_idx` (`asesores_idasesores`)
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of propiedades
 -- ----------------------------
 INSERT INTO `propiedades` VALUES ('41', 'casa', 'Excelente casa en Fracc. Brisas', '850000', '250', '2', '1', '2', 'Casa accesible en fracc. brisas', 'Sicilia #123 Fracc. Brisas', '24.052418814954926', '-104.60641097553253', '0', '0', '2016-11-16', '2016-11-01', '/fotoscasas/8d17125e06d3adb5850e671774a60bda', '8');
 INSERT INTO `propiedades` VALUES ('42', 'terreno', 'Terreno En Carretera México', '2000000', '1500', '0', '0', '0', 'Terreno excelente para agricultura', 'Carretera México Km 15', '24.026073929391917', '-104.57266671420899', '0', '0', '2016-11-10', '2016-11-04', '/fotoscasas/93fcbc6ce872caa07b4abaf60f9639ba', '8');
+INSERT INTO `propiedades` VALUES ('53', 'condominio', 'Condominio En Mazatlán', '5000000', '450', '5', '3', '2', 'Con salida a la playa, excelente para tus vacaciones', 'Av. del Mar, Mazatlán Sinaloa', '23.2286097', '-106.43058400000001', '0', '0', null, '2016-11-17', '/fotoscasas/2f1005a8f8c5ecfd5ad784821dbc157c', '12');
