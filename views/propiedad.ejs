@@ -25,52 +25,53 @@
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+        <![endif]-->
 
-</head>
+    </head>
 
-<body>
+    <body>
+        <!-- Loading -->
+        <div class="se-pre-con"></div>
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">
+                        <img src="../logoup.png" id="logo" alt="">
+                    </a>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="/#propiedades">Propiedades</a>
+                        </li>
+                        <li>
+                            <a href="/#asesores">Asesores</a>
+                        </li>
+                        <li>
+                            <a href="#contacto" class="animado">Contacto</a>
+                        </li>
+                        <li>
+                           <a href="/panel">Panel</a>
+                       </li>
+                   </ul>
+               </div>
+               <!-- /.navbar-collapse -->
+           </div>
+           <!-- /.container -->
+       </nav>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/">
-                    <img src="../logoup.png" id="logo" alt="">
-                </a>
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="/#propiedades">Propiedades</a>
-                    </li>
-                    <li>
-                        <a href="/#asesores">Asesores</a>
-                    </li>
-                    <li>
-                        <a href="#contacto" class="animado">Contacto</a>
-                    </li>
-                    <li>
-                         <a href="/panel">Panel</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
-    <!-- Page Content -->
-    <div class="container">
+       <!-- Page Content -->
+       <div class="container">
 
         <!-- Portfolio Item Heading -->
         <div class="row">
@@ -134,15 +135,15 @@
                 <h3 class="page-header">Más Fotos</h3>
             </div>
             <% if (typeof(fotos) != 'undefined') {%>
-                <% fotos.forEach(function(foto) { %>
-                    <div class="col-sm-3 col-xs-6">
-                        <a id="<%=foto.idfotos%>">
-                            <img class="img-responsive portfolio-item" src="<%=foto.url%>" alt="">
-                        </a>
-                    </div>
-                <% }); %>
+            <% fotos.forEach(function(foto) { %>
+            <div class="col-sm-3 col-xs-6">
+                <a id="<%=foto.idfotos%>">
+                    <img class="img-responsive portfolio-item" src="<%=foto.url%>" alt="">
+                </a>
+            </div>
+            <% }); %>
             <%}else{%>
-                <div class="col-xs-12"><h1>NO HAY GALERÍA</h1></div>
+            <div class="col-xs-12"><h1>NO HAY GALERÍA</h1></div>
             <%}%>
 
         </div>
@@ -178,57 +179,64 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-          <div class="modal-body">
-            <img src="../picture.png" class="img-responsive img-center" id="fotogrande">
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">CERRAR</button>
-          </div>
         </div>
-
-      </div>
+        <div class="modal-body">
+            <img src="../picture.png" class="img-responsive img-center" id="fotogrande">
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">CERRAR</button>
+        </div>
     </div>
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+</div>
+</div>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKDKyJNGPt-XY6RtMdQofhnoAlhVN9ZM8&callback=initialize"
-      async defer>
-    </script>
+<!-- Bootstrap Core JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function(){
-            <% if (typeof(fotos) != 'undefined') {%>
-                <% fotos.forEach(function(foto) { %>
-                        $('#<%=foto.idfotos%>').click(function(){
-                            $('#fotogrande').attr("src","<%=foto.url%>");
-                            $('#foto').modal('show');
-                        });
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKDKyJNGPt-XY6RtMdQofhnoAlhVN9ZM8&callback=initialize"
+async defer>
+</script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+<script type="text/javascript">
+    // Animación de entrada
+    $(window).on('load',function(){
+        // Animate loader off screen
+        $(".se-pre-con").fadeOut("slow");
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        <% if (typeof(fotos) != 'undefined') {%>
+            <% fotos.forEach(function(foto) { %>
+                $('#<%=foto.idfotos%>').click(function(){
+                    $('#fotogrande').attr("src","<%=foto.url%>");
+                    $('#foto').modal('show');
+                });
                 <% }); %>
             <%}else{%>
-            <%}%>
-        });
+                <%}%>
+            });
 
-        /*Mapa google*/
-        function initialize() {
-                /*Dirección de la propiedad del backend*/
-                var address = "<%=propiedad.direccion%>";
+    /*Mapa google*/
+    function initialize() {
+        /*Dirección de la propiedad del backend*/
+        var address = "<%=propiedad.direccion%>";
 
-                    var latitud = <%=propiedad.latitud%>;
-                    var longitud = <%=propiedad.longitud%>;
-                    var myLatlng = new google.maps.LatLng(latitud,longitud);
-                        var icono = '../pin.png';
-                        var mapOptions = {
-                            zoom: 16,
-                            center: myLatlng,
-                            mapTypeId: google.maps.MapTypeId.ROADMAP
-                        }
+        var latitud = <%=propiedad.latitud%>;
+        var longitud = <%=propiedad.longitud%>;
+        var myLatlng = new google.maps.LatLng(latitud,longitud);
+        var icono = '../pin.png';
+        var mapOptions = {
+            zoom: 16,
+            center: myLatlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
 
-                    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+        var map = new google.maps.Map(document.getElementById('map'), mapOptions);
                     //Callout Content
                     var contentString = '<%=propiedad.direccion%>';
                     //Set window width + content
@@ -264,11 +272,11 @@
                     var latitud2 = '24.0018685';
                     var longitud2 = '-104.6530713';
                     var myLatlng2 = new google.maps.LatLng(latitud2,longitud2);
-                        var mapOptions2 = {
-                            zoom: 16,
-                            center: myLatlng2,
-                            mapTypeId: google.maps.MapTypeId.ROADMAP
-                        }
+                    var mapOptions2 = {
+                        zoom: 16,
+                        center: myLatlng2,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    }
 
                     var map2 = new google.maps.Map(document.getElementById('map2'), mapOptions2);
                     //Callout Content
@@ -301,20 +309,20 @@
 
                     });
                     google.maps.event.addDomListener(window, 'load', initialize);
-                
-        }
+                    
+                }
 
-        /*Animación al dar click a menú*/
-        $(document).on('click', '.animado', function(event){
-            event.preventDefault();
+                /*Animación al dar click a menú*/
+                $(document).on('click', '.animado', function(event){
+                    event.preventDefault();
 
-            $('html, body').animate({
-                scrollTop: $( $.attr(this, 'href') ).offset().top
-            }, 500);
-        });
+                    $('html, body').animate({
+                        scrollTop: $( $.attr(this, 'href') ).offset().top
+                    }, 500);
+                });
 
-    </script>
+            </script>
 
-</body>
+        </body>
 
-</html>
+        </html>

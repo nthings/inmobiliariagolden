@@ -119,9 +119,9 @@ svg {
 
 .family {
 	fill: #00F;
-  	-moz-animation: family 4s linear;/* Older versions of Mozila */ 
-  	-webkit-animation: family 4s linear;/* Chrome, Opera, Safari */ 
-  	animation: family 4s linear;/* Standard */
+  	-moz-animation: family 3s linear;/* Older versions of Mozila */ 
+  	-webkit-animation: family 3s linear;/* Chrome, Opera, Safari */ 
+  	animation: family 3s linear;/* Standard */
   	-webkit-animation-fill-mode:forwards; /*Chrome 16+, Safari 4+*/
   	   -moz-animation-fill-mode:forwards; /*FF 5+*/
   	   -o-animation-fill-mode:forwards; /*Not implemented yet*/
@@ -131,9 +131,9 @@ svg {
 
 .house {
 	fill: #0F0;
-  	-moz-animation: house 4s linear;/* Older versions of Mozila */ 
-  	-webkit-animation: house 4s linear;/* Chrome, Opera, Safari */ 
-  	animation: house 4s linear;/* Standard */
+  	-moz-animation: house 3s linear;/* Older versions of Mozila */ 
+  	-webkit-animation: house 3s linear;/* Chrome, Opera, Safari */ 
+  	animation: house 3s linear;/* Standard */
   	-webkit-animation-fill-mode:forwards; /*Chrome 16+, Safari 4+*/
   	   -moz-animation-fill-mode:forwards; /*FF 5+*/
   	   -o-animation-fill-mode:forwards; /*Not implemented yet*/
@@ -149,9 +149,9 @@ svg {
 	-moz-animation-duration: 2s; 
 	-webkit-animation-duration: 2s; 
 	animation-duration: 2s; 
-	-moz-animation-delay: 4s;
-	-webkit-animation-delay: 4s;
-	animation-delay: 4s;
+	-moz-animation-delay: 3s;
+	-webkit-animation-delay: 3s;
+	animation-delay: 3s;
 	-moz-animation-direction: linear;
 	-webkit-animation-direction: linear;
 	animation-direction: linear;
