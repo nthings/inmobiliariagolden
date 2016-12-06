@@ -4,6 +4,7 @@ var session  = require('express-session');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
+var favicon = require('serve-favicon');
 
 var app      = express();
 var port     = process.env.PORT || 8080;
@@ -18,6 +19,7 @@ var connection = mysql.createConnection(dbconfig.connection, {multipleStatements
 connection.query('USE ' + dbconfig.database);
 
 var app = express();
+app.use(favicon(__dirname + '/assets/casita.ico'));
 redirect(app);
 require('./config/passport')(passport);
 // set up our express application

@@ -143,7 +143,7 @@ svg {
 }
 
 .family {
-	fill: #FF4141;
+	fill: #444242;
  -moz-animation: family 3s linear;/* Older versions of Mozila */ 
  -webkit-animation: family 3s linear;/* Chrome, Opera, Safari */ 
  animation: family 3s linear;/* Standard */
@@ -155,7 +155,7 @@ svg {
 }
 
 .house {
-	fill: #41D9FF;
+	fill: #AB9771;
  -moz-animation: house 3s linear;/* Older versions of Mozila */ 
  -webkit-animation: house 3s linear;/* Chrome, Opera, Safari */ 
  animation: house 3s linear;/* Standard */
