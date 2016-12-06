@@ -5,6 +5,6 @@ module.exports = {
         'user': 'golden',
         'password': 'casitas'
     },
-	'database': 'inmobiliaria',
+	'database': 'inmobiliariagolden',
     'users_table': 'asesores'
 };
