@@ -166,11 +166,14 @@
                                 </div>
                                 <div class="panel-body">
                                     <div class="list-group" id="propiedades">
-                                        <% if (typeof(propiedades) != 'undefined') {%>
+                                        <% if (typeof(propiedades) != 'undefined' && propiedades.length > 0) {%>
                                         <% propiedades.forEach(function(propiedad) { %>
                                         <p class="list-group-item">
-                                            <a href="vendida/?id=<%=propiedad.idpropiedades%>" class="btn btn-xs btn-success"><i class="fa fa-fw fa-usd"></i>VENDIDA</a>
-                                            <a href="editarpropiedad/?id=<%=propiedad.idpropiedades%>" class="btn btn-xs btn-primary"><i class="fa fa-fw fa-pencil"></i>EDITAR</a>
+                                            <%if(user.idasesores == propiedad.asesores_idasesores){%>
+                                                <a href="vendida/?id=<%=propiedad.idpropiedades%>" class="btn btn-xs btn-success"><i class="fa fa-fw fa-usd"></i>VENDIDA</a>
+                                                <a href="editarpropiedad/?id=<%=propiedad.idpropiedades%>" class="btn btn-xs btn-primary"><i class="fa fa-fw fa-pencil"></i>EDITAR</a>
+                                            <%}%>
+                                            <a href="verpropiedad/?id=<%=propiedad.idpropiedades%>" class="btn btn-xs btn-primary"><i class="fa fa-fw fa-search"></i>VER</a>
                                             <span class="badge">Agregada el: <%=propiedad.fechacreacion.toISOString().substring(0, 10)%></span>
                                             <a href="propiedad/?id=<%=propiedad.idpropiedades%>" target="_blank" ><img src="<%=propiedad.url%>" width="100px" height="67px"><span class="nombre"><%=propiedad.nombrepropiedad%></span></a>
                                         </p>
@@ -193,12 +196,14 @@
                                 </div>
                                 <div class="panel-body">
                                     <div class="list-group" id="propiedadesvendidas">
-                                        <% if (typeof(propiedadesvendidas) != 'undefined') {%>
+                                        <% if (typeof(propiedadesvendidas) != 'undefined' && propiedadesvendidas.length > 0) {%>
                                         <% propiedadesvendidas.forEach(function(propiedad) { %>
                                         <p class="list-group-item">
                                             <span class="badge">Vendida el: <%=propiedad.fechaventa.toISOString().substring(0, 10)%></span>
-                                            <a href="deshacervendida/?id=<%=propiedad.idpropiedades%>" class="btn btn-xs btn-warning"><i class="fa fa-fw fa-usd"></i>DESHACER</a>
-                                            <button id="<%=propiedad.idpropiedades%>" type="button" class="btn btn-xs btn-danger eliminar"><i class="fa fa-fw fa-trash"></i>ELIMINAR</button>
+                                            <%if(user.idasesores == propiedad.asesores_idasesores){%>
+                                                <a href="deshacervendida/?id=<%=propiedad.idpropiedades%>" class="btn btn-xs btn-warning"><i class="fa fa-fw fa-usd"></i>DESHACER</a>
+                                                <button id="<%=propiedad.idpropiedades%>" type="button" class="btn btn-xs btn-danger eliminar"><i class="fa fa-fw fa-trash"></i>ELIMINAR</button>
+                                            <%}%>
                                             <img src="<%=propiedad.url%>" width="100px" height="67px"><span class="nombre"><%=propiedad.nombrepropiedad%></span>
                                         </p>
                                         <% }); %>
@@ -224,7 +229,7 @@
                                 </div>
                                 <div class="panel-body">
                                     <div class="list-group" id="asesores">
-                                        <% if (typeof(asesores) != 'undefined') {%>
+                                        <% if (typeof(asesores) != 'undefined' && asesores.length > 0) {%>
                                         <% asesores.forEach(function(asesor) { %>
                                         <p class="list-group-item">
                                             <button id="<%=asesor.idasesores%>" type="button" class="btn btn-xs btn-danger eliminarasesor"><i class="fa fa-fw fa-trash"></i>ELIMINAR</button>
@@ -473,8 +478,7 @@
 
 <!-- Bootstrap Core JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAKDKyJNGPt-XY6RtMdQofhnoAlhVN9ZM8&callback=initialize"
-async defer>
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAKDKyJNGPt-XY6RtMdQofhnoAlhVN9ZM8">
 </script>
 
 <!-- JPages -->
@@ -484,152 +488,142 @@ async defer>
 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
 <script type="text/javascript">
-    // Animación de entrada
-    $(window).on('load',function(){
-        // Animate loader off screen
-        $(".se-pre-con").fadeOut("slow");
-    });
-</script>
+    $(document).ready(function() {
 
-<script type="text/javascript">
-    $(window).on('resize', function(){
-        var win = $(this);
-        if (win.width() < 768) { 
-            $('.menu').removeClass('pull-right');
-        }else{
-            $('.menu').addClass('pull-right');
-        }
-    });
-</script>
+        <%if (typeof(mensaje) != 'undefined') {%>
+            $("#mensajemodal").modal('show');
+            <%}%>
 
-<script type="text/javascript">
-    /*EVENTO PARA BOTON MAPEAR*/
-    $("button.buscar").click(function () {
-        $("#mensaje").removeClass("oculto");
-        /*Geocoder convierte una dirección en coordenadas*/
-        var geocoder = new google.maps.Geocoder();
-        /*Dirección de la propiedad del backend*/
-        var address = $("#direccion").val();
+            $("[name='ventaorenta']").bootstrapSwitch({onColor: 'success', offColor: 'success'});
+            $('#propiedades').btsListFilter('#searchinput', {itemChild: 'span.nombre'});
+            $('#propiedadesvendidas').btsListFilter('#searchinput2', {itemChild: 'span.nombre'});
+            $('#asesores').btsListFilter('#searchinput3', {itemChild: 'span.nombre'});
 
-        geocoder.geocode( { 'address': address}, function(results, status) {
-            /*Dirección convertida con éxito*/
-            if (status == google.maps.GeocoderStatus.OK) {
-                var latitud = results[0].geometry.location.lat();
-                var longitud = results[0].geometry.location.lng();
-                var myLatlng = new google.maps.LatLng(latitud,longitud);
-                $("#latitud").val(latitud);
-                $("#longitud").val(longitud);
-                var icono = '../pin.png';
-                var mapOptions = {
-                    zoom: 16,
-                    center: myLatlng,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                }
+         /*EVENTO PARA BOTON MAPEAR*/
+         $("button.buscar").click(function () {
+             $("#mensaje").removeClass("oculto");
+             /*Geocoder convierte una dirección en coordenadas*/
+             var geocoder = new google.maps.Geocoder();
+             /*Dirección de la propiedad del backend*/
+             var address = $("#direccion").val();
 
-                var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-                //Callout Content
-                var contentString = $("#direccion").val();
-                //Set window width + content
-                var infowindow = new google.maps.InfoWindow({
-                    content: contentString,
-                    maxWidth: 500
-                });
+             geocoder.geocode( { 'address': address}, function(results, status) {
+                 /*Dirección convertida con éxito*/
+                 if (status == google.maps.GeocoderStatus.OK) {
+                     var latitud = results[0].geometry.location.lat();
+                     var longitud = results[0].geometry.location.lng();
+                     var myLatlng = new google.maps.LatLng(latitud,longitud);
+                     $("#latitud").val(latitud);
+                     $("#longitud").val(longitud);
+                     var icono = '../pin.png';
+                     var mapOptions = {
+                         zoom: 16,
+                         center: myLatlng,
+                         mapTypeId: google.maps.MapTypeId.ROADMAP
+                     }
 
-                //Add Marker
-                var marker = new google.maps.Marker({
-                    position: myLatlng,
-                    map: map,
-                    icon: icono,
-                    draggable: true,
-                    title: 'image title'
-                });
-                infowindow.open(map, marker);
-                google.maps.event.addListener(marker, 'dragend', function(evt){
-                    var lat = evt.latLng.lat();
-                    var lang= evt.latLng.lng();
+                     var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+                        //Callout Content
+                        var contentString = $("#direccion").val();
+                        //Set window width + content
+                        var infowindow = new google.maps.InfoWindow({
+                         content: contentString,
+                         maxWidth: 500
+                     });
 
-                    $("#latitud").val(lat);
-
-                    $("#longitud").val(lang);
-
-                    infowindow.setContent($("#direccion").val());
-                    infowindow.open(map, marker);
-                });
-
-            } 
-        }); 
-    });
-    /*Inicializar mapa google*/
-    function initialize() {
-        /*Geocoder convierte una dirección en coordenadas*/
-        var geocoder = new google.maps.Geocoder();
-        /*Dirección de la propiedad del backend*/
-        var address = "Durango";
-
-        geocoder.geocode( { 'address': address}, function(results, status) {
-            /*Dirección convertida con éxito*/
-            if (status == google.maps.GeocoderStatus.OK) {
-                var latitud = results[0].geometry.location.lat();
-                var longitud = results[0].geometry.location.lng();
-                $("#latitud").val(latitud);
-                $("#longitud").val(longitud);
-                var myLatlng = new google.maps.LatLng(latitud,longitud);
-                var icono = '../pin.png';
-                var mapOptions = {
-                    zoom: 16,
-                    center: myLatlng,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                }
-
-                var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-                    //Callout Content
-                    var contentString = 'Durango';
-                    //Set window width + content
-                    var infowindow = new google.maps.InfoWindow({
-                        content: contentString,
-                        maxWidth: 500
-                    });
-
-                    //Add Marker
-                    var marker = new google.maps.Marker({
-                        position: myLatlng,
-                        map: map,
-                        icon: icono,
-                        draggable: true,
-                        title: 'image title'
-                    });
-
-                    infowindow.open(map, marker);
-
-                    google.maps.event.addListener(marker, 'click', function() {
-                        infowindow.open(map,marker);
-                    });
-
-                    //Resize Function
-                    google.maps.event.addDomListener(window, "resize", function() {
-                        var center = map.getCenter();
-                        google.maps.event.trigger(map, "resize");
-                        map.setCenter(center);
-                    });
-                    google.maps.event.addDomListener(window, 'load', initialize);
-
-                    google.maps.event.addListener(marker, 'dragend', function(evt){
-                        var lat = evt.latLng.lat();
-                        var lang= evt.latLng.lng();
-
-                        $("#latitud").val(lat);
-                        $("#longitud").val(lang);
-
-                        infowindow.setContent($("#direccion").val());
+                        //Add Marker
+                        var marker = new google.maps.Marker({
+                         position: myLatlng,
+                         map: map,
+                         icon: icono,
+                         draggable: true,
+                         title: 'image title'
+                     });
                         infowindow.open(map, marker);
-                    });
-                } 
-            }); 
+                        google.maps.event.addListener(marker, 'dragend', function(evt){
+                         var lat = evt.latLng.lat();
+                         var lang= evt.latLng.lng();
 
-    }
+                         $("#latitud").val(lat);
 
-</script>
-<script>
+                         $("#longitud").val(lang);
+
+                         infowindow.setContent($("#direccion").val());
+                         infowindow.open(map, marker);
+                     });
+
+                   } 
+               }); 
+         });
+        /*Inicializar mapa google*/
+        function initialize() {
+            /*Geocoder convierte una dirección en coordenadas*/
+            var geocoder = new google.maps.Geocoder();
+            /*Dirección de la propiedad del backend*/
+            var address = "Durango";
+
+            geocoder.geocode( { 'address': address}, function(results, status) {
+                /*Dirección convertida con éxito*/
+                if (status == google.maps.GeocoderStatus.OK) {
+                    var latitud = results[0].geometry.location.lat();
+                    var longitud = results[0].geometry.location.lng();
+                    $("#latitud").val(latitud);
+                    $("#longitud").val(longitud);
+                    var myLatlng = new google.maps.LatLng(latitud,longitud);
+                    var icono = '../pin.png';
+                    var mapOptions = {
+                        zoom: 16,
+                        center: myLatlng,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    }
+
+                    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+                        //Callout Content
+                        var contentString = 'Durango';
+                        //Set window width + content
+                        var infowindow = new google.maps.InfoWindow({
+                            content: contentString,
+                            maxWidth: 500
+                        });
+
+                        //Add Marker
+                        var marker = new google.maps.Marker({
+                            position: myLatlng,
+                            map: map,
+                            icon: icono,
+                            draggable: true,
+                            title: 'image title'
+                        });
+
+                        infowindow.open(map, marker);
+
+                        google.maps.event.addListener(marker, 'click', function() {
+                            infowindow.open(map,marker);
+                        });
+
+                        //Resize Function
+                        google.maps.event.addDomListener(window, "resize", function() {
+                            var center = map.getCenter();
+                            google.maps.event.trigger(map, "resize");
+                            map.setCenter(center);
+                        });
+
+                        google.maps.event.addListener(marker, 'dragend', function(evt){
+                            var lat = evt.latLng.lat();
+                            var lang= evt.latLng.lng();
+
+                            $("#latitud").val(lat);
+                            $("#longitud").val(lang);
+
+                            infowindow.setContent($("#direccion").val());
+                            infowindow.open(map, marker);
+                        });
+                    } 
+                }); 
+        }
+                        google.maps.event.addDomListener(window, 'load', initialize);
+
+    });
     $(function(){
         $("#holder1").jPages({
             containerID : "propiedades",
@@ -653,26 +647,28 @@ async defer>
             delay : 0
         });
     }); 
-    $(document).ready(function() {
+    
 
-        $("a").click(function(){
+    // EVENTOS
+    // Animación de entrada
+    $(window).on('load',function(){
+        // Animate loader off screen
+        $(".se-pre-con").fadeOut("slow");
+    });
+    $(window).on('resize', function(){
+        var win = $(this);
+        if (win.width() < 768) { 
+            $('.menu').removeClass('pull-right');
+        }else{
+            $('.menu').addClass('pull-right');
+        }
+    });
+    $("a").click(function(){
             setTimeout(function(){
                 $('.list-group-item').removeAttr("style");
             }, 50);
 
         });
-
-        <%if (typeof(mensaje) != 'undefined') {%>
-            $("#mensajemodal").modal('show');
-            <%}%>
-
-            $("[name='ventaorenta']").bootstrapSwitch({onColor: 'success', offColor: 'success'});
-            $('#propiedades').btsListFilter('#searchinput', {itemChild: 'span.nombre'});
-            $('#propiedadesvendidas').btsListFilter('#searchinput2', {itemChild: 'span.nombre'});
-            $('#asesores').btsListFilter('#searchinput3', {itemChild: 'span.nombre'});
-
-        });
-
     $( document ).on( 'click', '.btn-add', function ( event ) {
         event.preventDefault();
 
@@ -705,7 +701,5 @@ async defer>
     });
 
 </script>
-
 </body>
-
 </html>

@@ -4,6 +4,8 @@ var fs = require('fs');
 var bcrypt = require('bcrypt-nodejs');
 var Feed = require('feed');
 var gm = require('gm').subClass({ imageMagick: true });
+var phantom = require('phantom');   
+
 var upload = multer({ 
     dest: 'assets/fotoscasas/',
     rename: function(fieldname, filename) {
@@ -18,7 +20,7 @@ var upload = multer({
 module.exports = function(app, passport, connection) {
     app.get("/", function(req, res) {
         connection.query('SELECT * FROM propiedades', function(err, propiedades){
-            connection.query('SELECT nombre, telefono, foto FROM asesores',function(err, asesores){
+            connection.query('SELECT nombre, telefono, foto FROM asesores WHERE admin != 1',function(err, asesores){
                 res.render('index.ejs', {
                     propiedades: propiedades,
                     asesores: asesores,
@@ -56,7 +58,7 @@ module.exports = function(app, passport, connection) {
             valores.push(req.body.precio2);
         }
         connection.query('SELECT * FROM propiedades WHERE renta = ?'+extras,valores, function(err, propiedades){
-            connection.query('SELECT nombre, telefono, foto FROM asesores',function(err, asesores){
+            connection.query('SELECT nombre, telefono, foto FROM asesores WHERE admin != 1',function(err, asesores){
                 console.log(propiedades);
                 res.render('index.ejs', {
                     propiedades: propiedades,
@@ -90,9 +92,9 @@ module.exports = function(app, passport, connection) {
     });
 
     app.get('/panel', isLoggedIn, function(req, res) {
-        connection.query('SELECT nombrepropiedad, idpropiedades,fechacreacion,url FROM propiedades WHERE `vendida` = 0 AND `asesores_idasesores` = ?',[req.user.idasesores],function(err, propiedades){
-            connection.query('SELECT nombrepropiedad, idpropiedades, fechaventa,url FROM propiedades WHERE `vendida` = 1 AND `asesores_idasesores` = ?',[req.user.idasesores],function(err, propiedadesvendidas){
-                connection.query('SELECT idasesores, nombre, foto FROM asesores',function(err, asesores){
+        connection.query('SELECT nombrepropiedad, idpropiedades,fechacreacion,url,asesores_idasesores FROM propiedades WHERE `vendida` = 0',function(err, propiedades){
+            connection.query('SELECT nombrepropiedad, idpropiedades, fechaventa,url,asesores_idasesores FROM propiedades WHERE `vendida` = 1',function(err, propiedadesvendidas){
+                connection.query('SELECT idasesores, nombre, foto FROM asesores WHERE admin != 1',function(err, asesores){
                     if (typeof(req.query.agregado) != 'undefined') {
                         if(req.query.agregado == "1"){
                             res.render('panel.ejs', {
@@ -247,6 +249,19 @@ module.exports = function(app, passport, connection) {
                         user : req.user,
                     });
                 }
+            });      
+        });
+    });
+
+    app.get('/verpropiedad',isLoggedIn,function(req, res) {
+        connection.query('SELECT * FROM propiedades WHERE idpropiedades = ?',[req.query.id], function(err, propiedad){
+            connection.query('SELECT * FROM fotos WHERE propiedades_idpropiedades = ?',[req.query.id], function(err, fotos){
+            
+                res.render('verpropiedad.ejs', {
+                    propiedad: propiedad[0],
+                    fotos:fotos,
+                    user : req.user,
+                });
             });      
         });
     });
@@ -418,13 +433,13 @@ app.get('/rss', function(req, res) {
 
         // Initializing feed object
         var feed = new Feed({
-            title:          'Obari',
+            title:          'Golden',
             description:    'Propiedades',
-            link:           'https://obari.herokuapp.com/',
-            image:          'https://obari.herokuapp.com/logoup.png',
-            copyright:      'Copyright © 2016 Obari. All rights reserved',
+            link:           'https://goldenagenciainmobiliaria.com/',
+            image:          'https://goldenagenciainmobiliaria.com/logoup.png',
+            copyright:      'Copyright © 2016 Golden. All rights reserved',
             author: {
-                name:       'Obari',
+                name:       'Golden',
             }
         });
 
@@ -434,7 +449,7 @@ app.get('/rss', function(req, res) {
             propiedades.forEach(function(propiedad) {
                 feed.item({
                     title:          propiedad.nombrepropiedad,
-                    link:           'https://obari.herokuapp.com/propiedad/?id='+propiedad.idpropiedades,
+                    link:           'https://goldenagenciainmobiliaria.com/propiedad/?id='+propiedad.idpropiedades,
                     description:    propiedad.descripcion,
                     date:           propiedad.fechacreacion,
                 });

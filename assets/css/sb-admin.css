@@ -59,11 +59,12 @@ h1, h2, h3, h4{
    position: relative;
  }
  #map{
-     height: 400px;
-     overflow: hidden;
-     padding-bottom: 22.25%;
-     padding-top: 30px;
-     position: relative;
+    
+    height: 400px;
+    overflow: hidden;
+    padding-bottom: 22.25%;
+    padding-top: 30px;
+    position: relative;
  }
 
 .oculto{
