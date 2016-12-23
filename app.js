@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 var express  = require('express');
 var redirect = require("express-redirect");
 var session  = require('express-session');
