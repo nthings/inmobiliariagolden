@@ -228,8 +228,7 @@
 
 <!-- Bootstrap Core JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAKDKyJNGPt-XY6RtMdQofhnoAlhVN9ZM8&callback=initialize"
-async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAKDKyJNGPt-XY6RtMdQofhnoAlhVN9ZM8"></script>
 <script src="../js/bootstrap-switch.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
 <script type="text/javascript">
@@ -349,9 +348,8 @@ async defer></script>
                      google.maps.event.trigger(map, "resize");
                      map.setCenter(center);
                  });
-	                google.maps.event.addDomListener(window, 'load', initialize);
 
-	                google.maps.event.addListener(marker, 'dragend', function(evt){
+                  google.maps.event.addListener(marker, 'dragend', function(evt){
                      var lat = evt.latLng.lat();
                      var lang= evt.latLng.lng();
 
@@ -363,6 +361,7 @@ async defer></script>
                  });
                } 
            }); 
+	                google.maps.event.addDomListener(window, 'load', initialize);
 
  }
 
