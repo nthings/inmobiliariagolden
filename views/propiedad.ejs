@@ -196,8 +196,7 @@
 <!-- Bootstrap Core JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKDKyJNGPt-XY6RtMdQofhnoAlhVN9ZM8&callback=initialize"
-async defer>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKDKyJNGPt-XY6RtMdQofhnoAlhVN9ZM8">
 </script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
 <script type="text/javascript">
@@ -309,9 +308,9 @@ async defer>
                         map2.setCenter(center2);
 
                     });
-                    google.maps.event.addDomListener(window, 'load', initialize);
                     
                 }
+                    google.maps.event.addDomListener(window, 'load', initialize);
 
                 /*Animación al dar click a menú*/
                 $(document).on('click', '.animado', function(event){
