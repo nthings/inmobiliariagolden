@@ -19,7 +19,7 @@ var upload = multer({
 });
 module.exports = function(app, passport, connection) {
     app.get("/", function(req, res) {
-        connection.query('SELECT * FROM propiedades', function(err, propiedades){
+        connection.query('SELECT * FROM propiedades ORDER BY idpropiedades DESC', function(err, propiedades){
             connection.query('SELECT nombre, telefono, foto FROM asesores WHERE admin != 1',function(err, asesores){
                 res.render('index.ejs', {
                     propiedades: propiedades,
@@ -435,8 +435,8 @@ app.get('/rss', function(req, res) {
         var feed = new Feed({
             title:          'Golden',
             description:    'Propiedades',
-            link:           'https://goldenagenciainmobiliaria.com/',
-            image:          'https://goldenagenciainmobiliaria.com/logoup.png',
+            link:           'http://goldenagenciainmobiliaria.com/',
+            image:          'http://goldenagenciainmobiliaria.com/logoup.png',
             copyright:      'Copyright © 2016 Golden. All rights reserved',
             author: {
                 name:       'Golden',

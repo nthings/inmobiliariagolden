@@ -200,7 +200,9 @@
                     <% propiedades.forEach(function(propiedad) { %>
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="<%=propiedad.url%>" width="320px" height="213px">
+                            <div class="imgLiquid">
+                                <img src="<%=propiedad.url%>" class="img-responsive">
+                            </div>
                             <div class="caption">
                                 <p class="h4 capitalize"><a href="propiedad/?id=<%=propiedad.idpropiedades%>"><%=propiedad.nombrepropiedad%></a></p>
                                 <h4>$<%=propiedad.precio.toLocaleString()%></h4>
@@ -311,8 +313,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script type="text/javascript" src="../js/jPages.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKDKyJNGPt-XY6RtMdQofhnoAlhVN9ZM8">
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKDKyJNGPt-XY6RtMdQofhnoAlhVN9ZM8"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+<script src="../js/imgLiquid-min.js"></script>
 
 </script>
 
@@ -372,6 +375,12 @@
                         $('.list-group-item').removeAttr("style");
                     }, 50);
                 });
+
+                $(".imgLiquid").imgLiquid({
+                    fill: true,
+                    horizontalAlign: "center",
+                    verticalAlign: "center"
+                });  
             });
         /*Animación al dar click a menú*/
         $(document).on('click', '.animado', function(event){

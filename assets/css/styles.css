@@ -50,7 +50,10 @@ a:hover{
 .navbar-header{
     height: 80px!important;
 }
-
+.imgLiquid{
+  width:100%; 
+  height:213px;
+}
 /*full slider*/
 html,
 body {
@@ -124,9 +127,6 @@ footer {
     white-space: nowrap;
 }
 
-.thumbnail img {
-    width: 100%;
-}
 
 .ratings {
     padding-right: 10px;
