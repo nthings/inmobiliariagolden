@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Agencia Inmobiliaria Golden - Citas</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.print.css" rel="stylesheet" media='print'>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-datetimepicker.min.css">
+    <!-- Custom CSS -->
+    <link href="../css/sb-admin.css" rel="stylesheet">
+    <link href="../css/scheduler.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Google web fonts -->
+    <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel='stylesheet' />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <!-- Loading -->
+        <div class="se-pre-con"></div>
+        <div id="wrapper" style="height: 100vh;">
+            <!-- Navigation -->
+            <nav class="navbar navbar-inverse" role="navigation">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="/" target="_blank"><!-- <img src="../logoup.png" id="logo" alt=""> -->
+                        <img src="../golden.png" id="logo" height="80px" alt=""></a>
+                        <button type="button" class="navbar-toggle pull-right" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Activar Navegación</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse menu pull-right" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%=user.nombre%> <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="/editarasesor"><i class="fa fa-fw fa-user"></i> Editar Perfil</a>
+                                    </li>
+                                    <li>
+                                        <a href="/logout"><i class="fa fa-fw fa-power-off"></i> Cerrar Sesión</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+                <!-- /.container -->
+            </nav>
+            <div id="page-wrapper" style="height: 90%;">
+                <div class="container-fluid" style="height: 100%;">
+                    <div id='calendar'></div>
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+            <!-- /#page-wrapper -->
+        </div>
+
+        <!-- Modal -->
+        <div id="agregarCita" class="modal fade" role="dialog">
+          <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><i class="fa fa-fw fa-plus"></i>Agregar Una Cita</h4>
+            </div>
+            <div class="modal-body">
+                <form action="/citas" id="agregarcita" enctype='multipart/form-data' method="POST">
+                    <div class="row">
+                        <div class="form-group col-xs-12">
+                            <label>Título</label>
+                            <input type="text" class="form-control" name="titulo" required>
+                        </div>
+                        <div class="form-group col-xs-12">
+                            <label>Fecha de Inicio:</label>
+                            <input type="text" class="form-control" id="datetimepicker1" name="inicio">
+                        </div>
+                        <div class="form-group col-xs-12">
+                            <label>Fecha de Fin:</label>
+                            <input type="text" class="form-control" id="datetimepicker2" name="fin">
+                        </div>
+                </div>
+
+            </form>
+        </div>
+        <div class="modal-footer text-center">
+            <input type="submit" class="form-control btn btn-success btn-block" value="AGREGAR CITA" id="enviar" form="agregarcita">
+        </div>
+        </div>
+
+        </div>
+        </div>
+        <!-- /#wrapper -->
+        <!-- jQuery -->
+        <script type="text/javascript" src="../js/moment.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <!-- CALENDAR -->
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/locale-all.js"></script>
+        <script type="text/javascript" src="../js/scheduler.min.js"></script>
+        <script type="text/javascript" src="../js/bootstrap-datetimepicker.min.js"></script>
+        <script type="text/javascript" src="../js/locales/bootstrap-datetimepicker.es.js" charset="UTF-8"></script>
+
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#datetimepicker1').datetimepicker({
+                    format: 'yyyy-mm-dd hh:ii',
+                    language: 'es'
+                });
+                $('#datetimepicker2').datetimepicker({
+                    format: 'yyyy-mm-dd hh:ii',
+                    language: 'es'
+                });
+                $('#calendar').fullCalendar({
+                    schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
+                    locale: 'Es',
+                    // put your options and callbacks here
+                    height: "parent",
+                    customButtons: {
+                        myCustomButton: {
+                            text: 'Regresar Al Panel',
+                            click: function() {
+                                window.location.href = "/panel";
+                            }
+                        },
+                        myCustomButton2: {
+                            text: 'Agregar Cita',
+                            click: function() {
+                                $('#agregarCita').modal();
+                            }
+                        },
+                    },
+                    header: {
+                                left: 'myCustomButton myCustomButton2 prev,next today',
+                                center: 'title',
+                                right: 'month,basicWeek,basicDay'
+                            },
+                    defaultDate: moment(),
+                    navLinks: true, // can click day/week names to navigate views
+                    editable: true,
+                    eventLimit: true, // allow "more" link when too many events
+                    events: [
+                        <% if (typeof(citas) != 'undefined') {%>
+                            <% if(citas.length > 0){%>
+                                <% citas.forEach(function(cita) { %>
+                                {
+                                    id: <%=cita.idcita%>,
+                                    title: '<%=cita.titulo%>',
+                                    start: new moment('<%=cita.inicio%>', "YYYY-MM-DD HH:mm"),
+                                    end: new moment('<%=cita.fin%>', "YYYY-MM-DD HH:mm"),
+                                    <% if(cita.asesores_idasesores != user.idasesores){%>
+                                        editable: false,
+                                    <%}%>
+                                },
+                                <% }); %>
+                            <%}else{%>
+                                
+                            <%}%>
+                        <%}%>
+                    ],
+                    eventClick: function(event, element) {
+                        event.title = event.id;
+                        $('#calendar').fullCalendar('updateEvent', event);
+                    },
+                    eventResize: function(event, delta, revertFunc) {
+
+                           alert(event.title + " end is now " + event.end.format());
+
+                           if (!confirm("is this okay?")) {
+                               revertFunc();
+                           }
+
+                       }
+                        
+                })
+            });
+            // Animación de entrada
+            $(window).on('load',function(){
+                // Animate loader off screen
+                $(".se-pre-con").fadeOut("slow");
+            });
+            $(window).on('resize', function(){
+                var win = $(this);
+                if (win.width() < 768) { 
+                    $('.menu').removeClass('pull-right');
+                }else{
+                    $('.menu').addClass('pull-right');
+                }
+            });
+        </script>
+        </body>
+        </html>

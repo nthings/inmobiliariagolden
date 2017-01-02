@@ -91,7 +91,7 @@ module.exports = function(app, passport, connection) {
         });
     });
 
-    app.get('/panel', isLoggedIn, function(req, res) {
+    app.get('/panel', inicioSesion, function(req, res) {
         connection.query('SELECT nombrepropiedad, idpropiedades,fechacreacion,url,asesores_idasesores FROM propiedades WHERE `vendida` = 0',function(err, propiedades){
             connection.query('SELECT nombrepropiedad, idpropiedades, fechaventa,url,asesores_idasesores FROM propiedades WHERE `vendida` = 1',function(err, propiedadesvendidas){
                 connection.query('SELECT idasesores, nombre, foto FROM asesores WHERE admin != 1',function(err, asesores){
@@ -128,7 +128,7 @@ module.exports = function(app, passport, connection) {
         });
     });
 
-    app.post('/agregarpropiedad',isLoggedIn,upload.array('image'), function(req, res) {
+    app.post('/agregarpropiedad',inicioSesion,upload.array('image'), function(req, res) {
         /*Agregar propiedad*/
         var ventaorenta = 0;
         if(req.body.ventaorenta != 0){
@@ -168,7 +168,7 @@ module.exports = function(app, passport, connection) {
         res.redirect('/panel?agregado=1');
     });
 
-    app.get('/vendida',isLoggedIn,function(req, res) {
+    app.get('/vendida',inicioSesion,function(req, res) {
         var fecha = new Date().toISOString().substring(0, 10);
         connection.query('UPDATE propiedades SET vendida = 1, fechaventa = ? WHERE idpropiedades = ?',[fecha, req.query.id], function(err, result){
             if (err) {
@@ -178,7 +178,7 @@ module.exports = function(app, passport, connection) {
         });
     });
 
-    app.get('/deshacervendida',isLoggedIn,function(req, res) {
+    app.get('/deshacervendida',inicioSesion,function(req, res) {
         connection.query('UPDATE propiedades SET vendida = 0 WHERE idpropiedades = ?',[req.query.id], function(err, result){
             if (err) {
                 console.log(err);
@@ -187,7 +187,7 @@ module.exports = function(app, passport, connection) {
         });
     });
 
-    app.post('/eliminarpropiedad',isLoggedIn,function(req, res) {
+    app.post('/eliminarpropiedad',inicioSesion,function(req, res) {
         connection.query('SELECT url FROM propiedades WHERE idpropiedades = ?',[req.body.id], function(err, result){
             console.log(result);
             if(result[0].url != "../picture.png"){
@@ -220,7 +220,7 @@ module.exports = function(app, passport, connection) {
         });
     });
 
-    app.get('/editarpropiedad',isLoggedIn,function(req, res) {
+    app.get('/editarpropiedad',inicioSesion,function(req, res) {
         connection.query('SELECT * FROM propiedades WHERE idpropiedades = ?',[req.query.id], function(err, propiedad){
             connection.query('SELECT * FROM fotos WHERE propiedades_idpropiedades = ?',[req.query.id], function(err, fotos){
                 console.log(propiedad);
@@ -253,7 +253,7 @@ module.exports = function(app, passport, connection) {
         });
     });
 
-    app.get('/verpropiedad',isLoggedIn,function(req, res) {
+    app.get('/verpropiedad',inicioSesion,function(req, res) {
         connection.query('SELECT * FROM propiedades WHERE idpropiedades = ?',[req.query.id], function(err, propiedad){
             connection.query('SELECT * FROM fotos WHERE propiedades_idpropiedades = ?',[req.query.id], function(err, fotos){
             
@@ -267,7 +267,7 @@ module.exports = function(app, passport, connection) {
     });
 
     var cpUpload = upload.fields([{ name: 'principal'}, { name: 'image'}, { name: 'nuevas'}])
-    app.post('/editarpropiedad',isLoggedIn,cpUpload,function(req, res) {
+    app.post('/editarpropiedad',inicioSesion,cpUpload,function(req, res) {
         console.log(req.body);
         console.log(req.files);
         var ventaorenta = 0;
@@ -355,7 +355,7 @@ module.exports = function(app, passport, connection) {
         }
     });
 
-app.post('/eliminarfoto',isLoggedIn, function(req, res) {
+app.post('/eliminarfoto',inicioSesion, function(req, res) {
     connection.query('DELETE FROM fotos WHERE url = ?',[req.body.fotourl], function(err, result){
         fs.unlink("assets"+req.body.fotourl,function(err) {
             console.log(err);
@@ -364,7 +364,7 @@ app.post('/eliminarfoto',isLoggedIn, function(req, res) {
     });
 });
 
-app.post('/agregarasesor',isLoggedIn,upload.single('image'), function(req, res) {
+app.post('/agregarasesor',inicioSesion,upload.single('image'), function(req, res) {
     console.log(req.file);
     connection.query("SELECT * FROM asesores WHERE username = ?",[req.body.username], function(err, rows) {
         if (err)
@@ -388,7 +388,7 @@ app.post('/agregarasesor',isLoggedIn,upload.single('image'), function(req, res) 
     });
 });
 
-app.get('/editarasesor',isLoggedIn, function(req, res) {
+app.get('/editarasesor',inicioSesion, function(req, res) {
     connection.query('SELECT * FROM asesores WHERE idasesores = ?',[req.user.idasesores],function(err, asesor){
         res.render('editarasesor.ejs',{
             asesor: asesor[0],
@@ -398,7 +398,7 @@ app.get('/editarasesor',isLoggedIn, function(req, res) {
 
 });
 
-app.post('/editarasesor',isLoggedIn,upload.single('image'), function(req, res) {
+app.post('/editarasesor',inicioSesion,upload.single('image'), function(req, res) {
     if(typeof(req.file) != 'undefined'){
         /*Cambio su foto*/
         connection.query('UPDATE asesores SET nombre = ?, telefono = ?, username = ?, password = ?, foto = ? WHERE idasesores = ? ',[req.body.nombre, req.body.telefono, req.body.username, bcrypt.hashSync(req.body.password, null, null), '/fotoscasas/'+req.file.filename,req.user.idasesores], function(err, result){
@@ -412,7 +412,7 @@ app.post('/editarasesor',isLoggedIn,upload.single('image'), function(req, res) {
     }
 });
 
-app.post('/eliminarasesor',isLoggedIn, function(req, res) {
+app.post('/eliminarasesor',inicioSesion, function(req, res) {
     connection.query('UPDATE propiedades SET asesores_idasesores = ? WHERE asesores_idasesores = ? ',[req.body.asesor, req.body.id], function(err, result){
         connection.query('SELECT foto FROM asesores WHERE idasesores = ?',[req.body.id], function(err, foto){
             connection.query('DELETE FROM asesores WHERE idasesores = ?',[req.body.id], function(err, result){
@@ -449,7 +449,7 @@ app.get('/rss', function(req, res) {
             propiedades.forEach(function(propiedad) {
                 feed.item({
                     title:          propiedad.nombrepropiedad,
-                    link:           'https://goldenagenciainmobiliaria.com/propiedad/?id='+propiedad.idpropiedades,
+                    link:           'http://goldenagenciainmobiliaria.com/propiedad/?id='+propiedad.idpropiedades,
                     description:    propiedad.descripcion,
                     date:           propiedad.fechacreacion,
                 });
@@ -463,6 +463,24 @@ app.get('/rss', function(req, res) {
 
     });
 
+// Calendario de citas
+app.get('/citas',inicioSesion, function(req, res) {
+    connection.query('SELECT idcita,titulo, DATE_FORMAT(inicio, "%Y-%m-%d %H:%i:%s") as inicio, DATE_FORMAT(fin, "%Y-%m-%d %H:%i:%s") as fin, asesores_idasesores FROM citas', function(err, citas){
+        res.render('citas.ejs',{
+            citas: citas,
+            user : req.user,
+        });
+    });  
+});
+
+app.post('/citas', inicioSesion, function(req, res) {
+        console.log(req.body);
+    connection.query('INSERT INTO citas (titulo, inicio,fin,asesores_idasesores) VALUES(?,?,?,?)',[req.body.titulo, req.body.inicio, req.body.fin, req.user.idasesores], function(err, citas){
+        console.log(err);
+        res.redirect('/citas');
+    }); 
+});
+
 app.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/');
@@ -470,7 +488,7 @@ app.get('/logout', function(req, res) {
 };
 
 // route middleware to make sure a user is logged in
-function isLoggedIn(req, res, next) {
+function inicioSesion(req, res, next) {
 
     // if user is authenticated in the session, carry on 
     if (req.isAuthenticated())
