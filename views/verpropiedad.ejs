@@ -228,7 +228,7 @@
 
       $('#imprimir').click(function() {
         $(".se-pre-con").show();
-       getDataUri('https://maps.googleapis.com/maps/api/staticmap?center=<%=propiedad.latitud%>,<%=propiedad.longitud%>&zoom=17&size=600x300&maptype=roadmap&markers=icon:http://goldenagenciainmobiliaria.com/pin.png|<%=propiedad.latitud%>,<%=propiedad.longitud%>&key=AIzaSyA6gBHZDEnlaRdwpP8BqV7lfOVcEmkQNUI', function(mapa) {
+       getDataUri('https://maps.googleapis.com/maps/api/staticmap?center=<%=propiedad.latitud%>,<%=propiedad.longitud%>&zoom=17&size=600x300&maptype=roadmap&markers=icon:https://goldenagenciainmobiliaria.com/pin.png|<%=propiedad.latitud%>,<%=propiedad.longitud%>&key=AIzaSyA6gBHZDEnlaRdwpP8BqV7lfOVcEmkQNUI', function(mapa) {
          getDataUri('../goldenb.png',function(logo) {
             getDataUri2('<%=propiedad.url%>',function(foto) {
       	    	var pdf = new jsPDF('p', 'pt', 'letter'); //210mm wide and 297mm high
