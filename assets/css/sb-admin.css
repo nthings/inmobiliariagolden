@@ -216,3 +216,7 @@ ul.alert-dropdown {
   z-index: 9999;
   background: url(../preloader.gif) center no-repeat #fff;
 }
+
+.fc-center h2{
+  text-transform: capitalize;
+}

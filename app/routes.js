@@ -374,13 +374,13 @@ app.post('/agregarasesor',inicioSesion,upload.single('image'), function(req, res
             res.redirect('/panel?agregado=0');
         } else {
             if(typeof(req.file) == 'undefined'){
-                var insertQuery = "INSERT INTO asesores ( nombre, telefono, username, password, socio) values (?,?,?,?,?)";
-                connection.query(insertQuery,[req.body.nombre, req.body.telefono, req.body.username, bcrypt.hashSync(req.body.password, null, null), req.body.socio],function(err, rows) {
+                var insertQuery = "INSERT INTO asesores ( nombre, telefono, username, password, socio, color) values (?,?,?,?,?,?)";
+                connection.query(insertQuery,[req.body.nombre, req.body.telefono, req.body.username, bcrypt.hashSync(req.body.password, null, null), req.body.socio, req.body.color],function(err, rows) {
                     res.redirect('/panel?agregado=1');
                 });
             }else{
-                var insertQuery = "INSERT INTO asesores ( nombre, telefono, username, password, socio, foto ) values (?,?,?,?,?,?)";
-                connection.query(insertQuery,[req.body.nombre, req.body.telefono, req.body.username, bcrypt.hashSync(req.body.password, null, null), req.body.socio, '/fotoscasas/'+req.file.filename],function(err, rows) {
+                var insertQuery = "INSERT INTO asesores ( nombre, telefono, username, password, socio, foto, color ) values (?,?,?,?,?,?,?)";
+                connection.query(insertQuery,[req.body.nombre, req.body.telefono, req.body.username, bcrypt.hashSync(req.body.password, null, null), req.body.socio, '/fotoscasas/'+req.file.filename, req.body.color],function(err, rows) {
                     res.redirect('/panel?agregado=1');
                 });
             }
@@ -401,12 +401,12 @@ app.get('/editarasesor',inicioSesion, function(req, res) {
 app.post('/editarasesor',inicioSesion,upload.single('image'), function(req, res) {
     if(typeof(req.file) != 'undefined'){
         /*Cambio su foto*/
-        connection.query('UPDATE asesores SET nombre = ?, telefono = ?, username = ?, password = ?, foto = ? WHERE idasesores = ? ',[req.body.nombre, req.body.telefono, req.body.username, bcrypt.hashSync(req.body.password, null, null), '/fotoscasas/'+req.file.filename,req.user.idasesores], function(err, result){
+        connection.query('UPDATE asesores SET nombre = ?, telefono = ?, username = ?, password = ?, foto = ?, color=? WHERE idasesores = ? ',[req.body.nombre, req.body.telefono, req.body.username, bcrypt.hashSync(req.body.password, null, null), '/fotoscasas/'+req.file.filename, req.body.color,req.user.idasesores], function(err, result){
             res.redirect('/editarasesor');
         });
     }else{
         /*No cambio su foto*/
-        connection.query('UPDATE asesores SET nombre = ?, telefono = ?, username = ?, password = ? WHERE idasesores = ? ',[req.body.nombre, req.body.telefono, req.body.username, bcrypt.hashSync(req.body.password, null, null), req.user.idasesores], function(err, result){
+        connection.query('UPDATE asesores SET nombre = ?, telefono = ?, username = ?, password = ?, color=? WHERE idasesores = ? ',[req.body.nombre, req.body.telefono, req.body.username, bcrypt.hashSync(req.body.password, null, null), req.body.color, req.user.idasesores], function(err, result){
             res.redirect('/editarasesor');
         });
     }
@@ -465,7 +465,7 @@ app.get('/rss', function(req, res) {
 
 // Calendario de citas
 app.get('/citas',inicioSesion, function(req, res) {
-    connection.query('SELECT idcita,titulo, DATE_FORMAT(inicio, "%Y-%m-%d %H:%i:%s") as inicio, DATE_FORMAT(fin, "%Y-%m-%d %H:%i:%s") as fin, asesores_idasesores FROM citas', function(err, citas){
+    connection.query('SELECT C.idcita,C.titulo, DATE_FORMAT(C.inicio, "%Y-%m-%d %H:%i:%s") as inicio, DATE_FORMAT(C.fin, "%Y-%m-%d %H:%i:%s") as fin, C.asesores_idasesores, A.color FROM citas C, asesores A WHERE C.asesores_idasesores=A.idasesores', function(err, citas){
         res.render('citas.ejs',{
             citas: citas,
             user : req.user,
@@ -474,12 +474,21 @@ app.get('/citas',inicioSesion, function(req, res) {
 });
 
 app.post('/citas', inicioSesion, function(req, res) {
-        console.log(req.body);
     connection.query('INSERT INTO citas (titulo, inicio,fin,asesores_idasesores) VALUES(?,?,?,?)',[req.body.titulo, req.body.inicio, req.body.fin, req.user.idasesores], function(err, citas){
-        console.log(err);
         res.redirect('/citas');
     }); 
 });
+app.post('/editarcita', inicioSesion, function(req, res) {
+    connection.query('UPDATE citas SET titulo=?, inicio=?,fin=? WHERE idcita=?',[req.body.titulo, req.body.inicio, req.body.fin, req.body.idcita], function(err, citas){
+        res.redirect('/citas');
+    }); 
+});
+app.post('/eliminarcita', inicioSesion, function(req, res) {
+    connection.query('DELETE FROM citas WHERE idcita=?',[req.body.idcita], function(err, citas){
+        res.redirect('/citas');
+    }); 
+});
+
 
 app.get('/logout', function(req, res) {
     req.logout();

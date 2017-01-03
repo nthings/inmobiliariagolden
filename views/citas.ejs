@@ -79,39 +79,117 @@
 
         <!-- Modal -->
         <div id="agregarCita" class="modal fade" role="dialog">
-          <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-lg">
 
-            <!-- Modal content-->
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><i class="fa fa-fw fa-plus"></i>Agregar Una Cita</h4>
-            </div>
-            <div class="modal-body">
-                <form action="/citas" id="agregarcita" enctype='multipart/form-data' method="POST">
-                    <div class="row">
-                        <div class="form-group col-xs-12">
-                            <label>Título</label>
-                            <input type="text" class="form-control" name="titulo" required>
-                        </div>
-                        <div class="form-group col-xs-12">
-                            <label>Fecha de Inicio:</label>
-                            <input type="text" class="form-control" id="datetimepicker1" name="inicio">
-                        </div>
-                        <div class="form-group col-xs-12">
-                            <label>Fecha de Fin:</label>
-                            <input type="text" class="form-control" id="datetimepicker2" name="fin">
-                        </div>
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title"><i class="fa fa-fw fa-plus"></i>Agregar Una Cita</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/citas" id="agregarcita" method="POST">
+                            <div class="row">
+                                <div class="form-group col-xs-12">
+                                    <label>Título</label>
+                                    <input type="text" class="form-control" name="titulo" required>
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <label>Fecha de Inicio:</label>
+                                    <input type="text" class="form-control" id="datetimepicker1" name="inicio">
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <label>Fecha de Fin:</label>
+                                    <input type="text" class="form-control" id="datetimepicker2" name="fin">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer text-center">
+                        <button class="form-control btn btn-success btn-block" id="enviar">AGREGAR CITA</button>
+                    </div>
                 </div>
-
-            </form>
-        </div>
-        <div class="modal-footer text-center">
-            <input type="submit" class="form-control btn btn-success btn-block" value="AGREGAR CITA" id="enviar" form="agregarcita">
-        </div>
+            </div>
         </div>
 
+        <!-- Modal -->
+        <div id="editarCita" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title"><i class="fa fa-fw fa-pencil"></i>Editar Cita</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/editarcita" id="editarcita" method="POST">
+                            <div class="row">
+                                <input type="text" class="oculto idevento" name="idcita">
+                                <div class="form-group col-xs-12">
+                                    <label>Título</label>
+                                    <input type="text" class="form-control" id="titulo" name="titulo" required>
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <label>Fecha de Inicio:</label>
+                                    <input type="text" class="form-control" id="datetimepicker3" name="inicio" required>
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <label>Fecha de Fin:</label>
+                                    <input type="text" class="form-control" id="datetimepicker4" name="fin" required>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer text-center">
+                        <div class="col-xs-12 col-sm-6">
+                            <button class="form-control btn btn-danger btn-block" data-dismiss="modal" id="eliminar">ELIMINAR CITA</button>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <input type="submit" class="form-control btn btn-success btn-block" value="EDITAR CITA" id="enviar" form="editarcita">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <div id="eliminarCita" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg">
+            <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title"><i class="fa fa-fw fa-trash"></i>Eliminar</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h4>¿ESTÁS SEGURO DE QUERER ELIMINAR LA CITA?</h4>
+                        <form action="/eliminarcita" id="eliminarcita" method="POST">
+                            <input type="text" class="oculto idevento" name="idcita">
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="form-control btn btn-danger btn-block" value="ELIMINAR CITA" form="eliminarcita">  
+                        <button type="button" class="btn btn-warning btn-block" data-dismiss="modal">CANCELAR</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="completa" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg">
+            <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title"><i class="fa fa-fw fa-ban"></i>ERROR</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h4>LAS CITAS TIENEN QUE TENER UN INICIO Y UN FIN</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success btn-block" data-dismiss="modal">ACEPTAR</button>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- /#wrapper -->
         <!-- jQuery -->
@@ -131,6 +209,35 @@
 
 
         <script type="text/javascript">
+            function hexToRgb(hex) {
+                // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+                var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+                hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+                    return r + r + g + g + b + b;
+                });
+
+                var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+                return result ? {
+                    r: parseInt(result[1], 16),
+                    g: parseInt(result[2], 16),
+                    b: parseInt(result[3], 16)
+                } : null;
+            }
+            function blanconegro(c) {
+                if(c == ""){
+                    return '#FFF'; 
+                }
+                var color= hexToRgb(c);
+                console.log(color);
+                var luma = Math.round(((color.r * 299) + (color.g * 587) + (color.b * 114)) /1000);
+                console.log(luma);
+                if (luma < 125) {
+                    // pick a different colour
+                    return '#FFF';
+                }else{
+                    return '#000';
+                }
+            }
             $(document).ready(function() {
                 $('#datetimepicker1').datetimepicker({
                     format: 'yyyy-mm-dd hh:ii',
@@ -140,9 +247,28 @@
                     format: 'yyyy-mm-dd hh:ii',
                     language: 'es'
                 });
+                $('#datetimepicker3').datetimepicker({
+                    format: 'yyyy-mm-dd hh:ii',
+                    language: 'es'
+                });
+                $('#datetimepicker4').datetimepicker({
+                    format: 'yyyy-mm-dd hh:ii',
+                    language: 'es'
+                });
+                $('#eliminar').click(function() {
+                    $("#eliminarCita").modal('show');
+                });
+                $('#enviar').click(function() {
+                    if($('#datetimepicker1').val()=="" || $('#datetimepicker2').val()==""){
+                        $("#completa").modal('show');
+                    }else{
+                        $("#agregarcita").submit();
+                    }
+                });
+
                 $('#calendar').fullCalendar({
                     schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
-                    locale: 'Es',
+                    locale: 'es',
                     // put your options and callbacks here
                     height: "parent",
                     customButtons: {
@@ -166,7 +292,6 @@
                             },
                     defaultDate: moment(),
                     navLinks: true, // can click day/week names to navigate views
-                    editable: true,
                     eventLimit: true, // allow "more" link when too many events
                     events: [
                         <% if (typeof(citas) != 'undefined') {%>
@@ -177,9 +302,9 @@
                                     title: '<%=cita.titulo%>',
                                     start: new moment('<%=cita.inicio%>', "YYYY-MM-DD HH:mm"),
                                     end: new moment('<%=cita.fin%>', "YYYY-MM-DD HH:mm"),
-                                    <% if(cita.asesores_idasesores != user.idasesores){%>
-                                        editable: false,
-                                    <%}%>
+                                    idasesor: <%=cita.asesores_idasesores%>,
+                                    color:'<%=cita.color%>',
+                                    textColor:blanconegro('<%=cita.color%>'),
                                 },
                                 <% }); %>
                             <%}else{%>
@@ -188,21 +313,19 @@
                         <%}%>
                     ],
                     eventClick: function(event, element) {
-                        event.title = event.id;
-                        $('#calendar').fullCalendar('updateEvent', event);
+                        if(event.idasesor == <%=user.idasesores%>){
+                            $('.idevento').val(event.id);
+                            $('#titulo').val(event.title);
+                            $('#datetimepicker3').val(event.start._i);
+                            $('#datetimepicker4').val(event.end._i);
+                            $('#editarCita').modal();
+                        }
                     },
-                    eventResize: function(event, delta, revertFunc) {
-
-                           alert(event.title + " end is now " + event.end.format());
-
-                           if (!confirm("is this okay?")) {
-                               revertFunc();
-                           }
-
-                       }
                         
                 })
             });
+
+            
             // Animación de entrada
             $(window).on('load',function(){
                 // Animate loader off screen

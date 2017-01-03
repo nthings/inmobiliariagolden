@@ -93,6 +93,10 @@
                                 <input type="password" class="form-control" name="password" required>
                             </div>
                             <div class="form-group col-xs-12">
+                                <input name="color" type="hidden" id="color_value" value="<%=asesor.color%>">
+                                <button class="btn jscolor {valueElement: 'color_value',closable:true,closeText:'Cerrar',hash:true}">ELIGE UN COLOR PARA EL CALENDARIO DE CITAS</button>
+                            </div>
+                            <div class="form-group col-xs-12">
                                 <label for="foto"><i class="fa fa-photo fa-fw"></i> Foto</label>
                                 <img class="img-responsive" src="<%=asesor.foto%>" alt="">
                                 <div>
@@ -143,6 +147,7 @@
     async defer></script>
     <script src="../js/bootstrap-switch.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+    <script src="../js/jscolor.min.js"></script>
     <script type="text/javascript">
     // Animación de entrada
     $(window).on('load',function(){
