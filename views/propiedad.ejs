@@ -6,9 +6,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Tu Inmobiliara">
+    <meta name="description" content="<%=variables.nombreinmobiliaria%>">
     <meta name="author" content="<%=propiedad.nombre%>">
-    <meta property="og:image" content="https://goldenagenciainmobiliaria.com/fotoscasas/<%=propiedad.url%>" />
+    <meta property="og:image" content="https://<%=variables.dominio%>/fotoscasas/<%=propiedad.url%>" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1024" />
     <meta property="og:image:height" content="1024" />
@@ -161,9 +161,9 @@
                     <div id="map2"></div>
                 </div>  
                 <div class="col-xs-12 col-sm-6 text-center">
-                    <p>Agencia Inmobiliaria Golden</p>
-                    <p>Dirección: Av. Felipe Pescador 719 PTE. INT. B </p>
-                    <p>Teléfono: (618) 812-06-31</p>
+                    <p>Agencia Inmobiliaria <%=variables.nombreinmobiliaria%></p>
+                    <p><%=variables.direccion%></p>
+                    <p><%=variables.telefono%></p>
 
                     <h3>Desarrollado por:</h3>
                     <a href="http://hittek.mx"><img src="../hittek.png" width="150px" /></a>
@@ -222,52 +222,7 @@
 
     /*Mapa google*/
     function initialize() {
-        // /*Dirección de la propiedad del backend*/
-        // var address = "<%=propiedad.direccion%>";
-
-        // var latitud = <%=propiedad.latitud%>;
-        // var longitud = <%=propiedad.longitud%>;
-        // var myLatlng = new google.maps.LatLng(latitud,longitud);
         var icono = '../pin.png';
-        // var icono = '../pin.png';        
-        // var mapOptions = {
-        //     zoom: 16,
-        //     center: myLatlng,
-        //     mapTypeId: google.maps.MapTypeId.ROADMAP
-        // }
-
-        // var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-        //             //Callout Content
-        //             var contentString = '<%=propiedad.direccion%>';
-        //             //Set window width + content
-        //             var infowindow = new google.maps.InfoWindow({
-        //                 content: contentString,
-        //                 maxWidth: 500
-        //             });
-
-        //             //Add Marker
-        //             var marker = new google.maps.Marker({
-        //                 position: myLatlng,
-        //                 map: map,
-        //                 icon: icono,
-        //                 title: 'image title'
-        //             });
-
-        //             infowindow.open(map,marker);
-
-        //             google.maps.event.addListener(marker, 'click', function() {
-        //                 infowindow.open(map,marker);
-        //             });
-
-        //             //Resize Function
-        //             google.maps.event.addDomListener(window, "resize", function() {
-        //                 var center = map.getCenter();
-        //                 google.maps.event.trigger(map, "resize");
-        //                 map.setCenter(center);
-
-        //             });
-        //             google.maps.event.addDomListener(window, 'load', initialize);
-
                     // Mapa Contacto
                     var latitud2 = '24.034549';
 
@@ -281,7 +236,7 @@
 
                     var map2 = new google.maps.Map(document.getElementById('map2'), mapOptions2);
                     //Callout Content
-                    var contentString2 = 'Golden';
+                    var contentString2 = '<%=variables.nombreinmobiliaria%>';
                     //Set window width + content
                     var infowindow2 = new google.maps.InfoWindow({
                         content: contentString2,

@@ -21,9 +21,14 @@ module.exports = function(app, passport, connection) {
     app.get("/", function(req, res) {
         connection.query('SELECT * FROM propiedades ORDER BY idpropiedades DESC', function(err, propiedades){
             connection.query('SELECT nombre, telefono, foto FROM asesores WHERE admin != 1',function(err, asesores){
-                res.render('index.ejs', {
-                    propiedades: propiedades,
-                    asesores: asesores,
+                fs.readFile('./config/variables.json', 'utf8', function (err, data) {
+                    if (err) throw err; // we'll not consider error handling for now
+                    var obj = JSON.parse(data);
+                    res.render('index.ejs', {
+                        propiedades: propiedades,
+                        asesores: asesores,
+                        variables:obj,
+                    });
                 });
             });
         });
@@ -70,7 +75,14 @@ module.exports = function(app, passport, connection) {
     });
 
     app.get('/login', function(req,res) {
-        res.render('login.ejs',{ message: req.flash('loginMessage') });
+        fs.readFile('./config/variables.json', 'utf8', function (err, data) {
+            if (err) throw err; // we'll not consider error handling for now
+            var obj = JSON.parse(data);
+            res.render('login.ejs',{ 
+                message: req.flash('loginMessage'),
+                variables: obj,
+            });
+        }); 
     });
     
     app.post('/login', passport.authenticate('local-login', {
@@ -83,10 +95,15 @@ module.exports = function(app, passport, connection) {
         connection.query('SELECT * FROM propiedades P, asesores A WHERE P.idpropiedades = ? AND A.idasesores=P.asesores_idasesores', [req.query.id], function(err, propiedad) {
             connection.query('SELECT * FROM fotos WHERE propiedades_idpropiedades=?',[req.query.id],function(err,fotos) {
               console.log(fotos);
-              res.render('propiedad.ejs', {
-                  propiedad: propiedad[0],
-                  fotos: fotos,
-              });  
+              fs.readFile('./config/variables.json', 'utf8', function (err, data) {
+                  if (err) throw err; // we'll not consider error handling for now
+                  var obj = JSON.parse(data);
+                  res.render('propiedad.ejs', {
+                      propiedad: propiedad[0],
+                      fotos: fotos,
+                      variables:obj,
+                  });
+              });   
           });
         });
     });
@@ -95,34 +112,41 @@ module.exports = function(app, passport, connection) {
         connection.query('SELECT nombrepropiedad, idpropiedades,fechacreacion,url,asesores_idasesores FROM propiedades WHERE `vendida` = 0',function(err, propiedades){
             connection.query('SELECT nombrepropiedad, idpropiedades, fechaventa,url,asesores_idasesores FROM propiedades WHERE `vendida` = 1',function(err, propiedadesvendidas){
                 connection.query('SELECT idasesores, nombre, foto FROM asesores WHERE admin != 1',function(err, asesores){
-                    if (typeof(req.query.agregado) != 'undefined') {
-                        if(req.query.agregado == "1"){
-                            res.render('panel.ejs', {
-                                propiedades: propiedades,
-                                propiedadesvendidas: propiedadesvendidas,
-                                asesores: asesores,
-                                user : req.user,
-                                titulomensaje: "¡Éxito!",
-                                mensaje: "Agregado Con Éxito",
-                            }); 
+                    fs.readFile('./config/variables.json', 'utf8', function (err, data) {
+                        if (err) throw err; // we'll not consider error handling for now
+                        var obj = JSON.parse(data);
+                        if (typeof(req.query.agregado) != 'undefined') {
+                            if(req.query.agregado == "1"){
+                                res.render('panel.ejs', {
+                                    propiedades: propiedades,
+                                    propiedadesvendidas: propiedadesvendidas,
+                                    asesores: asesores,
+                                    user : req.user,
+                                    titulomensaje: "¡Éxito!",
+                                    mensaje: "Agregado Con Éxito",
+                                    variables:obj,
+                                }); 
+                            }else{
+                                res.render('panel.ejs', {
+                                    propiedades: propiedades,
+                                    propiedadesvendidas: propiedadesvendidas,
+                                    asesores: asesores,
+                                    user : req.user,
+                                    titulomensaje: "¡ERROR!",
+                                    mensaje: "ERROR EN AGREGAR, INTENTALO DE NUEVO",
+                                    variables:obj,
+                                });
+                            }
                         }else{
                             res.render('panel.ejs', {
                                 propiedades: propiedades,
                                 propiedadesvendidas: propiedadesvendidas,
                                 asesores: asesores,
                                 user : req.user,
-                                titulomensaje: "¡ERROR!",
-                                mensaje: "ERROR EN AGREGAR, INTENTALO DE NUEVO",
+                                variables:obj,
                             });
                         }
-                    }else{
-                        res.render('panel.ejs', {
-                            propiedades: propiedades,
-                            propiedadesvendidas: propiedadesvendidas,
-                            asesores: asesores,
-                            user : req.user,
-                        });
-                    }
+                    });   
                 });
             });
         });
@@ -224,31 +248,38 @@ module.exports = function(app, passport, connection) {
         connection.query('SELECT * FROM propiedades WHERE idpropiedades = ?',[req.query.id], function(err, propiedad){
             connection.query('SELECT * FROM fotos WHERE propiedades_idpropiedades = ?',[req.query.id], function(err, fotos){
                 console.log(propiedad);
-                if (typeof(req.query.cambio) != 'undefined') {
-                    if(req.query.cambio == "1"){
-                        res.render('editarpropiedad.ejs', {
-                            propiedad: propiedad[0],
-                            fotos:fotos,
-                            user : req.user,
-                            titulomensaje: "¡Éxito!",
-                            mensaje: "Editado Con Éxito",
-                        }); 
+                fs.readFile('./config/variables.json', 'utf8', function (err, data) {
+                    if (err) throw err; // we'll not consider error handling for now
+                    var obj = JSON.parse(data);
+                    if (typeof(req.query.cambio) != 'undefined') {
+                        if(req.query.cambio == "1"){
+                            res.render('editarpropiedad.ejs', {
+                                propiedad: propiedad[0],
+                                fotos:fotos,
+                                user : req.user,
+                                titulomensaje: "¡Éxito!",
+                                mensaje: "Editado Con Éxito",
+                                variables:obj,
+                            }); 
+                        }else{
+                            res.render('editarpropiedad.ejs', {
+                                propiedad: propiedad[0],
+                                fotos:fotos,
+                                user : req.user,
+                                titulomensaje: "¡Error!",
+                                mensaje: "Ocurrió Un Error",
+                                variables:obj,
+                            });
+                        }
                     }else{
                         res.render('editarpropiedad.ejs', {
                             propiedad: propiedad[0],
                             fotos:fotos,
                             user : req.user,
-                            titulomensaje: "¡Error!",
-                            mensaje: "Ocurrió Un Error",
+                            variables:obj,
                         });
                     }
-                }else{
-                    res.render('editarpropiedad.ejs', {
-                        propiedad: propiedad[0],
-                        fotos:fotos,
-                        user : req.user,
-                    });
-                }
+                });
             });      
         });
     });
@@ -256,11 +287,15 @@ module.exports = function(app, passport, connection) {
     app.get('/verpropiedad',inicioSesion,function(req, res) {
         connection.query('SELECT * FROM propiedades WHERE idpropiedades = ?',[req.query.id], function(err, propiedad){
             connection.query('SELECT * FROM fotos WHERE propiedades_idpropiedades = ?',[req.query.id], function(err, fotos){
-            
-                res.render('verpropiedad.ejs', {
-                    propiedad: propiedad[0],
-                    fotos:fotos,
-                    user : req.user,
+                fs.readFile('./config/variables.json', 'utf8', function (err, data) {
+                    if (err) throw err; // we'll not consider error handling for now
+                    var obj = JSON.parse(data);
+                    res.render('verpropiedad.ejs', {
+                        propiedad: propiedad[0],
+                        fotos:fotos,
+                        user : req.user,
+                        variables:obj,
+                    });
                 });
             });      
         });
@@ -390,9 +425,14 @@ app.post('/agregarasesor',inicioSesion,upload.single('image'), function(req, res
 
 app.get('/editarasesor',inicioSesion, function(req, res) {
     connection.query('SELECT * FROM asesores WHERE idasesores = ?',[req.user.idasesores],function(err, asesor){
-        res.render('editarasesor.ejs',{
-            asesor: asesor[0],
-            user : req.user,
+        fs.readFile('./config/variables.json', 'utf8', function (err, data) {
+            if (err) throw err; // we'll not consider error handling for now
+            var obj = JSON.parse(data);
+            res.render('editarasesor.ejs',{
+                asesor: asesor[0],
+                user : req.user,
+                variables:obj,
+            });
         });
     });
 
@@ -430,16 +470,18 @@ app.post('/eliminarasesor',inicioSesion, function(req, res) {
 });
 
 app.get('/rss', function(req, res) {
-
+    fs.readFile('./config/variables.json', 'utf8', function (err, data) {
+        if (err) throw err; // we'll not consider error handling for now
+        var obj = JSON.parse(data);
         // Initializing feed object
         var feed = new Feed({
-            title:          'Golden',
+            title:          obj.nombreinmobiliaria,
             description:    'Propiedades',
-            link:           'http://goldenagenciainmobiliaria.com/',
-            image:          'http://goldenagenciainmobiliaria.com/logoup.png',
-            copyright:      'Copyright © 2016 Golden. All rights reserved',
+            link:           'http://'+obj.dominio+'/',
+            image:          'http://'+obj.dominio+'/logoup.png',
+            copyright:      'Copyright © 2016 '+obj.nombreinmobiliaria+'. All rights reserved',
             author: {
-                name:       'Golden',
+                name:       obj.nombreinmobiliaria,
             }
         });
 
@@ -449,7 +491,7 @@ app.get('/rss', function(req, res) {
             propiedades.forEach(function(propiedad) {
                 feed.item({
                     title:          propiedad.nombrepropiedad,
-                    link:           'http://goldenagenciainmobiliaria.com/propiedad/?id='+propiedad.idpropiedades,
+                    link:           'http://'+obj.dominio+'/propiedad/?id='+propiedad.idpropiedades,
                     description:    propiedad.descripcion,
                     date:           propiedad.fechacreacion,
                 });
@@ -460,15 +502,20 @@ app.get('/rss', function(req, res) {
             // Sending the feed as a response
             res.send(feed.render('rss-2.0'));
         });
-
     });
+});
 
 // Calendario de citas
 app.get('/citas',inicioSesion, function(req, res) {
     connection.query('SELECT C.idcita,C.titulo, DATE_FORMAT(C.inicio, "%Y-%m-%d %H:%i:%s") as inicio, DATE_FORMAT(C.fin, "%Y-%m-%d %H:%i:%s") as fin, C.asesores_idasesores, A.color FROM citas C, asesores A WHERE C.asesores_idasesores=A.idasesores', function(err, citas){
-        res.render('citas.ejs',{
-            citas: citas,
-            user : req.user,
+        fs.readFile('./config/variables.json', 'utf8', function (err, data) {
+            if (err) throw err; // we'll not consider error handling for now
+            var obj = JSON.parse(data);
+            res.render('citas.ejs',{
+                citas: citas,
+                user : req.user,
+                variables:obj,
+            });
         });
     });  
 });

@@ -6,10 +6,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Golden">
-    <meta name="author" content="Mauricio Alejandro Martínez Pacheco">
+    <meta name="description" content="<%=variables.nombreinmobiliaria%>">
 
-    <title>Agencia Inmobiliaria Golden</title>
+    <title id="titulo">Agencia Inmobiliaria <%=variables.nombreinmobiliaria%></title>
 
     <!-- Bootstrap Core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
@@ -294,9 +293,9 @@
                     <div id="map"></div>
                 </div>  
                 <div class="col-xs-12 col-sm-6 text-center">
-                    <p>Agencia Inmobiliaria Golden</p>
-                    <p>Dirección: Av. Felipe Pescador 719 PTE. INT. B </p>
-                    <p>Teléfono: (618) 812-06-31</p>
+                    <p>Agencia Inmobiliaria <%=variables.nombreinmobiliaria%></p>
+                    <p><%=variables.direccion%></p>
+                    <p><%=variables.telefono%></p>
 
                     <h3>Desarrollado por:</h3>
                     <a href="http://hittek.mx"><img src="../hittek.png" width="150px" /></a>
@@ -381,6 +380,7 @@
                     horizontalAlign: "center",
                     verticalAlign: "center"
                 });  
+                
             });
         /*Animación al dar click a menú*/
         $(document).on('click', '.animado', function(event){
@@ -408,7 +408,7 @@
 
             var map = new google.maps.Map(document.getElementById('map'), mapOptions);
                     //Callout Content
-                    var contentString = 'Golden';
+                    var contentString = '<%=variables.nombreinmobiliaria%>';
                     //Set window width + content
                     var infowindow = new google.maps.InfoWindow({
                         content: contentString,
