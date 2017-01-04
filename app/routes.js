@@ -65,10 +65,15 @@ module.exports = function(app, passport, connection) {
         connection.query('SELECT * FROM propiedades WHERE renta = ?'+extras,valores, function(err, propiedades){
             connection.query('SELECT nombre, telefono, foto FROM asesores WHERE admin != 1',function(err, asesores){
                 console.log(propiedades);
-                res.render('index.ejs', {
-                    propiedades: propiedades,
-                    asesores: asesores,
-                    eliminar: 1,
+                fs.readFile('./config/variables.json', 'utf8', function (err, data) {
+                    if (err) throw err; // we'll not consider error handling for now
+                    var obj = JSON.parse(data);
+                    res.render('index.ejs', {
+                        propiedades: propiedades,
+                        asesores: asesores,
+                        variables:obj,
+                        eliminar:1,
+                    });
                 });
             });
         });
