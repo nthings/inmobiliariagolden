@@ -159,7 +159,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">
-                                        <i class="fa fa-home fa-fw"></i> Tus Propiedades  
+                                        <i class="fa fa-home fa-fw"></i> Tus Propiedades
                                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarPropiedad"><i class="fa fa-fw fa-plus"></i>Agregar Propiedad</button>
                                     </h3>
                                 </div>
@@ -332,7 +332,7 @@
                         </div>
                     </div>
                 </div>
-                
+
             </form>
         </div>
         <div class="modal-footer text-center">
@@ -491,12 +491,43 @@
 <script type="text/javascript" src="../js/jPages.js"></script>
 <script src="../js/bootstrap-switch.js"></script>
 <script src="../js/bootstrap-list-filter.min.js"></script>
+<script src="../js/jquery.validate.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
 <script src="../js/jscolor.min.js"></script>
 <script type="text/javascript">
-    $(document).ready(function() {  
+    $(document).ready(function() {
+      $("input[type=number]").keydown(function (e) {
+        // Allow: backspace, delete, tab, escape, enter and .
+        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+             // Allow: Ctrl+A, Command+A
+            (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+             // Allow: home, end, left, right, down, up
+            (e.keyCode >= 35 && e.keyCode <= 40)) {
+                 // let it happen, don't do anything
+                 return;
+        }
+        // Ensure that it is a number and stop the keypress
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            e.preventDefault();
+        }
+      });
+      $("#agregar").submit(function(e) {
 
+        var ref = $(this).find("[required]");
+
+        $(ref).each(function(){
+          if ( $(this).val() == '' )
+          {
+            alert("El campo no debe estar vacío.");
+
+            $(this).focus();
+
+            e.preventDefault();
+            return false;
+          }
+        });  return true;
+      });
         $("#tipo").change(function(){
           var value = $(this).find("option:selected").attr("value");
 
@@ -578,8 +609,8 @@
                          infowindow.open(map, marker);
                      });
 
-                   } 
-               }); 
+                   }
+               });
          });
         /*Inicializar mapa google*/
         function initialize() {
@@ -644,8 +675,8 @@
                             infowindow.setContent($("#direccion").val());
                             infowindow.open(map, marker);
                         });
-                    } 
-                }); 
+                    }
+                });
         }
                         google.maps.event.addDomListener(window, 'load', initialize);
 
@@ -672,8 +703,8 @@
             perPage : 5,
             delay : 0
         });
-    }); 
-    
+    });
+
 
     // EVENTOS
     // Animación de entrada
@@ -683,7 +714,7 @@
     });
     $(window).on('resize', function(){
         var win = $(this);
-        if (win.width() < 768) { 
+        if (win.width() < 768) {
             $('.menu').removeClass('pull-right');
         }else{
             $('.menu').addClass('pull-right');
