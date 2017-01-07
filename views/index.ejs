@@ -140,7 +140,7 @@
                     <div class="form-group">
                         <label for="propiedad">Tipo de Propiedad</label>
                         <div class="form-group input-group">
-                            <span class="input-group-addon" id="basic-addon1"><object type="image/svg+xml" data="svg/home-page.svg" class="icono"></object></span>
+                            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-home fa-fw icono"></i></span>
                             <select name="propiedad" class="form-control" id="propiedad">
                                 <option value="indistinto">Indistinto</option>
                                 <option value="casa">Casa</option>
@@ -154,30 +154,30 @@
                     <div class="form-group">
                         <label for="recamaras">Recámaras</label>
                         <div class="form-group input-group">
-                            <span class="input-group-addon" id="basic-addon1"><object type="image/svg+xml" data="svg/bed.svg" class="icono"></object></span>
+                            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-bed fa-fw icono"></i></span>
                             <input id="recamaras" class='form-control' type='number' placeholder="Indistinto" name='recamaras'/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="baños">Baños</label>
                         <div class="form-group input-group">
-                            <span class="input-group-addon" id="basic-addon1"><object type="image/svg+xml" data="svg/shower.svg" class="icono"></object></span>
+                            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-bath fa-fw icono"></i></span>
                             <input id="baños" class='form-control' type='number' placeholder="Indistinto" name='baños'/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="cochera">Cochera Para...</label>
                         <div class="form-group input-group">
-                            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-car fa-fw"></i></span>
+                            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-car fa-fw icono"></i></span>
                             <input id="cochera" class='form-control' type='number' placeholder="Indistinto" name='cochera'/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="foto">Rango de Precios</label>
                         <div class="form-group input-group">
-                            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-fw fa-usd"></i></span>
+                            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-fw fa-usd icono"></i></span>
                             <input class='form-control' type='number' placeholder="Mínimo" name='precio1'/>
-                            <span class="input-group-addon" id="basic-addon2"><i class="fa fa-fw fa-usd"></i></span>
+                            <span class="input-group-addon" id="basic-addon2"><i class="fa fa-fw fa-usd icono"></i></span>
                             <input class='form-control' type='number' placeholder="Máximo"name='precio2'/>
                         </div>
                     </div>
@@ -208,21 +208,27 @@
                                 <p>
                                     <ul class="list-inline">
                                         <li>
-                                            <object type="image/svg+xml" data="svg/home-page.svg" class="icono"></object>
+                                            <i class="fa fa-home fa-fw icono"></i>
                                             <%=propiedad.m2%>m2
                                         </li>
-                                        <li>
-                                            <object type="image/svg+xml" data="svg/bed.svg" class="icono"></object>
-                                            <%=propiedad.recamaras%>
-                                        </li>
-                                        <li>
-                                            <object type="image/svg+xml" data="svg/shower.svg" class="icono"></object>
-                                            <%=propiedad.baños%>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-car fa-fw"></i>
-                                            <%=propiedad.cochera%>
-                                        </li>
+                                        <%if(propiedad.recamaras != 0){%>
+                                            <li>
+                                                <i class="fa fa-bed fa-fw icono"></i>
+                                                <%=propiedad.recamaras%>
+                                            </li>
+                                        <%}%>
+                                        <%if(propiedad.baños != 0){%>
+                                            <li>
+                                                <i class="fa fa-bath fa-fw icono"></i>
+                                                <%=propiedad.baños%>
+                                            </li>
+                                        <%}%>
+                                        <%if(propiedad.cochera != 0){%>
+                                            <li>
+                                                <i class="fa fa-car fa-fw icono"></i>
+                                                <%=propiedad.cochera%>
+                                            </li>
+                                        <%}%>
                                     </ul>
                                 </p>
 

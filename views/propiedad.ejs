@@ -98,17 +98,27 @@
                 <h3>Detalles</h3>
                 <ul class="list-inline">
                     <li>
-                        <object type="image/svg+xml" data="../svg/home-page.svg" class="icono"></object>
+                        <i class="fa fa-home fa-fw icono"></i>
                         <%=propiedad.m2%>m2
                     </li>
-                    <li>
-                        <object type="image/svg+xml" data="../svg/bed.svg" class="icono"></object>
-                        <%=propiedad.recamaras%>
-                    </li>
-                    <li>
-                        <object type="image/svg+xml" data="../svg/shower.svg" class="icono"></object>
-                        <%=propiedad.baños%>
-                    </li>
+                    <%if(propiedad.recamaras != 0){%>
+                        <li>
+                            <i class="fa fa-bed fa-fw icono"></i>
+                            <%=propiedad.recamaras%>
+                        </li>
+                    <%}%>
+                    <%if(propiedad.baños != 0){%>
+                        <li>
+                            <i class="fa fa-bath fa-fw icono"></i>
+                            <%=propiedad.baños%>
+                        </li>
+                    <%}%>
+                    <%if(propiedad.cochera != 0){%>
+                        <li>
+                            <i class="fa fa-car fa-fw icono"></i>
+                            <%=propiedad.cochera%>
+                        </li>
+                    <%}%>
                 </ul>
                 <h3>Asesor de Venta</h3>
                 <img class="img-circle img-responsive img-center" src="<%=propiedad.foto%>" alt="">

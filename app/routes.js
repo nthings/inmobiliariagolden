@@ -165,6 +165,10 @@ module.exports = function(app, passport, connection) {
         }
         var fecha = new Date().toISOString().substring(0, 10);
 
+        req.body.recamaras= req.body.recamaras || 0;
+        req.body.baños= req.body.baños || 0;
+        req.body.cochera= req.body.cochera || 0;
+
         /*Subir foto*/
         console.log(req.files);
         console.log(req.body);
@@ -314,6 +318,10 @@ module.exports = function(app, passport, connection) {
         if(req.body.ventaorenta != 0){
             ventaorenta = 1;
         }
+        // Valores nulos
+        req.body.recamaras= req.body.recamaras || 0;
+        req.body.baños= req.body.baños || 0;
+        req.body.cochera= req.body.cochera || 0;
         function fotosNuevas() {
             // body...
             if(typeof(req.files['nuevas']) != 'undefined'){

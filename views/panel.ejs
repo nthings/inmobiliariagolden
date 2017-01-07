@@ -297,17 +297,17 @@
                         <label for="m2"><i class="fa fa-home fa-fw"></i> M2</label>
                         <input type="number" name="m2" id="m2" placeholder="¿Qué Tamaño Tiene?" class="form-control" required />
                     </div>
-                    <div class="form-group col-xs-6 col-md-3">
+                    <div class="noterreno form-group col-xs-6 col-md-3">
                         <label for="recamaras"><i class="fa fa-bed fa-fw"></i> Recámaras</label>
-                        <input type="number" name="recamaras" id="recamaras" placeholder="¿Cuántas?" class="form-control" required />
+                        <input type="number" name="recamaras" id="recamaras" placeholder="¿Cuántas?" class="form-control" />
                     </div>
-                    <div class="form-group col-xs-6 col-md-3">
-                        <label for="baños"><object type="image/svg+xml" data="svg/shower.svg" class="icono"></object> Baños</label>
-                        <input type="number" name="baños" id="baños" placeholder="¿Cuántos?" class="form-control" required />
+                    <div class="baños form-group col-xs-6 col-md-3">
+                        <label for="baños"><i class="fa fa-bath fa-fw"></i> Baños</label>
+                        <input type="number" name="baños" id="baños" placeholder="¿Cuántos?" class="form-control" />
                     </div>
-                    <div class="form-group col-xs-6 col-md-3">
+                    <div class="noterreno form-group col-xs-6 col-md-3">
                         <label for="cochera"><i class="fa fa-car fa-fw"></i> Cochera Para...</label>
-                        <input type="number" name="cochera" id="cochera" placeholder="¿Cuántos Autos?" class="form-control" required />
+                        <input type="number" name="cochera" id="cochera" placeholder="¿Cuántos Autos?" class="form-control" />
                     </div>
                     <div class="form-group col-xs-12">
                         <label for="descripcion"><i class="fa fa-reorder fa-fw"></i> Descripción</label>
@@ -495,7 +495,26 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
 <script src="../js/jscolor.min.js"></script>
 <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function() {  
+
+        $("#tipo").change(function(){
+          var value = $(this).find("option:selected").attr("value");
+
+          switch (value){
+            case "terreno":
+                $(".noterreno").hide();
+                $(".baños").hide();
+                break;
+            case "comercial":
+                $(".noterreno").hide();
+                $(".baños").show();
+                break;
+            default:
+                $(".noterreno").show();
+                $(".baños").show();
+                break;
+          }
+        });
 
         <%if (typeof(mensaje) != 'undefined') {%>
             $("#mensajemodal").modal('show');
