@@ -293,9 +293,13 @@
                         <label for="precio"><i class="fa fa-usd fa-fw"></i>Precio</label>
                         <input type="number" name="precio" placeholder="¿Cuánto?" id="precio" class="form-control" required />
                     </div>
-                    <div class="form-group col-xs-6 col-md-3">
-                        <label for="m2"><i class="fa fa-home fa-fw"></i> M2</label>
-                        <input type="number" name="m2" id="m2" placeholder="¿Qué Tamaño Tiene?" class="form-control" required />
+                    <div class="form-group col-xs-12">
+                        <label for="m2"><object type="image/svg+xml" data="svg/metros.svg" class="icono"></object> M2</label>
+                        <input type="number" name="m2" id="m2" placeholder="¿Qué Tamaño Tiene El Terreno?" class="form-control" required />
+                    </div>
+                    <div class="noterreno form-group col-xs-6 col-md-3">
+                        <label for="m2"><i class="fa fa-home fa-fw"></i> Metros Construidos</label>
+                        <input type="number" name="metrosconstruidos" id="metrosconstruidos" placeholder="¿Cuánto Tiene Construido?" class="form-control" required />
                     </div>
                     <div class="noterreno form-group col-xs-6 col-md-3">
                         <label for="recamaras"><i class="fa fa-bed fa-fw"></i> Recámaras</label>
@@ -491,43 +495,12 @@
 <script type="text/javascript" src="../js/jPages.js"></script>
 <script src="../js/bootstrap-switch.js"></script>
 <script src="../js/bootstrap-list-filter.min.js"></script>
-<script src="../js/jquery.validate.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
 <script src="../js/jscolor.min.js"></script>
+<script src="../js/funcioneshittek.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
-      $("input[type=number]").keydown(function (e) {
-        // Allow: backspace, delete, tab, escape, enter and .
-        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
-             // Allow: Ctrl+A, Command+A
-            (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
-             // Allow: home, end, left, right, down, up
-            (e.keyCode >= 35 && e.keyCode <= 40)) {
-                 // let it happen, don't do anything
-                 return;
-        }
-        // Ensure that it is a number and stop the keypress
-        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
-            e.preventDefault();
-        }
-      });
-      $("#agregar").submit(function(e) {
-
-        var ref = $(this).find("[required]");
-
-        $(ref).each(function(){
-          if ( $(this).val() == '' )
-          {
-            alert("El campo no debe estar vacío.");
-
-            $(this).focus();
-
-            e.preventDefault();
-            return false;
-          }
-        });  return true;
-      });
         $("#tipo").change(function(){
           var value = $(this).find("option:selected").attr("value");
 

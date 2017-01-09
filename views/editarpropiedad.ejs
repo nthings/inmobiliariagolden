@@ -98,9 +98,13 @@
                       <label for="precio"><i class="fa fa-usd fa-fw"></i>Precio</label>
                       <input type="number" name="precio" id="precio" value="<%=propiedad.precio%>" class="form-control" required />
                   </div>
-                  <div class="form-group col-xs-6 col-md-3">
-                      <label for="m2"><i class="fa fa-home fa-fw"></i> M2</label>
+                  <div class="form-group col-xs-12">
+                      <label for="m2"><object type="image/svg+xml" data="../svg/metros.svg" class="icono"></object> M2</label>
                       <input type="number" name="m2" id="m2" value="<%=propiedad.m2%>" class="form-control" required />
+                  </div>
+                  <div class="form-group col-xs-6 col-md-3">
+                      <label for="m2"><i class="fa fa-home fa-fw"></i> Metros Construidos</label>
+                      <input type="number" name="metrosconstruidos" id="metrosconstruidos" value="<%=propiedad.metrosconstruidos%>" class="form-control" required />
                   </div>
                   <div class="noterreno form-group col-xs-6 col-md-3">
                       <label for="recamaras"><i class="fa fa-bed fa-fw"></i> Recámaras</label>
@@ -231,6 +235,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAKDKyJNGPt-XY6RtMdQofhnoAlhVN9ZM8"></script>
 <script src="../js/bootstrap-switch.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+<script src="../js/funcioneshittek.js"></script>
 <script type="text/javascript">
     // Animación de entrada
     $(window).on('load',function(){
@@ -368,7 +373,20 @@
 </script>
 <script>
  $(document).ready(function() {
-
+    switch (<%=propiedad.tipo%>){
+      case "terreno":
+          $(".noterreno").hide();
+          $(".baños").hide();
+          break;
+      case "comercial":
+          $(".noterreno").hide();
+          $(".baños").show();
+          break;
+      default:
+          $(".noterreno").show();
+          $(".baños").show();
+          break;
+    }
     $("#tipo").change(function(){
       var value = $(this).find("option:selected").attr("value");
 

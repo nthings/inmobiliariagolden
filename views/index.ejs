@@ -208,9 +208,15 @@
                                 <p>
                                     <ul class="list-inline">
                                         <li>
-                                            <i class="fa fa-home fa-fw icono"></i>
+                                            <object type="image/svg+xml" data="svg/metros.svg" class="icono"></object>
                                             <%=propiedad.m2%>m2
                                         </li>
+                                        <%if(propiedad.metrosconstruidos != 0){%>
+                                            <li>
+                                                <i class="fa fa-home fa-fw icono"></i>
+                                                <%=propiedad.metrosconstruidos%>
+                                            </li>
+                                        <%}%>
                                         <%if(propiedad.recamaras != 0){%>
                                             <li>
                                                 <i class="fa fa-bed fa-fw icono"></i>
@@ -321,6 +327,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKDKyJNGPt-XY6RtMdQofhnoAlhVN9ZM8"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
 <script src="../js/imgLiquid-min.js"></script>
+<script src="../js/funcioneshittek.js"></script>
 
 </script>
 

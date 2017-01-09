@@ -98,6 +98,8 @@ footer {
  .icono{
     color:#444242;
     font-size: 15pt!important;
+    width: 20px;
+    height: 20px;
  }
 
 .page{

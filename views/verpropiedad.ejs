@@ -102,16 +102,20 @@
             <label for="precio"><i class="fa fa-usd fa-fw"></i>Precio</label>
             <input type="number" name="precio" id="precio" value="<%=propiedad.precio%>" class="form-control" readonly />
           </div>
+          <div class="form-group col-xs-12">
+              <label for="m2"><object type="image/svg+xml" data="../svg/metros.svg" class="icono"></object> M2</label>
+              <input type="number" name="m2" id="m2" value="<%=propiedad.m2%>" class="form-control" readonly />
+          </div>
           <div class="form-group col-xs-6 col-md-3">
-            <label for="m2"><i class="fa fa-home fa-fw"></i> M2</label>
-            <input type="number" name="m2" id="m2" value="<%=propiedad.m2%>" class="form-control" readonly />
+              <label for="m2"><i class="fa fa-home fa-fw"></i> Metros Construidos</label>
+              <input type="number" name="metrosconstruidos" id="metrosconstruidos" value="<%=propiedad.metrosconstruidos%>" class="form-control" readonly />
           </div>
           <div class="form-group col-xs-6 col-md-3">
             <label for="recamaras"><i class="fa fa-bed fa-fw"></i> Recámaras</label>
             <input type="number" name="recamaras" id="recamaras" value="<%=propiedad.recamaras%>" class="form-control" readonly />
           </div>
           <div class="form-group col-xs-6 col-md-3">
-            <label for="baños"><object type="image/svg+xml" data="../svg/shower.svg" class="icono"></object> Baños</label>
+            <label for="baños"><i class="fa fa-bath fa-fw"></i> Baños</label>
             <input type="number" name="baños" id="baños" value="<%=propiedad.baños%>" class="form-control" readonly />
           </div>
           <div class="form-group col-xs-6 col-md-3">
@@ -165,6 +169,8 @@
 <script src="../js/html2canvas.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+<script src="../js/funcioneshittek.js"></script>
+
 <script type="text/javascript">
     // Animación de entrada
     $(window).on('load',function(){
@@ -240,7 +246,7 @@
               pdf.setFontSize(16);
               pdf.text(10, 140, '<%=propiedad.tipo.replace(/\b\w/g, l => l.toUpperCase())%> En <%if(propiedad.renta==0){%>Renta<%}else{%>Venta<%}%>');
               pdf.text(10,160,'Precio: $<%=propiedad.precio%>');
-              pdf.text(10,180,'M2: <%=propiedad.m2%>  Recámaras: <%=propiedad.recamaras%>  Baños: <%=propiedad.baños%>  Cochera para: <%=propiedad.cochera%> vehículos');
+              pdf.text(10,180,'M2: <%=propiedad.m2%>  Metros Construidos:<%=propiedad.metrosconstruidos%>  Recámaras: <%=propiedad.recamaras%>  Baños: <%=propiedad.baños%>  Cochera para: <%=propiedad.cochera%> vehículos');
               var lineas = pdf.splitTextToSize('<%= propiedad.descripcion.replace(/\r\n/g, ' ') %>', 500).length;
               pdf.text(10,200, pdf.splitTextToSize('<%= propiedad.descripcion.replace(/\r\n/g, ' ') %>', 500));
 

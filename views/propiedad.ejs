@@ -98,9 +98,15 @@
                 <h3>Detalles</h3>
                 <ul class="list-inline">
                     <li>
-                        <i class="fa fa-home fa-fw icono"></i>
+                        <object type="image/svg+xml" data="../svg/metros.svg" class="icono"></object>
                         <%=propiedad.m2%>m2
                     </li>
+                    <%if(propiedad.metrosconstruidos != 0){%>
+                        <li>
+                            <i class="fa fa-home fa-fw icono"></i>
+                            <%=propiedad.metrosconstruidos%>M. Constr.
+                        </li>
+                    <%}%>
                     <%if(propiedad.recamaras != 0){%>
                         <li>
                             <i class="fa fa-bed fa-fw icono"></i>
@@ -121,7 +127,7 @@
                     <%}%>
                 </ul>
                 <h3>Asesor de Venta</h3>
-                <img class="img-circle img-responsive img-center" src="<%=propiedad.foto%>" alt="">
+                <img id="fotoasesor" class="img-circle img-responsive img-center" src="" alt="">
                 <h4><%=propiedad.nombre%>
                     <small><%=propiedad.telefono%></small>
                 </h4>
@@ -176,7 +182,7 @@
                     <p><%=variables.telefono%></p>
 
                     <h3>Desarrollado por:</h3>
-                    <a href="http://hittek.mx"><img src="../hittek.png" width="150px" /></a>
+                    <a href="http://hittek.mx"><img id="hittek" src="" width="150px" /></a>
                 </div>  
             </div>
         </footer>
@@ -210,6 +216,8 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKDKyJNGPt-XY6RtMdQofhnoAlhVN9ZM8">
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+<script src="../js/funcioneshittek.js"></script>
+
 <script type="text/javascript">
     // Animación de entrada
     $(window).on('load',function(){
@@ -228,7 +236,10 @@
                 <% }); %>
             <%}else{%>
                 <%}%>
-            });
+
+        $('#fotoasesor').attr("src", "<%=propiedad.foto%>");
+        $('#hittek').attr("src", "../hittek.png");
+    });
 
     /*Mapa google*/
     function initialize() {

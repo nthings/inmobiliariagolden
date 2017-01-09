@@ -59,10 +59,12 @@ a:hover{
 footer {
     margin: 50px 0;
 }
- .icono{
-    color:#444242;
-    font-size: 20pt!important;
- }
+.icono{
+   color:#444242;
+   font-size: 20pt!important;
+   width: 25px;
+   height: 25px;
+}
 
 #map_container{
   position: relative;
