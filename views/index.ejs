@@ -275,9 +275,7 @@
             <% if (typeof(asesores) != 'undefined') {%>
             <% asesores.forEach(function(asesor) { %>
             <div class="col-lg-4 col-sm-6 text-center">
-                <div class="imgLiquidAsesor">
-                    <img class="img-circle img-responsive img-center" src="<%=asesor.foto%>" alt="">
-                </div>
+                <img class="img-circle img-responsive img-center" src="<%=asesor.foto%>" width="360px">
                 <h3><%=asesor.nombre%></h3>
                 <p><%=asesor.telefono%></p>
             </div>
@@ -394,12 +392,6 @@
                     fill: true,
                     horizontalAlign: "center",
                     verticalAlign: "center"
-                });  
-                $(".imgLiquidAsesor").imgLiquid({
-                    fill: true,
-                    horizontalAlign: "center",
-                    verticalAlign: "center"
-
                 });  
                 
             });
