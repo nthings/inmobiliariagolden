@@ -275,7 +275,9 @@
             <% if (typeof(asesores) != 'undefined') {%>
             <% asesores.forEach(function(asesor) { %>
             <div class="col-lg-4 col-sm-6 text-center">
-                <img class="img-circle img-responsive img-center" src="<%=asesor.foto%>" alt="">
+                <div class="imgLiquidAsesor">
+                    <img class="img-circle img-responsive img-center" src="<%=asesor.foto%>" alt="">
+                </div>
                 <h3><%=asesor.nombre%></h3>
                 <p><%=asesor.telefono%></p>
             </div>
