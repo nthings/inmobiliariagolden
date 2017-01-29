@@ -6,6 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var favicon = require('serve-favicon');
+var MemoryStore = require('session-memory-store')(session);
+
 
 var app      = express();
 var port     = process.env.PORT || 8080;
@@ -38,7 +40,8 @@ app.set('view engine', 'ejs'); // set up ejs for templating
 app.use(session({
     secret: 'vidyapathaisalwaysrunning',
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    store: new MemoryStore(),
  } )); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
