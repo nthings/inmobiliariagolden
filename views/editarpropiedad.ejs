@@ -96,15 +96,15 @@
                   </div>
                   <div class="form-group col-xs-12">
                       <label for="precio"><i class="fa fa-usd fa-fw"></i>Precio</label>
-                      <input type="number" name="precio" id="precio" value="<%=propiedad.precio%>" class="form-control" required />
+                      <input class='form-control number' placeholder="¿Cuánto?" name='precio' required />
                   </div>
                   <div class="form-group col-xs-12">
                       <label for="m2"><object type="image/svg+xml" data="../svg/metros.svg" class="icono"></object> M2</label>
-                      <input type="number" name="m2" id="m2" value="<%=propiedad.m2%>" class="form-control" required />
+                      <input type="number" step="any" name="m2" id="m2" value="<%=propiedad.m2%>" class="form-control" required />
                   </div>
                   <div class="form-group col-xs-6 col-md-3">
                       <label for="m2"><i class="fa fa-home fa-fw"></i> Metros Construidos</label>
-                      <input type="number" name="metrosconstruidos" id="metrosconstruidos" value="<%=propiedad.metrosconstruidos%>" class="form-control" required />
+                      <input type="number" step="any" name="metrosconstruidos" id="metrosconstruidos" value="<%=propiedad.metrosconstruidos%>" class="form-control" />
                   </div>
                   <div class="noterreno form-group col-xs-6 col-md-3">
                       <label for="recamaras"><i class="fa fa-bed fa-fw"></i> Recámaras</label>
@@ -112,11 +112,22 @@
                   </div>
                   <div class="baños form-group col-xs-6 col-md-3">
                       <label for="baños"><i class="fa fa-bath fa-fw"></i> Baños</label>
-                      <input type="number" name="baños" id="baños" value="<%=propiedad.baños%>" class="form-control" />
+                      <%var ymedio=false;%>
+                      <%if(propiedad.baños.substring(propiedad.baños.length-1,propiedad.baños.length) == "½"){%>
+                        <%propiedad.baños=propiedad.baños.substring(0,propiedad.baños.length-2);%>
+                        <%ymedio=true;%>
+                      <%}%>
+                      <input type="text" name="baños" id="baños" value="<%=propiedad.baños%>" class="form-control" />
+                      <div class="checkbox">
+                        <label class="checkbox-inline"><input type="checkbox" value="si" name="ymedio" <%if(ymedio){%>checked<%}%>>Y medio</label>
+                      </div>
                   </div>
                   <div class="noterreno form-group col-xs-6 col-md-3">
                     <label for="cochera"><i class="fa fa-car fa-fw"></i> Cochera Para...</label>
                     <input type="number" name="cochera" id="cochera" value="<%=propiedad.cochera%>" class="form-control" />
+                    <div class="checkbox">
+                      <label class="checkbox-inline"><input type="checkbox" value="si" name="sincochera">Sin cochera</label>
+                    </div>
                 </div>
                 <div class="form-group col-xs-12">
                   <label for="descripcion"><i class="fa fa-reorder fa-fw"></i> Descripción</label>
@@ -214,7 +225,7 @@
     </div>
     <div class="modal-body">
         <h4>¿Estas seguro de que quieres eliminar la foto?, ya no podrás recuperarla</h4>
-        <form id="eliminar" action="eliminarfoto" method="POST">
+        <form id="eliminar" action="/eliminarfoto" method="POST">
             <input type="text" name="fotourl" id="fotourl" class="oculto">
             <input type="text" name="id" id="idfoto" class="oculto">
         </form>
@@ -373,6 +384,7 @@
 </script>
 <script>
  $(document).ready(function() {
+    $('.number').val(commas(<%=propiedad.precio%>));
     switch (<%=propiedad.tipo%>){
       case "terreno":
           $(".noterreno").hide();
@@ -426,7 +438,17 @@
               <% }); %>
           <%}%>
       });
+ function commas(input) {
+     var output = input
+     if (parseFloat(input)) {
+         input = new String(input); // so you can perform string operations
+         var parts = input.split("."); // remove the decimal part
+         parts[0] = parts[0].split("").reverse().join("").replace(/(\d{3})(?!$)/g, "$1,").split("").reverse().join("");
+         output = parts.join(".");
+     }
 
+     return output;
+ }
  $( document ).on( 'click', '.btn-add', function ( event ) {
      event.preventDefault();
 

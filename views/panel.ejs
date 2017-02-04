@@ -291,15 +291,15 @@
                     </div>
                     <div class="form-group col-xs-12">
                         <label for="precio"><i class="fa fa-usd fa-fw"></i>Precio</label>
-                        <input type="number" name="precio" placeholder="¿Cuánto?" id="precio" class="form-control" required />
+                        <input class='form-control number' placeholder="¿Cuánto?" name='precio' required />
                     </div>
                     <div class="form-group col-xs-12">
                         <label for="m2"><object type="image/svg+xml" data="svg/metros.svg" class="icono"></object> M2</label>
-                        <input type="number" name="m2" id="m2" placeholder="¿Qué Tamaño Tiene El Terreno?" class="form-control" required />
+                        <input type="number" step="any" name="m2" id="m2" placeholder="¿Qué Tamaño Tiene El Terreno?" class="form-control" required />
                     </div>
                     <div class="noterreno form-group col-xs-6 col-md-3">
                         <label for="m2"><i class="fa fa-home fa-fw"></i> Metros Construidos</label>
-                        <input type="number" name="metrosconstruidos" id="metrosconstruidos" placeholder="¿Cuánto Tiene Construido?" class="form-control" required />
+                        <input type="number" step="any" name="metrosconstruidos" id="metrosconstruidos" placeholder="¿Cuánto Tiene Construido?" class="form-control" />
                     </div>
                     <div class="noterreno form-group col-xs-6 col-md-3">
                         <label for="recamaras"><i class="fa fa-bed fa-fw"></i> Recámaras</label>
@@ -308,10 +308,16 @@
                     <div class="baños form-group col-xs-6 col-md-3">
                         <label for="baños"><i class="fa fa-bath fa-fw"></i> Baños</label>
                         <input type="number" name="baños" id="baños" placeholder="¿Cuántos?" class="form-control" />
+                        <div class="checkbox">
+                          <label class="checkbox-inline"><input type="checkbox" value="si" name="ymedio">Y medio</label>
+                        </div>
                     </div>
                     <div class="noterreno form-group col-xs-6 col-md-3">
                         <label for="cochera"><i class="fa fa-car fa-fw"></i> Cochera Para...</label>
                         <input type="number" name="cochera" id="cochera" placeholder="¿Cuántos Autos?" class="form-control" />
+                        <div class="checkbox">
+                          <label class="checkbox-inline"><input type="checkbox" value="si" name="sincochera">Sin cochera</label>
+                        </div>
                     </div>
                     <div class="form-group col-xs-12">
                         <label for="descripcion"><i class="fa fa-reorder fa-fw"></i> Descripción</label>

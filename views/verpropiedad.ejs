@@ -100,7 +100,7 @@
           </div>
           <div class="form-group col-xs-12">
             <label for="precio"><i class="fa fa-usd fa-fw"></i>Precio</label>
-            <input type="number" name="precio" id="precio" value="<%=propiedad.precio%>" class="form-control" readonly />
+            <input class='form-control number' name='precio' readonly />
           </div>
           <div class="form-group col-xs-12">
               <label for="m2"><object type="image/svg+xml" data="../svg/metros.svg" class="icono"></object> M2</label>
@@ -116,7 +116,15 @@
           </div>
           <div class="form-group col-xs-6 col-md-3">
             <label for="baños"><i class="fa fa-bath fa-fw"></i> Baños</label>
-            <input type="number" name="baños" id="baños" value="<%=propiedad.baños%>" class="form-control" readonly />
+            <%var ymedio=false;%>
+            <%if(''+propiedad.baños+''.substring(propiedad.baños.length-1,propiedad.baños.length) == "½"){%>
+              <%propiedad.baños=''+propiedad.baños+''.substring(0,propiedad.baños.length-2);%>
+              <%ymedio=true;%>
+            <%}%>
+            <input type="text" name="baños" id="baños" value="<%=propiedad.baños%>" class="form-control" readonly />
+            <div class="checkbox">
+              <label class="checkbox-inline"><input type="checkbox" value="si" name="ymedio" disabled <%if(ymedio){%>checked<%}%>>Y medio</label>
+            </div>
           </div>
           <div class="form-group col-xs-6 col-md-3">
             <label for="cochera"><i class="fa fa-car fa-fw"></i> Cochera Para...</label>
@@ -230,6 +238,7 @@
    </script>
    <script>
      $(document).ready(function() {
+      $('.number').val(commas(<%=propiedad.precio%>));
       $("[name='ventaorenta']").bootstrapSwitch({onColor: 'success', offColor: 'success'});
 
       $('#imprimir').click(function() {
@@ -245,7 +254,7 @@
               pdf.text(10, 120, '<%=propiedad.nombrepropiedad%>');
               pdf.setFontSize(16);
               pdf.text(10, 140, '<%=propiedad.tipo.replace(/\b\w/g, l => l.toUpperCase())%> En <%if(propiedad.renta==0){%>Renta<%}else{%>Venta<%}%>');
-              pdf.text(10,160,'Precio: $<%=propiedad.precio%>');
+              pdf.text(10,160,'Precio: $'+commas(<%=propiedad.precio%>));
               pdf.text(10,180,'M2: <%=propiedad.m2%>  Metros Construidos:<%=propiedad.metrosconstruidos%>  Recámaras: <%=propiedad.recamaras%>  Baños: <%=propiedad.baños%>  Cochera para: <%=propiedad.cochera%> vehículos');
               var lineas = pdf.splitTextToSize('<%= propiedad.descripcion.replace(/\r\n/g, ' ') %>', 500).length;
               pdf.text(10,200, pdf.splitTextToSize('<%= propiedad.descripcion.replace(/\r\n/g, ' ') %>', 500));
@@ -267,6 +276,17 @@
      });
 
     });
+     function commas(input) {
+         var output = input
+         if (parseFloat(input)) {
+             input = new String(input); // so you can perform string operations
+             var parts = input.split("."); // remove the decimal part
+             parts[0] = parts[0].split("").reverse().join("").replace(/(\d{3})(?!$)/g, "$1,").split("").reverse().join("");
+             output = parts.join(".");
+         }
+
+         return output;
+     }
      var newheight;
 
      function getDataUri(url,callback) {

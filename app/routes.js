@@ -56,11 +56,11 @@ module.exports = function(app, passport, connection) {
         }
         if(req.body.precio1 != ""){
             extras+=" AND precio >= ?";
-            valores.push(req.body.precio1);
+            valores.push(req.body.precio1.replace(/,/g, ""));
         }
         if(req.body.precio2 != ""){
             extras+=" AND precio <= ?";
-            valores.push(req.body.precio2);
+            valores.push(req.body.precio2.replace(/,/g, ""));
         }
         connection.query('SELECT * FROM propiedades WHERE renta = ?'+extras,valores, function(err, propiedades){
             connection.query('SELECT nombre, telefono, foto FROM asesores WHERE admin != 1',function(err, asesores){
@@ -170,12 +170,15 @@ module.exports = function(app, passport, connection) {
         req.body.cochera= req.body.cochera || 0;
         req.body.metrosconstruidos= req.body.metrosconstruidos || 0;
 
+        if(typeof(req.body.ymedio) != 'undefined'){
+            req.body.baños = req.body.baños + " ½"
+        }
 
         /*Subir foto*/
         console.log(req.files);
         console.log(req.body);
         if(typeof(req.files) != 'undefined' && req.files.length > 0){
-            connection.query('INSERT INTO propiedades (tipo, nombrepropiedad, precio, m2, metrosconstruidos, recamaras, baños, cochera, descripcion, direccion, latitud, longitud, renta, vendida, fechaventa,fechacreacion, url, asesores_idasesores) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[req.body.tipo, req.body.nombrepropiedad,req.body.precio,req.body.m2,req.body.metrosconstruidos,req.body.recamaras,req.body.baños,req.body.cochera,req.body.descripcion,req.body.direccion,req.body.latitud,req.body.longitud,ventaorenta,0,null,fecha,'/fotoscasas/'+req.files[0].filename,req.user.idasesores], function(err, result){
+            connection.query('INSERT INTO propiedades (tipo, nombrepropiedad, precio, m2, metrosconstruidos, recamaras, baños, cochera, descripcion, direccion, latitud, longitud, renta, vendida, fechaventa,fechacreacion, url, asesores_idasesores) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[req.body.tipo, req.body.nombrepropiedad,req.body.precio.replace(/,/g, ""),req.body.m2,req.body.metrosconstruidos,req.body.recamaras,req.body.baños,req.body.cochera,req.body.descripcion,req.body.direccion,req.body.latitud,req.body.longitud,ventaorenta,0,null,fecha,'/fotoscasas/'+req.files[0].filename,req.user.idasesores], function(err, result){
                 if (err) {
                     console.log(err);
                     res.redirect('/panel?agregado=0');
@@ -193,7 +196,7 @@ module.exports = function(app, passport, connection) {
             });        
         }else{
             /*NO HAY IMAGEN PRINCIPAL*/
-            connection.query('INSERT INTO propiedades (tipo, nombrepropiedad, precio, m2, metrosconstruidos, recamaras, baños, cochera, descripcion, direccion, latitud, longitud, renta, vendida, fechaventa,fechacreacion, asesores_idasesores) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[req.body.tipo, req.body.nombrepropiedad,req.body.precio,req.body.m2,req.body.metrosconstruidos,req.body.recamaras,req.body.baños,req.body.cochera,req.body.descripcion,req.body.direccion,req.body.latitud,req.body.longitud,ventaorenta,0,null,fecha,req.user.idasesores], function(err, result){
+            connection.query('INSERT INTO propiedades (tipo, nombrepropiedad, precio, m2, metrosconstruidos, recamaras, baños, cochera, descripcion, direccion, latitud, longitud, renta, vendida, fechaventa,fechacreacion, asesores_idasesores) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[req.body.tipo, req.body.nombrepropiedad,req.body.precio.replace(/,/g, ""),req.body.m2,req.body.metrosconstruidos,req.body.recamaras,req.body.baños,req.body.cochera,req.body.descripcion,req.body.direccion,req.body.latitud,req.body.longitud,ventaorenta,0,null,fecha,req.user.idasesores], function(err, result){
                 if (err) {
                     console.log(err);
                     res.redirect('/panel?agregado=0');
@@ -325,6 +328,10 @@ module.exports = function(app, passport, connection) {
         req.body.baños= req.body.baños || 0;
         req.body.cochera= req.body.cochera || 0;
         req.body.metrosconstruidos= req.body.metrosconstruidos || 0;
+
+        if(typeof(req.body.ymedio) != 'undefined'){
+            req.body.baños = req.body.baños + " ½"
+        }
         function fotosNuevas() {
             // body...
             if(typeof(req.files['nuevas']) != 'undefined'){
@@ -340,7 +347,7 @@ module.exports = function(app, passport, connection) {
         }
         /*No se cambio la foto principal*/
         if(typeof(req.files['principal']) == 'undefined'){
-            connection.query('UPDATE propiedades SET tipo = ?, nombrepropiedad = ?, precio = ?, m2 = ?,metrosconstruidos=?, recamaras = ?, baños = ?, cochera=?, descripcion = ?, direccion = ?, latitud = ?, longitud = ?, renta = ? WHERE idpropiedades = ?',[req.body.tipo, req.body.nombrepropiedad, req.body.precio, req.body.m2,req.body.metrosconstruidos, req.body.recamaras, req.body.baños, req.body.cochera, req.body.descripcion, req.body.direccion, req.body.latitud, req.body.longitud, ventaorenta, req.body.id], function(err, result){
+            connection.query('UPDATE propiedades SET tipo = ?, nombrepropiedad = ?, precio = ?, m2 = ?,metrosconstruidos=?, recamaras = ?, baños = ?, cochera=?, descripcion = ?, direccion = ?, latitud = ?, longitud = ?, renta = ? WHERE idpropiedades = ?',[req.body.tipo, req.body.nombrepropiedad, req.body.precio.replace(/,/g, ""), req.body.m2,req.body.metrosconstruidos, req.body.recamaras, req.body.baños, req.body.cochera, req.body.descripcion, req.body.direccion, req.body.latitud, req.body.longitud, ventaorenta, req.body.id], function(err, result){
                 console.log(err);
                 if(typeof(req.files['image']) != 'undefined'){
                     connection.query('SELECT url FROM fotos WHERE propiedades_idpropiedades = ?',[req.body.id], function(err, fotos){
@@ -374,7 +381,7 @@ module.exports = function(app, passport, connection) {
                 if(foto[0].url != "../picture.png"){
                     fs.unlinkSync("assets"+foto[0].url);
                 }
-                connection.query('UPDATE propiedades SET tipo = ?, nombrepropiedad = ?, precio = ?, m2 = ?,metrosconstruidos=?, recamaras = ?, baños = ?, cochera = ?, descripcion = ?, direccion = ?, latitud = ?, longitud = ?, renta = ?, url = ? WHERE idpropiedades = ?',[req.body.tipo, req.body.nombrepropiedad, req.body.precio, req.body.m2,req.body.metrosconstruidos, req.body.recamaras, req.body.baños, req.body.cochera,req.body.descripcion, req.body.direccion, req.body.latitud, req.body.longitud, ventaorenta, '/fotoscasas/'+req.files['principal'][0].filename, req.body.id], function(err, result){
+                connection.query('UPDATE propiedades SET tipo = ?, nombrepropiedad = ?, precio = ?, m2 = ?,metrosconstruidos=?, recamaras = ?, baños = ?, cochera = ?, descripcion = ?, direccion = ?, latitud = ?, longitud = ?, renta = ?, url = ? WHERE idpropiedades = ?',[req.body.tipo, req.body.nombrepropiedad, req.body.precio.replace(/,/g, ""), req.body.m2,req.body.metrosconstruidos, req.body.recamaras, req.body.baños, req.body.cochera,req.body.descripcion, req.body.direccion, req.body.latitud, req.body.longitud, ventaorenta, '/fotoscasas/'+req.files['principal'][0].filename, req.body.id], function(err, result){
                     console.log(err);
                     if(typeof(req.files['image']) != 'undefined'){
                         connection.query('SELECT url FROM fotos WHERE propiedades_idpropiedades = ?',[req.body.id], function(err, fotos){
