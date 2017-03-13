@@ -52,7 +52,7 @@ a:hover{
 }
 .imgLiquid{
   width:100%; 
-  height:213px;
+  height:200px;
 }
 /*full slider*/
 html,
@@ -208,6 +208,49 @@ footer {
 #asesores a {
   text-decoration: none;
   color: #000;
+}
+
+.ribbonvendida {
+   position: absolute;
+   left: 12px; top: -4px;
+   z-index: 1;
+   overflow: hidden;
+   width: 75px; height: 75px; 
+   text-align: left;
+}
+.ribbonvendida span {
+   font-size: 10px;
+   color: #fff; 
+   text-transform: uppercase; 
+   text-align: center;
+   font-weight: bold; line-height: 20px;
+   transform: rotate(-45deg);
+   width: 100px; display: block;
+   background: #6A4938;
+   background: linear-gradient(#FF4141 0%, #CC4848 100%);
+   box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+   position: absolute;
+   top: 19px; left: -21px;
+}
+.ribbonvendida span::before {
+   content: '';
+   position: absolute; 
+   left: 0px; top: 100%;
+   z-index: -1;
+   border-left: 3px solid #FF4141;
+   border-right: 3px solid transparent;
+   border-bottom: 3px solid transparent;
+   border-top: 3px solid #FF4141;
+}
+.ribbonvendida span::after {
+   content: '';
+   position: absolute; 
+   right: 0%; top: 100%;
+   z-index: -1;
+   border-right: 3px solid #FF4141;
+   border-left: 3px solid transparent;
+   border-bottom: 3px solid transparent;
+   border-top: 3px solid #FF4141;
 }
 /*Loading*/
 .no-js #loader { display: none;  }

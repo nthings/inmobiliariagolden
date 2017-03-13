@@ -86,7 +86,7 @@
         <div class="row">
 
             <div class="col-md-8">
-                <img class="img-responsive" src="<%=propiedad.url%>" alt="">
+                <img class="img-responsive watermark" src="<%=propiedad.url%>" alt="">
             </div>
 
             <div class="col-md-4 text-center">
@@ -153,7 +153,7 @@
             <% fotos.forEach(function(foto) { %>
             <div class="col-sm-3 col-xs-6">
                 <a id="<%=foto.idfotos%>">
-                    <img class="img-responsive portfolio-item" src="<%=foto.url%>" alt="">
+                    <img class="img-responsive portfolio-item watermark2" src="<%=foto.url%>" alt="">
                 </a>
             </div>
             <% }); %>
@@ -189,23 +189,27 @@
 
     </div>
     <!-- /.container -->
-    <div id="foto" class="modal fade" role="dialog">
-      <div class="modal-dialog modal-lg">
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <div class="modal-body">
-            <img src="../picture.png" class="img-responsive img-center" id="fotogrande">
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">CERRAR</button>
-        </div>
-    </div>
-
-</div>
-</div>
+    <% if (typeof(fotos) != 'undefined') {%>
+        <% fotos.forEach(function(foto) { %>
+            <div id="modal<%=foto.idfotos%>" class="modal fade" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="<%=foto.url%>" class="img-responsive img-center watermarkmodal">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">CERRAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+        <%}else{%>
+        <%}%>
 
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
@@ -217,6 +221,8 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
 <script src="../js/funcioneshittek.js"></script>
+<script src="../js/jquery.watermark.min.js"></script>
+
 
 <script type="text/javascript">
     // Animación de entrada
@@ -230,15 +236,32 @@
         <% if (typeof(fotos) != 'undefined') {%>
             <% fotos.forEach(function(foto) { %>
                 $('#<%=foto.idfotos%>').click(function(){
-                    $('#fotogrande').attr("src","<%=foto.url%>");
-                    $('#foto').modal('show');
+                    $('#modal<%=foto.idfotos%>').modal('show');
                 });
                 <% }); %>
             <%}else{%>
-                <%}%>
+            <%}%>
 
         $('#fotoasesor').attr("src", "<%=propiedad.foto%>");
         $('#hittek').attr("src", "../hittek.png");
+        $('.watermark').watermark({
+            path: '../watermark.png',
+            gravity: 's',
+            opacity: 0.2,
+            margin:100,
+        });
+        $('.watermarkmodal').watermark({
+            path: '../watermark.png',
+            gravity: 's',
+            opacity: 0.2,
+            margin:100,
+        });
+        $('.watermark2').watermark({
+            path: '../watermark.png',
+            gravity: 's',
+            opacity: 0.2,
+            margin:100,
+        });
     });
 
     /*Mapa google*/
