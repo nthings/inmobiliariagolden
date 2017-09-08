@@ -384,8 +384,10 @@
 </script>
 <script>
  $(document).ready(function() {
+    $("#latitud").val('<%=propiedad.latitud%>');
+    $("#longitud").val('<%=propiedad.longitud%>');
     $('.number').val(commas(<%=propiedad.precio%>));
-    switch (<%=propiedad.tipo%>){
+    switch ('<%=propiedad.tipo%>'){
       case "terreno":
           $(".noterreno").hide();
           $(".baños").hide();

@@ -332,6 +332,15 @@ module.exports = function(app, passport, connection) {
         if(typeof(req.body.ymedio) != 'undefined'){
             req.body.baños = req.body.baños + " ½"
         }
+
+        /*if(req.body.latitud == ''){
+            
+            req.body.latitud = 24.5592665
+        }
+        if(req.body.longitud == ''){
+            
+            req.body.longitud = -104.6587821
+        }*/
         function fotosNuevas() {
             // body...
             if(typeof(req.files['nuevas']) != 'undefined'){
