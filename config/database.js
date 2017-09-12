@@ -5,6 +5,11 @@ module.exports = {
         'user': 'golden',
         'password': 'casitas'
     },
+    // connection : {
+    //     'host': 'localhost',
+    //     'user': 'root',
+    //     'password': ''
+    // },
 	'database': 'inmobiliariagolden',
     'users_table': 'asesores'
-};
+}
