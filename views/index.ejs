@@ -377,8 +377,9 @@
 
     <script type="text/javascript" src="../js/jPages.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2xcvEGwhwHHdzXpEON6qMCGkDDAcmqIU&callback=initMap"></script>
-<script src="
-        https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"> </script> <script src="../js/imgLiquid-min.js"></script>
+    <script src="
+        https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"> </script>
+    <script src="../js/imgLiquid-min.js"></script>
     <script src="../js/funcioneshittek.js"></script>
 
     </script>
@@ -459,10 +460,7 @@
         /*Mapa google*/
         function initMap() {
             /*Dirección de la propiedad del backend*/
-            var latitud = '24.034549';
-
-            var longitud = '-104.672182';
-            var myLatlng = new google.maps.LatLng(latitud, longitud);
+            var myLatlng = { lat: 24.034549, lng: -104.672182 };
             var icono = '../pin.png';
             // var icono = '../pin.png';
             var mapOptions = {
@@ -470,17 +468,7 @@
                 center: myLatlng,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             }
-
             var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-            //Callout Content
-            var contentString = '<%=variables.nombreinmobiliaria%>';
-            //Set window width + content
-            var infowindow = new google.maps.InfoWindow({
-                content: contentString,
-                maxWidth: 500
-            });
-
-            //Add Marker
             var marker = new google.maps.Marker({
                 position: myLatlng,
                 map: map,
@@ -488,21 +476,38 @@
                 title: 'image title'
             });
 
-            infowindow.open(map, marker);
+            // var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+            //Callout Content
+            // var contentString = '<%=variables.nombreinmobiliaria%>';
+            //Set window width + content
+            // var infowindow = new google.maps.InfoWindow({
+            //     content: contentString,
+            //     maxWidth: 500
+            // });
 
-            google.maps.event.addListener(marker, 'click', function () {
-                infowindow.open(map, marker);
-            });
+            // //Add Marker
+            // var marker = new google.maps.Marker({
+            //     position: myLatlng,
+            //     map: map,
+            //     icon: icono,
+            //     title: 'image title'
+            // });
 
-            //Resize Function
-            google.maps.event.addDomListener(window, "resize", function () {
-                var center = map.getCenter();
-                google.maps.event.trigger(map, "resize");
-                map.setCenter(center);
+            // infowindow.open(map, marker);
 
-            });
+            // google.maps.event.addListener(marker, 'click', function () {
+            //     infowindow.open(map, marker);
+            // });
+
+            // //Resize Function
+            // google.maps.event.addDomListener(window, "resize", function () {
+            //     var center = map.getCenter();
+            //     google.maps.event.trigger(map, "resize");
+            //     map.setCenter(center);
+
+            // });
         }
-        google.maps.event.addDomListener(window, 'load', initMap);                
+        // google.maps.event.addDomListener(window, 'load', initMap);                
     </script>
 </body>
 
