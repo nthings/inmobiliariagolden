@@ -3,8 +3,6 @@ var multer  = require('multer')
 var fs = require('fs');
 var bcrypt = require('bcrypt-nodejs');
 var Feed = require('feed');
-var gm = require('gm').subClass({ imageMagick: true });
-var phantom = require('phantom');   
 
 var upload = multer({ 
     dest: 'assets/fotoscasas/',
