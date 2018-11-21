@@ -8,7 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="<%=variables.nombreinmobiliaria%>">
 
-    <title id="titulo">Agencia Inmobiliaria <%=variables.nombreinmobiliaria%></title>
+    <title id="titulo">Agencia Inmobiliaria
+        <%=variables.nombreinmobiliaria%>
+    </title>
 
     <!-- Bootstrap Core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
@@ -27,37 +29,37 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-    </head>
+</head>
 
-    <body class="container-fluid">
-        <!-- Loading -->
-        <div class="se-pre-con"></div>
-        <!-- Navigation -->
-        <% if (typeof(eliminar) == 'undefined') {%>
-        <svg id="animacion" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-             viewBox="0 0 1920 1080" style="enable-background:new 0 0 1920 1080;" xml:space="preserve">
+<body class="container-fluid">
+    <!-- Loading -->
+    <div class="se-pre-con"></div>
+    <!-- Navigation -->
+    <% if (typeof(eliminar) == 'undefined') {%>
+    <svg id="animacion" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        x="0px" y="0px" viewBox="0 0 1920 1080" style="enable-background:new 0 0 1920 1080;" xml:space="preserve">
         <g id="house">
             <path d="M1367.4,633.7l-152.9-152.9V251.5h-101.9v127.4L959.7,226L552,633.7v25.5h101.9V914h254.8V761.1h101.9V914h254.8V659.2
-                h101.9L1367.4,633.7L1367.4,633.7z"/>
+                h101.9L1367.4,633.7L1367.4,633.7z" />
         </g>
         <g id="family">
             <g>
                 <g>
-                    <circle class="st0" cx="909.7" cy="624.1" r="17.7"/>
+                    <circle class="st0" cx="909.7" cy="624.1" r="17.7" />
                     <path class="st0" d="M1036.7,704.3l-3-14.4l-6.9-33.4c0,0-3.2-15.3-17-15.3c-16.6,0-25.2,0-27.8,0c-2.7,0-5.9-8.3-8.1-8.3
                         c-2.2,0-22.4,0-30.6,0c-8.2,0-10.8,2.3-10.8,2.3l-1.3,1L908,655c0,0-0.9,0.8-1.8,2.4c-1,1.7-2,4.4-2,8.1c0,7.1,0,14.8,0,22
                         c0,29.1,23.6,32.9,23.6,32.9s1.3,0,3.4,0c0,0.2,0.1,0.4,0,0.7l-16.7,64.5c-0.2,0.8,0.3,1.5,1.1,1.5h20.5c0.8,0,1.5,0.7,1.5,1.5
                         v105.7c0,0.8,0,1.6,0,1.6v0.1c0,8.3,6.8,15.1,15.1,15.1s14.8-6.8,14.8-15.1c0-1.1,0-2.1,0-3.1V787.7c0-0.8,0.7-1.5,1.5-1.5
                         l5.4,0.2c0.8,0,1.5,0.7,1.5,1.6v106.2c0,0.8,0,1.6,0,1.6c0,0.1,0,0.2,0,0.4c0,0.1,0,0.2,0,0.3c0,8.3,6.3,14.5,14.6,14.5
                         s15.3-6.8,15.3-15.1c0-1.1-0.1-2.1-0.1-3.1V788.7c0-0.8,0.7-1.6,1.5-1.6l15.6-0.6c0.8,0,1.4-0.7,1.3-1.6l-11.6-64.6
-                        c1.5,0,2.9,0,4.1,0C1040.8,720.4,1036.7,704.3,1036.7,704.3z"/>
-                    <circle class="st0" cx="973.5" cy="596" r="28"/>
+                        c1.5,0,2.9,0,4.1,0C1040.8,720.4,1036.7,704.3,1036.7,704.3z" />
+                    <circle class="st0" cx="973.5" cy="596" r="28" />
                 </g>
             </g>
             <g>
                 <g>
                     <g>
-                        <circle class="st0" cx="799.4" cy="595.2" r="28.2"/>
+                        <circle class="st0" cx="799.4" cy="595.2" r="28.2" />
                     </g>
                 </g>
                 <g>
@@ -69,7 +71,7 @@
                             c0-1.4,1.2-2.6,2.6-2.6s2.6,1.2,2.6,2.6v228.4c0,9,7.3,16.3,16.3,16.3s16.3-7.3,16.3-16.3V762.5h7v130.3c0,9,7.3,16.3,16.3,16.3
                             s16.3-7.3,16.3-16.3V865c-6.5-3.4-10.9-10.3-10.9-18.1v-54.1c0-7.9,4.4-14.7,10.9-18.1c0-11.5-0.2-89.5-0.3-110.3
                             c0-1.5,1.2-2.8,2.8-2.8c1.5,0,2.8,1.2,2.9,2.7l0,0l0.5,99.8c0,3.1,1.1,5.9,2.8,8.2c0.9,1.1,1.9,2.2,3.1,3v11.9h-2.3
-                            c-3.1,0-5.6,2.5-5.6,5.6V847c0,3.1,2.5,5.6,5.6,5.6h20.5c3.1,0,5.6-2.5,5.6-5.6v-54.1C871,789.8,868.5,787.3,865.4,787.3z"/>
+                            c-3.1,0-5.6,2.5-5.6,5.6V847c0,3.1,2.5,5.6,5.6,5.6h20.5c3.1,0,5.6-2.5,5.6-5.6v-54.1C871,789.8,868.5,787.3,865.4,787.3z" />
                     </g>
                 </g>
             </g>
@@ -78,11 +80,11 @@
                 c0-1-0.2-0.9-1.2-0.4c-10.8,5.1-48.6,25.8-59,31.6c-8.5,4.9-6.5,18.2,8.7,18.2h21.4c1,0,2.5,0.5,2.8,1.5c0,0-0.8,76.6-0.8,77
                 c0,6.2,4.9,11.2,10.8,11.2c6,0,10.8-5,10.8-11.2c0-0.4-0.1-33.5-0.1-33.5c0-1,0.8-2.4,1.9-2.4h35c1,0,1.4,0.7,0.8,1.5
                 c-3.4,5.5-12.4,21.4-16.5,27.7c-3.1,4.2-2.8,10.1,1,13.9c4.1,4.1,11,4.3,15,0c0.2-0.3,12.1-18.4,18.4-31.5c0.4-0.9,0.8-0.8,0.8,0.2
-                c0,8.7,0.1,18.5,0.3,23.6v0.1C1151,910.4,1157.3,915.5,1163.4,915.5z"/>
+                c0,8.7,0.1,18.5,0.3,23.6v0.1C1151,910.4,1157.3,915.5,1163.4,915.5z" />
         </g>
-        <image style="overflow:visible;" width="457" height="280" id="logo" xlink:href="../goldenb.png"  transform="matrix(0.7131 0 0 0.7131 796.75 12.3333)">
+        <image style="overflow:visible;" width="457" height="280" id="logo" xlink:href="../goldenb.png" transform="matrix(0.7131 0 0 0.7131 796.75 12.3333)">
         </image>
-        </svg>
+    </svg>
     <%}%>
 
     <div id="body">
@@ -106,7 +108,8 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a id="irapropiedades" href="#propiedades" class="animado"><i class="fa fa-home fa-fw"></i> Propiedades</a>
+                            <a id="irapropiedades" href="#propiedades" class="animado"><i class="fa fa-home fa-fw"></i>
+                                Propiedades</a>
                         </li>
                         <li>
                             <a href="#asesores" class="animado"><i class="fa fa-users fa-fw"></i> Asesores</a>
@@ -115,246 +118,274 @@
                             <a href="#contacto" class="animado"><i class="fa fa-phone fa-fw"></i>Contacto</a>
                         </li>
                         <li>
-                         <a href="/panel"><i class="fa fa-database fa-fw"></i>Panel</a>
-                     </li>
-                 </ul>
-             </div>
-             <!-- /.navbar-collapse -->
-         </div>
-         <!-- /.container -->
-     </nav>
-     <!-- Full Page Image Background Carousel Header -->
+                            <a href="/panel"><i class="fa fa-database fa-fw"></i>Panel</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+        <!-- Full Page Image Background Carousel Header -->
 
-     <!-- Page Content -->
-     <div class="container page">
-        <div class="row">
-            <div class="col-md-3">
-                <p class="lead">Búsqueda De Propiedades</p>
-                <form action="/" method="POST">
-                    <div class="form-group">
-                        <select name="tipo" class="form-control">
-                            <option value="0">Venta</option>
-                            <option value="1">Renta</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="propiedad">Tipo de Propiedad</label>
-                        <div class="form-group input-group">
-                            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-home fa-fw icono"></i></span>
-                            <select name="propiedad" class="form-control" id="propiedad">
-                                <option value="indistinto">Indistinto</option>
-                                <option value="casa">Casa</option>
-                                <option value="condominio">Condominio</option>
-                                <option value="terreno">Terreno</option>
-                                <option value="comercial">Comercial</option>
-                                <option value="vendido">Vendido</option>
+        <!-- Page Content -->
+        <div class="container page">
+            <div class="row">
+                <div class="col-md-3">
+                    <p class="lead">Búsqueda De Propiedades</p>
+                    <form action="/" method="POST">
+                        <div class="form-group">
+                            <select name="tipo" class="form-control">
+                                <option value="0">Venta</option>
+                                <option value="1">Renta</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="recamaras">Recámaras</label>
-                        <div class="form-group input-group">
-                            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-bed fa-fw icono"></i></span>
-                            <input id="recamaras" class='form-control' type='number' placeholder="Indistinto" name='recamaras'/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="baños">Baños</label>
-                        <div class="form-group input-group">
-                            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-bath fa-fw icono"></i></span>
-                            <input id="baños" class='form-control' type='number' placeholder="Indistinto" name='baños'/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="cochera">Cochera Para...</label>
-                        <div class="form-group input-group">
-                            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-car fa-fw icono"></i></span>
-                            <input id="cochera" class='form-control' type='number' placeholder="Indistinto" name='cochera'/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="foto">Rango de Precios</label>
-                        <div class="form-group input-group">
-                            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-fw fa-usd icono"></i></span>
-                            <input class='form-control number' placeholder="Mínimo" name='precio1'/>
-                            <span class="input-group-addon" id="basic-addon2"><i class="fa fa-fw fa-usd icono"></i></span>
-                            <input class='form-control number' placeholder="Máximo" name='precio2'/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-default btn-block"><i class="fa fa-fw fa-filter"></i> Aplicar Filtro</button>
-                        <% if (typeof(eliminar) != 'undefined') {%>
-                        <a href="/" class="btn btn-danger btn-block oculto"><i class="fa fa-fw fa-filter"></i> Eliminar Filtro</a>
-                        <%}%>
-                    </div>
-                </form>
-            </div>
-
-            <div class="col-md-9">
-
-                <div class="row" id="jpages">
-                    <!--Por cada propiedad en la base de datos mostrar una tarjeta-->
-                    <% if (typeof(propiedades) != 'undefined') {%>
-                    <% if(propiedades.length > 0){%>
-                    <% propiedades.forEach(function(propiedad) { %>
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                            <div class="imgLiquid">
-                                <img src="<%=propiedad.url%>" class="img-responsive">
+                        <div class="form-group">
+                            <label for="propiedad">Tipo de Propiedad</label>
+                            <div class="form-group input-group">
+                                <span class="input-group-addon" id="basic-addon1"><i class="fa fa-home fa-fw icono"></i></span>
+                                <select name="propiedad" class="form-control" id="propiedad">
+                                    <option value="indistinto">Indistinto</option>
+                                    <option value="casa">Casa</option>
+                                    <option value="condominio">Condominio</option>
+                                    <option value="terreno">Terreno</option>
+                                    <option value="comercial">Comercial</option>
+                                    <option value="vendido">Vendido</option>
+                                </select>
                             </div>
-                            <div class="caption row row-eq-height">
-                                <div class="col-xs-12">
-                                    <p class="h4 capitalize"><a href="propiedad/?id=<%=propiedad.idpropiedades%>"><%=propiedad.nombrepropiedad%></a></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="recamaras">Recámaras</label>
+                            <div class="form-group input-group">
+                                <span class="input-group-addon" id="basic-addon1"><i class="fa fa-bed fa-fw icono"></i></span>
+                                <input id="recamaras" class='form-control' type='number' placeholder="Indistinto" name='recamaras' />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="baños">Baños</label>
+                            <div class="form-group input-group">
+                                <span class="input-group-addon" id="basic-addon1"><i class="fa fa-bath fa-fw icono"></i></span>
+                                <input id="baños" class='form-control' type='number' placeholder="Indistinto" name='baños' />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="cochera">Cochera Para...</label>
+                            <div class="form-group input-group">
+                                <span class="input-group-addon" id="basic-addon1"><i class="fa fa-car fa-fw icono"></i></span>
+                                <input id="cochera" class='form-control' type='number' placeholder="Indistinto" name='cochera' />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="foto">Rango de Precios</label>
+                            <div class="form-group input-group">
+                                <span class="input-group-addon" id="basic-addon1"><i class="fa fa-fw fa-usd icono"></i></span>
+                                <input class='form-control number' placeholder="Mínimo" name='precio1' />
+                                <span class="input-group-addon" id="basic-addon2"><i class="fa fa-fw fa-usd icono"></i></span>
+                                <input class='form-control number' placeholder="Máximo" name='precio2' />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-default btn-block"><i class="fa fa-fw fa-filter"></i>
+                                Aplicar Filtro</button>
+                            <% if (typeof(eliminar) != 'undefined') {%>
+                            <a href="/" class="btn btn-danger btn-block oculto"><i class="fa fa-fw fa-filter"></i>
+                                Eliminar Filtro</a>
+                            <%}%>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-md-9">
+
+                    <div class="row" id="jpages">
+                        <!--Por cada propiedad en la base de datos mostrar una tarjeta-->
+                        <% if (typeof(propiedades) != 'undefined') {%>
+                        <% if(propiedades.length > 0){%>
+                        <% propiedades.forEach(function(propiedad) { %>
+                        <div class="col-sm-4 col-lg-4 col-md-4">
+                            <div class="thumbnail">
+                                <div class="imgLiquid">
+                                    <img src="<%=propiedad.url%>" class="img-responsive">
                                 </div>
-                                <div class="col-xs-6">
-                                    <h4>$<%=propiedad.precio.toLocaleString()%></h4> 
-                                </div>
-                                <div class="col-xs-6">  
-                                    <p class="capitalize"><%=propiedad.tipo%></p> 
-                                        
-                                    <p class="capitalize">
-                                        <% if (propiedad.renta == 1) {%>
+                                <div class="caption row row-eq-height">
+                                    <div class="col-xs-12">
+                                        <p class="h4 capitalize"><a href="propiedad/?id=<%=propiedad.idpropiedades%>">
+                                                <%=propiedad.nombrepropiedad%></a></p>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <h4>$
+                                            <%=propiedad.precio.toLocaleString()%>
+                                        </h4>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <p class="capitalize">
+                                            <%=propiedad.tipo%>
+                                        </p>
+
+                                        <p class="capitalize">
+                                            <% if (propiedad.renta == 1) {%>
                                             en Renta
-                                        <%}else{%>
+                                            <%}else{%>
                                             en Venta
-                                        <%}%>
-                                    </p>
-                                </div>
-                                <div class="col-xs-12">
-                                    <ul class="list-inline">
-                                        <li>
-                                            <svg class="icono" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
-                                                <g>
-                                                    <rect x="413.538" y="472.615" width="39.385" height="39.385" style="fill:#444242;"/>
-                                                </g>
+                                            <%}%>
+                                        </p>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <ul class="list-inline">
+                                            <li>
+                                                <svg class="icono" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
+                                                    style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                                                    <g>
+                                                        <rect x="413.538" y="472.615" width="39.385" height="39.385"
+                                                            style="fill:#444242;" />
+                                                    </g>
 
 
-                                                <g>
-                                                    <path d="M452.923,131.282V0L59.077,512h131.282v-39.385h26.256V512H256v-39.385h26.256V512h39.385v-39.385h26.256V512h39.385
+                                                    <g>
+                                                        <path d="M452.923,131.282V0L59.077,512h131.282v-39.385h26.256V512H256v-39.385h26.256V512h39.385v-39.385h26.256V512h39.385
                                                         v-39.385h26.256v-26.256h39.385v-52.513h-39.385V367.59h39.385v-52.513h-39.385V288.82h39.385v-52.513h-39.385v-26.256h39.385
-                                                        v-52.513h-39.385v-26.256H452.923z M341.333,400.41H285.7l55.633-72.322V400.41z" style="fill:#444242;"/>
-                                                </g>
-                                            </svg>
-                                            <%=propiedad.m2%>m2
-                                        </li>
-                                        <%if(propiedad.metrosconstruidos != 0){%>
+                                                        v-52.513h-39.385v-26.256H452.923z M341.333,400.41H285.7l55.633-72.322V400.41z"
+                                                            style="fill:#444242;" />
+                                                    </g>
+                                                </svg>
+                                                <%=propiedad.m2%>m2
+                                            </li>
+                                            <%if(propiedad.metrosconstruidos != 0){%>
                                             <li>
                                                 <i class="fa fa-home fa-fw icono"></i>
                                                 <%=propiedad.metrosconstruidos%>
                                             </li>
-                                        <%}%>
-                                        <%if(propiedad.recamaras != 0){%>
+                                            <%}%>
+                                            <%if(propiedad.recamaras != 0){%>
                                             <li>
                                                 <i class="fa fa-bed fa-fw icono"></i>
                                                 <%=propiedad.recamaras%>
                                             </li>
-                                        <%}%>
-                                        <%if(propiedad.baños != 0){%>
+                                            <%}%>
+                                            <%if(propiedad.baños != 0){%>
                                             <li>
                                                 <i class="fa fa-bath fa-fw icono"></i>
                                                 <%=propiedad.baños%>
                                             </li>
-                                        <%}%>
-                                        <%if(propiedad.cochera != 0){%>
+                                            <%}%>
+                                            <%if(propiedad.cochera != 0){%>
                                             <li>
                                                 <i class="fa fa-car fa-fw icono"></i>
                                                 <%=propiedad.cochera%>
                                             </li>
-                                        <%}%>
-                                    </ul>
+                                            <%}%>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="ratings">
-                                <% if (propiedad.vendida == 1 && propiedad.renta == 1) {%>
+                                <div class="ratings">
+                                    <% if (propiedad.vendida == 1 && propiedad.renta == 1) {%>
                                     <div class="ribbonvendida"><span>RENTADA</span></div>
-                                <%}%>
-                                <% if (propiedad.vendida == 1 && propiedad.renta == 0) {%>
+                                    <%}%>
+                                    <% if (propiedad.vendida == 1 && propiedad.renta == 0) {%>
                                     <div class="ribbonvendida"><span>VENDIDA</span></div>
-                                <%}%>
-                            </div>
+                                    <%}%>
+                                </div>
                             </div>
                         </div>
                         <% }); %>
                         <%}else{%>
-                        <div class="col-xs-12"><h1>NO HAY PROPIEDADES AÚN</h1></div>
+                        <div class="col-xs-12">
+                            <h1>NO HAY PROPIEDADES AÚN</h1>
+                        </div>
                         <%}%>
                         <%}else{%>
-                        <div class="col-xs-12"><h1>NO HAY PROPIEDADES AÚN</h1></div>
+                        <div class="col-xs-12">
+                            <h1>NO HAY PROPIEDADES AÚN</h1>
+                        </div>
                         <%}%>
                     </div>
                 </div>
                 <!-- Pagination -->
                 <div class="col-xs-12 text-center" id="asesores">
-                   <div id="holder" class="holder"></div>
-               </div>
-           </div>
-
-           <div class="row">
-            <div class="col-xs-12 text-center"><h2>Nuestros Asesores</h2></div>  
-            <!-- Despues de pagination -->    
-            <% if (typeof(asesores) != 'undefined') {%>
-            <% asesores.forEach(function(asesor) { %>
-            <div class="col-lg-4 col-sm-6 text-center">
-                <img class="img-circle img-responsive img-center" src="<%=asesor.foto%>" width="360px">
-                <h3><%=asesor.nombre%></h3>
-                <p><%=asesor.telefono%></p>
+                    <div id="holder" class="holder"></div>
+                </div>
             </div>
-            <% }); %>
-            <%}else{%>
-            <h3 class="text-center"><i class="fa fa-fw fa-close"></i> NO HAY ASESORES AÚN</h3>
-            <%}%>
-        </div>
-        <!-- Ir arriba -->
-        <a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="Click para regresar arriba" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
 
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h2>Nuestros Asesores</h2>
+                </div>
+                <!-- Despues de pagination -->
+                <% if (typeof(asesores) != 'undefined') {%>
+                <% asesores.forEach(function(asesor) { %>
+                <div class="col-lg-4 col-sm-6 text-center">
+                    <img class="img-circle img-responsive img-center" src="<%=asesor.foto%>" width="360px">
+                    <h3>
+                        <%=asesor.nombre%>
+                    </h3>
+                    <p>
+                        <%=asesor.telefono%>
+                    </p>
+                </div>
+                <% }); %>
+                <%}else{%>
+                <h3 class="text-center"><i class="fa fa-fw fa-close"></i> NO HAY ASESORES AÚN</h3>
+                <%}%>
+            </div>
+            <!-- Ir arriba -->
+            <a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="Click para regresar arriba"
+                data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
+
+        </div>
+        <!-- /.container -->
+
+        <div class="container" id="contacto">
+
+            <hr>
+
+            <!-- Footer -->
+            <footer>
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2>Contacto</h2>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 text-center">
+                        <div id="map_container"></div>
+                        <div id="map"></div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 text-center">
+                        <p>Agencia Inmobiliaria
+                            <%=variables.nombreinmobiliaria%>
+                        </p>
+                        <p>
+                            <%=variables.direccion%>
+                        </p>
+                        <p>
+                            <%=variables.telefono%>
+                        </p>
+
+                        <h3>Desarrollado por:</h3>
+                        <a href="http://hittek.mx"><img src="../hittek.png" width="150px" /></a>
+                    </div>
+                </div>
+            </footer>
+        </div>
     </div>
     <!-- /.container -->
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+        crossorigin="anonymous"></script>
 
-    <div class="container" id="contacto">
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-        <hr>
+    <script type="text/javascript" src="../js/jPages.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2xcvEGwhwHHdzXpEON6qMCGkDDAcmqIU&callback=initMap"></script>
+<script src="
+        https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"> </script> <script src="../js/imgLiquid-min.js"></script>
+    <script src="../js/funcioneshittek.js"></script>
 
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>Contacto</h2>
-                </div>
-                <div class="col-xs-12 col-sm-6 text-center">
-                    <div id="map_container"></div>
-                    <div id="map"></div>
-                </div>  
-                <div class="col-xs-12 col-sm-6 text-center">
-                    <p>Agencia Inmobiliaria <%=variables.nombreinmobiliaria%></p>
-                    <p><%=variables.direccion%></p>
-                    <p><%=variables.telefono%></p>
+    </script>
 
-                    <h3>Desarrollado por:</h3>
-                    <a href="http://hittek.mx"><img src="../hittek.png" width="150px" /></a>
-                </div>  
-            </div>
-        </footer>
-    </div>
-</div>
-<!-- /.container -->
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<script type="text/javascript" src="../js/jPages.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6gBHZDEnlaRdwpP8BqV7lfOVcEmkQNUI"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
-<script src="../js/imgLiquid-min.js"></script>
-<script src="../js/funcioneshittek.js"></script>
-
-</script>
-
-<script type="text/javascript">
+    <script type="text/javascript">
         // Animación de entrada
-        $(window).on('load',function(){
+        $(window).on('load', function () {
             // Animate loader off screen
             $(".se-pre-con").fadeOut("slow");
             document.getElementById("family").classList.add("family");
@@ -362,11 +393,11 @@
             document.getElementById("body").classList.add("body");
             document.getElementById("logo").classList.add("logo");
             var animacion = document.getElementById('animacion');
-            setTimeout(function(){
+            setTimeout(function () {
                 animacion.style.display = 'none';
             }, 3000);
         });
-        $(document).ready(function(){
+        $(document).ready(function () {
             /*Scroll top*/
 
             $(window).scroll(function () {
@@ -376,62 +407,62 @@
                     $('#back-to-top').fadeOut();
                 }
             });
-                // scroll body to 0px on click
-                $('.back-to-top').click(function () {
-                    $('#back-to-top').tooltip('hide');
-                    $('body,html').animate({
-                        scrollTop: 0
-                    }, 800);
-                    return false;
-                });
-                
-                $('#irapropiedades').click(function () {
-                    $('#back-to-top').tooltip('hide');
-                    $('body,html').animate({
-                        scrollTop: 0
-                    }, 800);
-                    return false;
-                });
-
-                $('#back-to-top').tooltip('show');
-
-                $("#holder").jPages({
-                    containerID : "jpages",
-                    previous : "❮",
-                    next : "❯",
-                    perPage : 6,
-                    delay : 0
-                });
-
-                $("a").click(function(){
-                    setTimeout(function(){
-                        $('.list-group-item').removeAttr("style");
-                    }, 50);
-                });
-
-                $(".imgLiquid").imgLiquid({
-                    fill: true,
-                    horizontalAlign: "center",
-                    verticalAlign: "center"
-                });  
-                
+            // scroll body to 0px on click
+            $('.back-to-top').click(function () {
+                $('#back-to-top').tooltip('hide');
+                $('body,html').animate({
+                    scrollTop: 0
+                }, 800);
+                return false;
             });
+
+            $('#irapropiedades').click(function () {
+                $('#back-to-top').tooltip('hide');
+                $('body,html').animate({
+                    scrollTop: 0
+                }, 800);
+                return false;
+            });
+
+            $('#back-to-top').tooltip('show');
+
+            $("#holder").jPages({
+                containerID: "jpages",
+                previous: "❮",
+                next: "❯",
+                perPage: 6,
+                delay: 0
+            });
+
+            $("a").click(function () {
+                setTimeout(function () {
+                    $('.list-group-item').removeAttr("style");
+                }, 50);
+            });
+
+            $(".imgLiquid").imgLiquid({
+                fill: true,
+                horizontalAlign: "center",
+                verticalAlign: "center"
+            });
+
+        });
         /*Animación al dar click a menú*/
-        $(document).on('click', '.animado', function(event){
+        $(document).on('click', '.animado', function (event) {
             event.preventDefault();
 
             $('html, body').animate({
-                scrollTop: $( $.attr(this, 'href') ).offset().top
+                scrollTop: $($.attr(this, 'href')).offset().top
             }, 500);
         });
 
         /*Mapa google*/
-        function initialize() {
+        function initMap() {
             /*Dirección de la propiedad del backend*/
             var latitud = '24.034549';
 
             var longitud = '-104.672182';
-            var myLatlng = new google.maps.LatLng(latitud,longitud);
+            var myLatlng = new google.maps.LatLng(latitud, longitud);
             var icono = '../pin.png';
             // var icono = '../pin.png';
             var mapOptions = {
@@ -441,38 +472,38 @@
             }
 
             var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-                    //Callout Content
-                    var contentString = '<%=variables.nombreinmobiliaria%>';
-                    //Set window width + content
-                    var infowindow = new google.maps.InfoWindow({
-                        content: contentString,
-                        maxWidth: 500
-                    });
+            //Callout Content
+            var contentString = '<%=variables.nombreinmobiliaria%>';
+            //Set window width + content
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString,
+                maxWidth: 500
+            });
 
-                    //Add Marker
-                    var marker = new google.maps.Marker({
-                        position: myLatlng,
-                        map: map,
-                        icon: icono,
-                        title: 'image title'
-                    });
+            //Add Marker
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map,
+                icon: icono,
+                title: 'image title'
+            });
 
-                    infowindow.open(map,marker);
+            infowindow.open(map, marker);
 
-                    google.maps.event.addListener(marker, 'click', function() {
-                        infowindow.open(map,marker);
-                    });
+            google.maps.event.addListener(marker, 'click', function () {
+                infowindow.open(map, marker);
+            });
 
-                    //Resize Function
-                    google.maps.event.addDomListener(window, "resize", function() {
-                        var center = map.getCenter();
-                        google.maps.event.trigger(map, "resize");
-                        map.setCenter(center);
+            //Resize Function
+            google.maps.event.addDomListener(window, "resize", function () {
+                var center = map.getCenter();
+                google.maps.event.trigger(map, "resize");
+                map.setCenter(center);
 
-                    });
-                }
-                    google.maps.event.addDomListener(window, 'load', initialize);                
-            </script>
-        </body>
+            });
+        }
+        google.maps.event.addDomListener(window, 'load', initMap);                
+    </script>
+</body>
 
-        </html>
+</html>
