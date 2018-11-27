@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +8,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Agencia Inmobiliaria <%=variables.nombreinmobiliaria%> - Panel</title>
+    <title>Agencia Inmobiliaria
+        <%=variables.nombreinmobiliaria%> - Panel</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
@@ -27,595 +29,587 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
-    </head>
-    <body>
-        <!-- Loading -->
-        <div class="se-pre-con"></div>
-        <div id="wrapper">
-            <!-- Navigation -->
-            <nav class="navbar navbar-inverse" role="navigation">
-                <div class="container">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="/" target="_blank"><!-- <img src="../logoup.png" id="logo" alt=""> -->
-                            <img src="../golden.png" id="logo" height="80px" alt=""></a>
-                        <button type="button" class="navbar-toggle pull-right" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                            <span class="sr-only">Activar Navegación</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                    </div>
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse menu pull-right" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%=user.nombre%> <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="/editarasesor"><i class="fa fa-fw fa-user"></i> Editar Perfil</a>
-                                    </li>
-                                    <li>
-                                        <a href="/logout"><i class="fa fa-fw fa-power-off"></i> Cerrar Sesión</a>
-                                    </li>
+</head>
 
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- /.navbar-collapse -->
+<body>
+    <!-- Loading -->
+    <div class="se-pre-con"></div>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/" target="_blank">
+                        <!-- <img src="../logoup.png" id="logo" alt=""> -->
+                        <img src="../golden.png" id="logo" height="80px" alt=""></a>
+                    <button type="button" class="navbar-toggle pull-right" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Activar Navegación</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                 </div>
-                <!-- /.container -->
-            </nav>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse menu pull-right" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>
+                                <%=user.nombre%> <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/editarasesor"><i class="fa fa-fw fa-user"></i> Editar Perfil</a>
+                                </li>
+                                <li>
+                                    <a href="/logout"><i class="fa fa-fw fa-power-off"></i> Cerrar Sesión</a>
+                                </li>
 
-            <div id="page-wrapper">
-                <div class="container-fluid">
-                    <!-- Page Heading -->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h1 class="page-header">
-                                Bienvenido <small><%=user.nombre%></small>
-                                <a href="/citas" class="pull-right btn btn-lg btn-default"><i class="fa fa-fw fa-calendar"></i> Citas</a>
-                            </h1>
-
-                        </div>
-                    </div>
-                    <!-- /.row -->
-                    <div class="row">
-                        <%if(user.socio == 1){%>
-                        <%var columnas="col-lg-4  col-md-6";%>
-                        <%}else{%>
-                        <%var columnas="col-lg-6";%>
-                        <%}%>
-                        <div class="<%=columnas%>">
-                            <div class="panel panel-primary">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                            <i class="fa fa-home fa-5x"></i>
-                                        </div>
-                                        <div class="col-xs-9 text-right">
-                                            <% if (typeof(propiedades) != 'undefined') {%>
-                                            <div class="huge"><%=propiedades.length%></div>
-                                            <%if(propiedades.length > 1 || propiedades.length == 0){%>
-                                            <div>Propiedades</div>
-                                            <%}else{%>
-                                            <div>Propiedad</div>
-                                            <%}%>
-                                            <%}%>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="<%=columnas%>">
-                            <div class="panel panel-green">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                            <i class="fa fa-usd fa-5x"></i>
-                                        </div>
-                                        <div class="col-xs-9 text-right">
-                                            <% if (typeof(propiedadesvendidas) != 'undefined') {%>
-                                            <div class="huge"><%=propiedadesvendidas.length%></div>
-                                            <%if(propiedadesvendidas.length > 1 || propiedadesvendidas.length == 0){%>
-                                            <div>Propiedades Vendidas</div>
-                                            <%}else{%>
-                                            <div>Propiedad Vendida</div>
-                                            <%}%>
-                                            <%}%>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <%if(user.socio == 1){%>
-                        <div class="<%=columnas%>">
-                            <div class="panel panel-yellow">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                            <i class="fa fa-users fa-5x"></i>
-                                        </div>
-                                        <div class="col-xs-9 text-right">
-                                            <% if (typeof(asesores) != 'undefined') {%>
-                                            <div class="huge"><%=asesores.length%></div>
-                                            <%if(asesores.length > 1 || asesores.length == 0){%>
-                                            <div>Asesores</div>
-                                            <%}else{%>
-                                            <div>Asesor</div>
-                                            <%}%>
-                                            <%}%>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <%}%>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">
-                                        <i class="fa fa-home fa-fw"></i> Tus Propiedades
-                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarPropiedad"><i class="fa fa-fw fa-plus"></i>Agregar Propiedad</button>
-                                    </h3>
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control" id="searchinput" type="search" placeholder="Buscar Propiedad" />
-                                </div>
-                                <div class="panel-body">
-                                    <div class="list-group" id="propiedades">
-                                        <% if (typeof(propiedades) != 'undefined' && propiedades.length > 0) {%>
-                                        <% propiedades.forEach(function(propiedad) { %>
-                                        <p class="list-group-item">
-                                            <%if(user.idasesores == propiedad.asesores_idasesores){%>
-                                                <a href="vendida/?id=<%=propiedad.idpropiedades%>" class="btn btn-xs btn-success"><i class="fa fa-fw fa-usd"></i>VENDIDA</a>
-                                                <a href="editarpropiedad/?id=<%=propiedad.idpropiedades%>" class="btn btn-xs btn-primary"><i class="fa fa-fw fa-pencil"></i>EDITAR</a>
-                                            <%}%>
-                                            <a href="verpropiedad/?id=<%=propiedad.idpropiedades%>" class="btn btn-xs btn-primary"><i class="fa fa-fw fa-search"></i>VER</a>
-                                            <span class="badge">Agregada el: <%=propiedad.fechacreacion.toISOString().substring(0, 10)%></span>
-                                            <a href="propiedad/?id=<%=propiedad.idpropiedades%>" target="_blank" ><img src="<%=propiedad.url%>" width="100px" height="67px"><span class="nombre"><%=propiedad.nombrepropiedad%></span></a>
-                                        </p>
-                                        <% }); %>
-                                        <%}else{%>
-                                        <h3 class="text-center list-group-item"><i class="fa fa-fw fa-close"></i> NO HAY PROPIEDADES AÚN</h3>
-                                        <%}%>
-                                    </div>
-                                    <div id="holder1" class="holder"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title"><i class="fa fa-usd fa-fw"></i> Propiedades Vendidas ó Rentadas</h3>
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control" id="searchinput2" type="search" placeholder="Buscar Propiedad Vendida" />
-                                </div>
-                                <div class="panel-body">
-                                    <div class="list-group" id="propiedadesvendidas">
-                                        <% if (typeof(propiedadesvendidas) != 'undefined' && propiedadesvendidas.length > 0) {%>
-                                        <% propiedadesvendidas.forEach(function(propiedad) { %>
-                                        <p class="list-group-item">
-                                            <span class="badge">Vendida el: <%=propiedad.fechaventa.toISOString().substring(0, 10)%></span>
-                                            <%if(user.idasesores == propiedad.asesores_idasesores){%>
-                                                <a href="deshacervendida/?id=<%=propiedad.idpropiedades%>" class="btn btn-xs btn-warning"><i class="fa fa-fw fa-usd"></i>DESHACER</a>
-                                                <button id="<%=propiedad.idpropiedades%>" type="button" class="btn btn-xs btn-danger eliminar"><i class="fa fa-fw fa-trash"></i>ELIMINAR</button>
-                                            <%}%>
-                                            <img src="<%=propiedad.url%>" width="100px" height="67px"><span class="nombre"><%=propiedad.nombrepropiedad%></span>
-                                        </p>
-                                        <% }); %>
-                                        <%}else{%>
-                                        <h3 class="text-center list-group-item"><i class="fa fa-fw fa-close"></i> NO HAY PROPIEDADES VENDIDAS AÚN</h3>
-                                        <%}%>
-                                    </div>
-                                    <div id="holder2" class="holder"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <%if(user.socio == 1){%>
-                        <div class="col-lg-12">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">
-                                        <i class="fa fa-users fa-fw"></i> Asesores
-                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarAsesor"><i class="fa fa-fw fa-plus"></i>Agregar Asesor</button>
-                                    </h3>
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control" id="searchinput3" type="search" placeholder="Buscar Asesor" />
-                                </div>
-                                <div class="panel-body">
-                                    <div class="list-group" id="asesores">
-                                        <% if (typeof(asesores) != 'undefined' && asesores.length > 0) {%>
-                                        <% asesores.forEach(function(asesor) { %>
-                                        <p class="list-group-item">
-                                            <button id="<%=asesor.idasesores%>" type="button" class="btn btn-xs btn-danger eliminarasesor"><i class="fa fa-fw fa-trash"></i>ELIMINAR</button>
-                                            <img src="<%=asesor.foto%>" width="100px" height="67px"><span class="nombre"><%=asesor.nombre%></span>
-                                        </p>
-                                        <% }); %>
-                                        <%}else{%>
-                                        <h3 class="list-group-item text-center"><i class="fa fa-fw fa-close"></i> NO HAY ASESORES AÚN</h3>
-                                        <%}%>
-                                    </div>
-                                    <div id="holder3" class="holder"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <%}%>
-                    </div>
-                    <!-- /.row -->
-
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
-                <!-- /.container-fluid -->
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Bienvenido <small>
+                                <%=user.nombre%></small>
+                            <a href="/citas" class="pull-right btn btn-lg btn-default"><i class="fa fa-fw fa-calendar"></i>
+                                Citas</a>
+                        </h1>
+
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <%if(user.socio == 1){%>
+                    <%var columnas="col-lg-4  col-md-6";%>
+                    <%}else{%>
+                    <%var columnas="col-lg-6";%>
+                    <%}%>
+                    <div class="<%=columnas%>">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-home fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <% if (typeof(propiedades) != 'undefined') {%>
+                                        <div class="huge">
+                                            <%=propiedades.length%>
+                                        </div>
+                                        <%if(propiedades.length > 1 || propiedades.length == 0){%>
+                                        <div>Propiedades</div>
+                                        <%}else{%>
+                                        <div>Propiedad</div>
+                                        <%}%>
+                                        <%}%>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="<%=columnas%>">
+                        <div class="panel panel-green">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-usd fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <% if (typeof(propiedadesvendidas) != 'undefined') {%>
+                                        <div class="huge">
+                                            <%=propiedadesvendidas.length%>
+                                        </div>
+                                        <%if(propiedadesvendidas.length > 1 || propiedadesvendidas.length == 0){%>
+                                        <div>Propiedades Vendidas</div>
+                                        <%}else{%>
+                                        <div>Propiedad Vendida</div>
+                                        <%}%>
+                                        <%}%>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <%if(user.socio == 1){%>
+                    <div class="<%=columnas%>">
+                        <div class="panel panel-yellow">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-users fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <% if (typeof(asesores) != 'undefined') {%>
+                                        <div class="huge">
+                                            <%=asesores.length%>
+                                        </div>
+                                        <%if(asesores.length > 1 || asesores.length == 0){%>
+                                        <div>Asesores</div>
+                                        <%}else{%>
+                                        <div>Asesor</div>
+                                        <%}%>
+                                        <%}%>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <%}%>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    <i class="fa fa-home fa-fw"></i> Tus Propiedades
+                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarPropiedad"><i
+                                            class="fa fa-fw fa-plus"></i>Agregar Propiedad</button>
+                                </h3>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" id="searchinput" type="search" placeholder="Buscar Propiedad" />
+                            </div>
+                            <div class="panel-body">
+                                <div class="list-group" id="propiedades">
+                                    <% if (typeof(propiedades) != 'undefined' && propiedades.length > 0) {%>
+                                    <% propiedades.forEach(function(propiedad) { %>
+                                    <p class="list-group-item">
+                                        <%if(user.idasesores == propiedad.asesores_idasesores){%>
+                                        <a href="vendida/?id=<%=propiedad.idpropiedades%>" class="btn btn-xs btn-success"><i
+                                                class="fa fa-fw fa-usd"></i>VENDIDA</a>
+                                        <a href="editarpropiedad/?id=<%=propiedad.idpropiedades%>" class="btn btn-xs btn-primary"><i
+                                                class="fa fa-fw fa-pencil"></i>EDITAR</a>
+                                        <%}%>
+                                        <a href="verpropiedad/?id=<%=propiedad.idpropiedades%>" class="btn btn-xs btn-primary"><i
+                                                class="fa fa-fw fa-search"></i>VER</a>
+                                        <span class="badge">Agregada el:
+                                            <%=propiedad.fechacreacion.toISOString().substring(0, 10)%></span>
+                                        <a href="propiedad/?id=<%=propiedad.idpropiedades%>" target="_blank"><img src="<%=propiedad.url%>"
+                                                width="100px" height="67px"><span class="nombre">
+                                                <%=propiedad.nombrepropiedad%></span></a>
+                                    </p>
+                                    <% }); %>
+                                    <%}else{%>
+                                    <h3 class="text-center list-group-item"><i class="fa fa-fw fa-close"></i> NO HAY
+                                        PROPIEDADES AÚN</h3>
+                                    <%}%>
+                                </div>
+                                <div id="holder1" class="holder"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="fa fa-usd fa-fw"></i> Propiedades Vendidas ó Rentadas</h3>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" id="searchinput2" type="search" placeholder="Buscar Propiedad Vendida" />
+                            </div>
+                            <div class="panel-body">
+                                <div class="list-group" id="propiedadesvendidas">
+                                    <% if (typeof(propiedadesvendidas) != 'undefined' && propiedadesvendidas.length > 0) {%>
+                                    <% propiedadesvendidas.forEach(function(propiedad) { %>
+                                    <p class="list-group-item">
+                                        <span class="badge">Vendida el:
+                                            <%=propiedad.fechaventa.toISOString().substring(0, 10)%></span>
+                                        <%if(user.idasesores == propiedad.asesores_idasesores){%>
+                                        <a href="deshacervendida/?id=<%=propiedad.idpropiedades%>" class="btn btn-xs btn-warning"><i
+                                                class="fa fa-fw fa-usd"></i>DESHACER</a>
+                                        <button id="<%=propiedad.idpropiedades%>" type="button" class="btn btn-xs btn-danger eliminar"><i
+                                                class="fa fa-fw fa-trash"></i>ELIMINAR</button>
+                                        <%}%>
+                                        <img src="<%=propiedad.url%>" width="100px" height="67px"><span class="nombre">
+                                            <%=propiedad.nombrepropiedad%></span>
+                                    </p>
+                                    <% }); %>
+                                    <%}else{%>
+                                    <h3 class="text-center list-group-item"><i class="fa fa-fw fa-close"></i> NO HAY
+                                        PROPIEDADES VENDIDAS AÚN</h3>
+                                    <%}%>
+                                </div>
+                                <div id="holder2" class="holder"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <%if(user.socio == 1){%>
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    <i class="fa fa-users fa-fw"></i> Asesores
+                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarAsesor"><i
+                                            class="fa fa-fw fa-plus"></i>Agregar Asesor</button>
+                                </h3>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" id="searchinput3" type="search" placeholder="Buscar Asesor" />
+                            </div>
+                            <div class="panel-body">
+                                <div class="list-group" id="asesores">
+                                    <% if (typeof(asesores) != 'undefined' && asesores.length > 0) {%>
+                                    <% asesores.forEach(function(asesor) { %>
+                                    <p class="list-group-item">
+                                        <button id="<%=asesor.idasesores%>" type="button" class="btn btn-xs btn-danger eliminarasesor"><i
+                                                class="fa fa-fw fa-trash"></i>ELIMINAR</button>
+                                        <img src="<%=asesor.foto%>" width="100px" height="67px"><span class="nombre">
+                                            <%=asesor.nombre%></span>
+                                    </p>
+                                    <% }); %>
+                                    <%}else{%>
+                                    <h3 class="list-group-item text-center"><i class="fa fa-fw fa-close"></i> NO HAY
+                                        ASESORES AÚN</h3>
+                                    <%}%>
+                                </div>
+                                <div id="holder3" class="holder"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <%}%>
+                </div>
+                <!-- /.row -->
 
             </div>
-            <!-- /#page-wrapper -->
+            <!-- /.container-fluid -->
 
         </div>
-        <!-- /#wrapper -->
-        <!-- Modal -->
-        <div id="agregarPropiedad" class="modal fade" role="dialog">
-          <div class="modal-dialog modal-lg">
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+    <!-- Modal -->
+    <div id="agregarPropiedad" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
 
             <!-- Modal content-->
             <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><i class="fa fa-fw fa-plus"></i>Agregar Una Propiedad</h4>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><i class="fa fa-fw fa-plus"></i>Agregar Una Propiedad</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="/agregarpropiedad" id="agregar" enctype='multipart/form-data' method="POST">
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                                <label for="ventaorenta"><i class="fa fa-home fa-fw"></i>¿Venta ó Renta?</label>
+                                <input id="ventaorenta" type="checkbox" name="ventaorenta" data-on="success" data-off="sucess"
+                                    data-on-text="VENTA" data-off-text="RENTA" value="0" checked>
+                            </div>
+                            <div class="form-group col-xs-12">
+                                <label for="propiedad"><i class="fa fa-home fa-fw"></i>Tipo de Propiedad</label>
+                                <select name="tipo" class="form-control" id="tipo">
+                                    <option value="casa">Casa</option>
+                                    <option value="condominio">Condominio</option>
+                                    <option value="terreno">Terreno</option>
+                                    <option value="comercial">Comercial</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-xs-12">
+                                <input type="text" name="id" class="oculto" value="<%=user.idasesores%>">
+                                <label for="nombrepropiedad"><i class="fa fa-home fa-fw"></i>Nombre de La Propiedad</label>
+                                <input type="text" name="nombrepropiedad" id="nombrepropiedad" placeholder="¿Qué?"
+                                    class="form-control" required />
+                            </div>
+                            <div class="form-group col-xs-12">
+                                <label for="precio"><i class="fa fa-usd fa-fw"></i>Precio</label>
+                                <input class='form-control number' placeholder="¿Cuánto?" name='precio' required />
+                            </div>
+                            <div class="form-group col-xs-12">
+                                <label for="m2"><object type="image/svg+xml" data="svg/metros.svg" class="icono"></object>
+                                    M2</label>
+                                <input type="number" step="any" name="m2" id="m2" placeholder="¿Qué Tamaño Tiene El Terreno?"
+                                    class="form-control" required />
+                            </div>
+                            <div class="noterreno form-group col-xs-6 col-md-3">
+                                <label for="m2"><i class="fa fa-home fa-fw"></i> Metros Construidos</label>
+                                <input type="number" step="any" name="metrosconstruidos" id="metrosconstruidos"
+                                    placeholder="¿Cuánto Tiene Construido?" class="form-control" />
+                            </div>
+                            <div class="noterreno form-group col-xs-6 col-md-3">
+                                <label for="recamaras"><i class="fa fa-bed fa-fw"></i> Recámaras</label>
+                                <input type="number" name="recamaras" id="recamaras" placeholder="¿Cuántas?" class="form-control" />
+                            </div>
+                            <div class="baños form-group col-xs-6 col-md-3">
+                                <label for="baños"><i class="fa fa-bath fa-fw"></i> Baños</label>
+                                <input type="number" name="baños" id="baños" placeholder="¿Cuántos?" class="form-control" />
+                                <div class="checkbox">
+                                    <label class="checkbox-inline"><input type="checkbox" value="si" name="ymedio">Y
+                                        medio</label>
+                                </div>
+                            </div>
+                            <div class="noterreno form-group col-xs-6 col-md-3">
+                                <label for="cochera"><i class="fa fa-car fa-fw"></i> Cochera Para...</label>
+                                <input type="number" name="cochera" id="cochera" placeholder="¿Cuántos Autos?" class="form-control" />
+                                <div class="checkbox">
+                                    <label class="checkbox-inline"><input type="checkbox" value="si" name="sincochera">Sin
+                                        cochera</label>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12">
+                                <label for="descripcion"><i class="fa fa-reorder fa-fw"></i> Descripción</label>
+                                <textarea class="form-control" rows="5" id="descripcion" placeholder="Cuéntame Sobre La Casa"
+                                    name="descripcion" required></textarea>
+                            </div>
+                            <div class="form-group col-xs-12">
+                                <label for="direccion"><i class="fa fa-map-marker fa-fw"></i> Dirección</label>
+                                <input type="text" name="direccion" id="direccion" placeholder="¿Dónde está?" class="form-control"
+                                    required />
+                                <button type="button" data-toggle="tooltip" title="En caso de que el marcador en el mapa, no muestre la ubicación exacta, puedes arrastrarlo"
+                                    class="btn btn-block btn-warning buscar">MAPEAR</button>
+                                <input type="text" name="latitud" id="latitud" class="oculto">
+                                <input type="text" name="longitud" id="longitud" class="oculto">
+                                <div class="oculto" id="mensaje"><label>En caso de que el marcador en el mapa no
+                                        muestre la ubicación exacta, puedes arrastrarlo</label></div>
+                                <div id="map_container"></div>
+                                <div id="map"></div>
+                            </div>
+
+                            <div class="form-group col-xs-12">
+                                <label for="foto"><i class="fa fa-photo fa-fw"></i> Fotos (la primera será la
+                                    principal)</label>
+                                <div class="form-group input-group">
+                                    <input class='form-control' accept="image/png, image/jpeg, image/gif" type='file'
+                                        name='image' />
+                                    <span class="input-group-btn"><button type="button" class="btn btn-default btn-add"><i
+                                                class="fa fa-plus fa-fw"></i>Agregar Otra Foto</button></span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer text-center">
+                    <input type="submit" class="form-control btn btn-success btn-block" value="AGREGAR PROPIEDAD" id="enviar"
+                        form="agregar">
+                </div>
             </div>
-            <div class="modal-body">
-                <form action="/agregarpropiedad" id="agregar" enctype='multipart/form-data' method="POST">
-                    <div class="row">
-                        <div class="form-group col-xs-12">
-                            <label for="ventaorenta"><i class="fa fa-home fa-fw"></i>¿Venta ó Renta?</label>
-                            <input id="ventaorenta" type="checkbox" name="ventaorenta" data-on="success" data-off="sucess" data-on-text="VENTA" data-off-text="RENTA" value="0" checked>
+
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="agregarAsesor" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><i class="fa fa-fw fa-plus"></i>Agregar Un Asesor</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="/agregarasesor" id="agregarasesor" enctype='multipart/form-data' method="POST">
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                                <label>Nombre Completo</label>
+                                <input type="text" class="form-control" name="nombre" required>
+                            </div>
+                            <div class="form-group col-xs-12">
+                                <label>Teléfono</label>
+                                <input type="text" class="form-control" name="telefono" required>
+                            </div>
+                            <div class="form-group col-xs-12">
+                                <label>Nombre de Usuario</label>
+                                <input type="text" class="form-control" name="username" required>
+                            </div>
+                            <div class="form-group col-xs-12">
+                                <label>Contraseña</label>
+                                <input type="password" class="form-control" name="password" required>
+                            </div>
+                            <div class="form-group col-xs-12">
+                                <label>¿Es Socio?</label>
+                                <select name="socio">
+                                    <option value="0">No</option>
+                                    <option value="1">Sí</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-xs-12">
+                                <input name="color" type="hidden" id="color_value" value="99cc00">
+                                <button class="btn jscolor {valueElement: 'color_value',closable:true,closeText:'Cerrar',hash:true}">ELIGE
+                                    UN COLOR PARA EL CALENDARIO DE CITAS</button>
+                            </div>
+                            <div class="form-group col-xs-12">
+                                <label for="foto"><i class="fa fa-photo fa-fw"></i> Foto</label>
+                                <input class='form-control' accept="image/png, image/jpeg, image/gif" type='file' name='image' />
+                            </div>
                         </div>
-                        <div class="form-group col-xs-12">
-                            <label for="propiedad"><i class="fa fa-home fa-fw"></i>Tipo de Propiedad</label>
-                            <select name="tipo" class="form-control" id="tipo">
-                              <option value="casa">Casa</option>
-                              <option value="condominio">Condominio</option>
-                              <option value="terreno">Terreno</option>
-                              <option value="comercial">Comercial</option>
-                          </select>
-                      </div>
-                      <div class="form-group col-xs-12">
-                        <input type="text" name="id" class="oculto" value="<%=user.idasesores%>">
-                        <label for="nombrepropiedad"><i class="fa fa-home fa-fw"></i>Nombre de La Propiedad</label>
-                        <input type="text" name="nombrepropiedad" id="nombrepropiedad" placeholder="¿Qué?" class="form-control" required />
-                    </div>
-                    <div class="form-group col-xs-12">
-                        <label for="precio"><i class="fa fa-usd fa-fw"></i>Precio</label>
-                        <input class='form-control number' placeholder="¿Cuánto?" name='precio' required />
-                    </div>
-                    <div class="form-group col-xs-12">
-                        <label for="m2"><object type="image/svg+xml" data="svg/metros.svg" class="icono"></object> M2</label>
-                        <input type="number" step="any" name="m2" id="m2" placeholder="¿Qué Tamaño Tiene El Terreno?" class="form-control" required />
-                    </div>
-                    <div class="noterreno form-group col-xs-6 col-md-3">
-                        <label for="m2"><i class="fa fa-home fa-fw"></i> Metros Construidos</label>
-                        <input type="number" step="any" name="metrosconstruidos" id="metrosconstruidos" placeholder="¿Cuánto Tiene Construido?" class="form-control" />
-                    </div>
-                    <div class="noterreno form-group col-xs-6 col-md-3">
-                        <label for="recamaras"><i class="fa fa-bed fa-fw"></i> Recámaras</label>
-                        <input type="number" name="recamaras" id="recamaras" placeholder="¿Cuántas?" class="form-control" />
-                    </div>
-                    <div class="baños form-group col-xs-6 col-md-3">
-                        <label for="baños"><i class="fa fa-bath fa-fw"></i> Baños</label>
-                        <input type="number" name="baños" id="baños" placeholder="¿Cuántos?" class="form-control" />
-                        <div class="checkbox">
-                          <label class="checkbox-inline"><input type="checkbox" value="si" name="ymedio">Y medio</label>
-                        </div>
-                    </div>
-                    <div class="noterreno form-group col-xs-6 col-md-3">
-                        <label for="cochera"><i class="fa fa-car fa-fw"></i> Cochera Para...</label>
-                        <input type="number" name="cochera" id="cochera" placeholder="¿Cuántos Autos?" class="form-control" />
-                        <div class="checkbox">
-                          <label class="checkbox-inline"><input type="checkbox" value="si" name="sincochera">Sin cochera</label>
-                        </div>
-                    </div>
-                    <div class="form-group col-xs-12">
-                        <label for="descripcion"><i class="fa fa-reorder fa-fw"></i> Descripción</label>
-                        <textarea class="form-control" rows="5" id="descripcion" placeholder="Cuéntame Sobre La Casa" name="descripcion" required></textarea>
-                    </div>
-                    <div class="form-group col-xs-12">
-                        <label for="direccion"><i class="fa fa-map-marker fa-fw"></i> Dirección</label>
-                        <input type="text" name="direccion" id="direccion" placeholder="¿Dónde está?" class="form-control" required />
-                        <button type="button" data-toggle="tooltip" title="En caso de que el marcador en el mapa, no muestre la ubicación exacta, puedes arrastrarlo" class="btn btn-block btn-warning buscar">MAPEAR</button>
-                        <input type="text" name="latitud" id="latitud" class="oculto">
-                        <input type="text" name="longitud" id="longitud" class="oculto">
-                        <div class="oculto" id="mensaje"><label>En caso de que el marcador en el mapa no muestre la ubicación exacta, puedes arrastrarlo</label></div>
-                        <div id="map_container"></div>
-                        <div id="map"></div>
-                    </div>
 
-                    <div class="form-group col-xs-12">
-                        <label for="foto"><i class="fa fa-photo fa-fw"></i> Fotos (la primera será la principal)</label>
-                        <div class="form-group input-group">
-                            <input class='form-control' accept="image/png, image/jpeg, image/gif" type='file' name='image'/>
-                            <span class="input-group-btn"><button type="button" class="btn btn-default btn-add"><i class="fa fa-plus fa-fw"></i>Agregar Otra Foto</button></span>
-                        </div>
-                    </div>
+                    </form>
                 </div>
+                <div class="modal-footer text-center">
+                    <input type="submit" class="form-control btn btn-success btn-block" value="AGREGAR ASESOR" form="agregarasesor">
+                </div>
+            </div>
 
-            </form>
-        </div>
-        <div class="modal-footer text-center">
-            <input type="submit" class="form-control btn btn-success btn-block" value="AGREGAR PROPIEDAD" id="enviar" form="agregar">
         </div>
     </div>
 
-</div>
-</div>
+    <div id="mensajemodal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><i class="fa fa-fw fa-plus"></i>
+                        <%if (typeof(titulomensaje) != 'undefined') {%>
+                        <%=titulomensaje%>
+                        <%}%>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <%if (typeof(mensaje) != 'undefined') {%>
+                    <%=mensaje%>
+                    <%}%>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success btn-block" data-dismiss="modal">ACEPTAR</button>
+                </div>
+            </div>
 
-<!-- Modal -->
-<div id="agregarAsesor" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-lg">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"><i class="fa fa-fw fa-plus"></i>Agregar Un Asesor</h4>
-    </div>
-    <div class="modal-body">
-        <form action="/agregarasesor" id="agregarasesor" enctype='multipart/form-data' method="POST">
-            <div class="row">
-                <div class="form-group col-xs-12">
-                    <label>Nombre Completo</label>
-                    <input type="text" class="form-control" name="nombre" required>
-                </div>
-                <div class="form-group col-xs-12">
-                    <label>Teléfono</label>
-                    <input type="text" class="form-control" name="telefono" required>
-                </div>
-                <div class="form-group col-xs-12">
-                    <label>Nombre de Usuario</label>
-                    <input type="text" class="form-control" name="username" required>
-                </div>
-                <div class="form-group col-xs-12">
-                    <label>Contraseña</label>
-                    <input type="password" class="form-control" name="password" required>
-                </div>
-                <div class="form-group col-xs-12">
-                    <label>¿Es Socio?</label>
-                    <select name="socio">
-                      <option value="0">No</option>
-                      <option value="1">Sí</option>
-                  </select>
-                </div>
-                <div class="form-group col-xs-12">
-                    <input name="color" type="hidden" id="color_value" value="99cc00">
-                    <button class="btn jscolor {valueElement: 'color_value',closable:true,closeText:'Cerrar',hash:true}">ELIGE UN COLOR PARA EL CALENDARIO DE CITAS</button>
-                </div>
-                <div class="form-group col-xs-12">
-                    <label for="foto"><i class="fa fa-photo fa-fw"></i> Foto</label>
-                    <input class='form-control' accept="image/png, image/jpeg, image/gif" type='file' name='image'/>
-                </div>
-        </div>
-
-    </form>
-</div>
-<div class="modal-footer text-center">
-    <input type="submit" class="form-control btn btn-success btn-block" value="AGREGAR ASESOR" id="enviar" form="agregarasesor">
-</div>
-</div>
-
-</div>
-</div>
-
-<div id="mensajemodal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-lg">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"><i class="fa fa-fw fa-plus"></i><%if (typeof(titulomensaje) != 'undefined') {%>
-            <%=titulomensaje%>
-            <%}%></h4>
-        </div>
-        <div class="modal-body">
-            <%if (typeof(mensaje) != 'undefined') {%>
-            <%=mensaje%>
-            <%}%>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-success btn-block" data-dismiss="modal">ACEPTAR</button>
         </div>
     </div>
 
-</div>
-</div>
+    <div id="eliminarmodal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><i class="fa fa-fw fa-trash"></i>Eliminar</h4>
+                </div>
+                <div class="modal-body">
+                    <h4>¿Estas seguro de que quieres eliminar la propiedad?, ya no podrás recuperarla</h4>
+                    <form id="eliminar" action="eliminarpropiedad" method="POST">
+                        <input type="text" name="id" id="idpropiedad" class="oculto">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-success" value="ELIMINAR" form="eliminar" />
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">CANCELAR</button>
+                </div>
+            </div>
 
-<div id="eliminarmodal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-lg">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"><i class="fa fa-fw fa-trash"></i>Eliminar</h4>
+        </div>
     </div>
-    <div class="modal-body">
-        <h4>¿Estas seguro de que quieres eliminar la propiedad?, ya no podrás recuperarla</h4>
-        <form id="eliminar" action="eliminarpropiedad" method="POST">
-            <input type="text" name="id" id="idpropiedad" class="oculto">
-        </form>
+
+    <div id="eliminarasesormodal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><i class="fa fa-fw fa-trash"></i>Eliminar</h4>
+                </div>
+                <div class="modal-body">
+                    <h4>¿Estas seguro de que quieres eliminar al asesor?</h4>
+                    <form id="eliminarasesor" action="eliminarasesor" method="POST">
+                        <input type="text" name="id" id="idasesor" class="oculto">
+                        <label>Transferir propiedades a</label>
+                        <select name="asesor">
+                            <% if (typeof(asesores) != 'undefined') {%>
+                            <% asesores.forEach(function(asesor) { %>
+                            <option value="<%=asesor.idasesores%>">
+                                <%=asesor.nombre%>
+                            </option>
+                            <% }); %>
+                            <%}else{%>
+                            <option value="0">NO HAY ASESORES</option>
+                            <%}%>
+
+                        </select>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-success" value="ELIMINAR" form="eliminarasesor" />
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">CANCELAR</button>
+                </div>
+            </div>
+
+        </div>
     </div>
-    <div class="modal-footer">
-        <input type="submit" class="btn btn-success" value="ELIMINAR" form="eliminar"/>
-        <button type="button" class="btn btn-danger" data-dismiss="modal">CANCELAR</button>
-    </div>
-</div>
 
-</div>
-</div>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+        crossorigin="anonymous"></script>
 
-<div id="eliminarasesormodal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-lg">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"><i class="fa fa-fw fa-trash"></i>Eliminar</h4>
-    </div>
-    <div class="modal-body">
-        <h4>¿Estas seguro de que quieres eliminar al asesor?</h4>
-        <form id="eliminarasesor" action="eliminarasesor" method="POST">
-            <input type="text" name="id" id="idasesor" class="oculto">
-            <label>Transferir propiedades a</label>
-            <select name="asesor">
-                <% if (typeof(asesores) != 'undefined') {%>
-                <% asesores.forEach(function(asesor) { %>
-                <option value="<%=asesor.idasesores%>"><%=asesor.nombre%></option>
-                <% }); %>
-                <%}else{%>
-                <option value="0">NO HAY ASESORES</option>
-                <%}%>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBCn5x5fCG9lOB6M2mjvKbcNT_KlOzubnQ&callback=initMap"></script>
+    <!-- JPages -->
+    <script type="text/javascript" src="../js/jPages.js"></script>
+    <script src="../js/bootstrap-switch.js"></script>
+    <script src="../js/bootstrap-list-filter.min.js"></script>
 
-            </select>
-        </form>
-    </div>
-    <div class="modal-footer">
-        <input type="submit" class="btn btn-success" value="ELIMINAR" form="eliminarasesor"/>
-        <button type="button" class="btn btn-danger" data-dismiss="modal">CANCELAR</button>
-    </div>
-</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+    <script src="../js/jscolor.min.js"></script>
+    <script src="../js/funcioneshittek.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#tipo").change(function () {
+                var value = $(this).find("option:selected").attr("value");
 
-</div>
-</div>
+                switch (value) {
+                    case "terreno":
+                        $(".noterreno").hide();
+                        $(".baños").hide();
+                        break;
+                    case "comercial":
+                        $(".noterreno").hide();
+                        $(".baños").show();
+                        break;
+                    default:
+                        $(".noterreno").show();
+                        $(".baños").show();
+                        break;
+                }
+            });
 
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAKDKyJNGPt-XY6RtMdQofhnoAlhVN9ZM8">
-</script>
-
-<!-- JPages -->
-<script type="text/javascript" src="../js/jPages.js"></script>
-<script src="../js/bootstrap-switch.js"></script>
-<script src="../js/bootstrap-list-filter.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
-<script src="../js/jscolor.min.js"></script>
-<script src="../js/funcioneshittek.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("#tipo").change(function(){
-          var value = $(this).find("option:selected").attr("value");
-
-          switch (value){
-            case "terreno":
-                $(".noterreno").hide();
-                $(".baños").hide();
-                break;
-            case "comercial":
-                $(".noterreno").hide();
-                $(".baños").show();
-                break;
-            default:
-                $(".noterreno").show();
-                $(".baños").show();
-                break;
-          }
-        });
-
-        <%if (typeof(mensaje) != 'undefined') {%>
-            $("#mensajemodal").modal('show');
+            <%if (typeof (mensaje) != 'undefined') {%>
+                $("#mensajemodal").modal('show');
             <%}%>
 
-            $("[name='ventaorenta']").bootstrapSwitch({onColor: 'success', offColor: 'success'});
-            $('#propiedades').btsListFilter('#searchinput', {itemChild: 'span.nombre'});
-            $('#propiedadesvendidas').btsListFilter('#searchinput2', {itemChild: 'span.nombre'});
-            $('#asesores').btsListFilter('#searchinput3', {itemChild: 'span.nombre'});
+                $("[name='ventaorenta']").bootstrapSwitch({ onColor: 'success', offColor: 'success' });
+            $('#propiedades').btsListFilter('#searchinput', { itemChild: 'span.nombre' });
+            $('#propiedadesvendidas').btsListFilter('#searchinput2', { itemChild: 'span.nombre' });
+            $('#asesores').btsListFilter('#searchinput3', { itemChild: 'span.nombre' });
 
-         /*EVENTO PARA BOTON MAPEAR*/
-         $("button.buscar").click(function () {
-             $("#mensaje").removeClass("oculto");
-             /*Geocoder convierte una dirección en coordenadas*/
-             var geocoder = new google.maps.Geocoder();
-             /*Dirección de la propiedad del backend*/
-             var address = $("#direccion").val();
+            /*EVENTO PARA BOTON MAPEAR*/
+            $("button.buscar").click(function () {
+                $("#mensaje").removeClass("oculto");
+                /*Geocoder convierte una dirección en coordenadas*/
+                var geocoder = new google.maps.Geocoder();
+                /*Dirección de la propiedad del backend*/
+                var address = $("#direccion").val();
 
-             geocoder.geocode( { 'address': address}, function(results, status) {
-                 /*Dirección convertida con éxito*/
-                 if (status == google.maps.GeocoderStatus.OK) {
-                     var latitud = results[0].geometry.location.lat();
-                     var longitud = results[0].geometry.location.lng();
-                     var myLatlng = new google.maps.LatLng(latitud,longitud);
-                     $("#latitud").val(latitud);
-                     $("#longitud").val(longitud);
-                     var icono = '../pin.png';
-                     var mapOptions = {
-                         zoom: 16,
-                         center: myLatlng,
-                         mapTypeId: google.maps.MapTypeId.ROADMAP
-                     }
+                geocoder.geocode({ 'address': address }, function (results, status) {
+                    /*Dirección convertida con éxito*/
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        var latitud = results[0].geometry.location.lat();
+                        var longitud = results[0].geometry.location.lng();
+                        var myLatlng = new google.maps.LatLng(latitud, longitud);
+                        $("#latitud").val(latitud);
+                        $("#longitud").val(longitud);
+                        var icono = '../pin.png';
+                        var mapOptions = {
+                            zoom: 16,
+                            center: myLatlng,
+                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                        }
 
-                     var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+                        var map = new google.maps.Map(document.getElementById('map'), mapOptions);
                         //Callout Content
                         var contentString = $("#direccion").val();
-                        //Set window width + content
-                        var infowindow = new google.maps.InfoWindow({
-                         content: contentString,
-                         maxWidth: 500
-                     });
-
-                        //Add Marker
-                        var marker = new google.maps.Marker({
-                         position: myLatlng,
-                         map: map,
-                         icon: icono,
-                         draggable: true,
-                         title: 'image title'
-                     });
-                        infowindow.open(map, marker);
-                        google.maps.event.addListener(marker, 'dragend', function(evt){
-                         var lat = evt.latLng.lat();
-                         var lang= evt.latLng.lng();
-
-                         $("#latitud").val(lat);
-
-                         $("#longitud").val(lang);
-
-                         infowindow.setContent($("#direccion").val());
-                         infowindow.open(map, marker);
-                     });
-
-                   }
-               });
-         });
-        /*Inicializar mapa google*/
-        function initialize() {
-            /*Geocoder convierte una dirección en coordenadas*/
-            var geocoder = new google.maps.Geocoder();
-            /*Dirección de la propiedad del backend*/
-            var address = "Durango";
-
-            geocoder.geocode( { 'address': address}, function(results, status) {
-                /*Dirección convertida con éxito*/
-                if (status == google.maps.GeocoderStatus.OK) {
-                    var latitud = results[0].geometry.location.lat();
-                    var longitud = results[0].geometry.location.lng();
-                    $("#latitud").val(latitud);
-                    $("#longitud").val(longitud);
-                    var myLatlng = new google.maps.LatLng(latitud,longitud);
-                    var icono = '../pin.png';
-                    var mapOptions = {
-                        zoom: 16,
-                        center: myLatlng,
-                        mapTypeId: google.maps.MapTypeId.ROADMAP
-                    }
-
-                    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-                        //Callout Content
-                        var contentString = 'Durango';
                         //Set window width + content
                         var infowindow = new google.maps.InfoWindow({
                             content: contentString,
@@ -630,112 +624,166 @@
                             draggable: true,
                             title: 'image title'
                         });
-
                         infowindow.open(map, marker);
-
-                        google.maps.event.addListener(marker, 'click', function() {
-                            infowindow.open(map,marker);
-                        });
-
-                        //Resize Function
-                        google.maps.event.addDomListener(window, "resize", function() {
-                            var center = map.getCenter();
-                            google.maps.event.trigger(map, "resize");
-                            map.setCenter(center);
-                        });
-
-                        google.maps.event.addListener(marker, 'dragend', function(evt){
+                        google.maps.event.addListener(marker, 'dragend', function (evt) {
                             var lat = evt.latLng.lat();
-                            var lang= evt.latLng.lng();
+                            var lang = evt.latLng.lng();
 
                             $("#latitud").val(lat);
+
                             $("#longitud").val(lang);
 
                             infowindow.setContent($("#direccion").val());
                             infowindow.open(map, marker);
                         });
+
                     }
                 });
-        }
-                        google.maps.event.addDomListener(window, 'load', initialize);
-
-    });
-    $(function(){
-        $("#holder1").jPages({
-            containerID : "propiedades",
-            previous : "←",
-            next : "→",
-            perPage : 5,
-            delay : 0
+            });
         });
-        $("#holder2").jPages({
-            containerID : "propiedadesvendidas",
-            previous : "←",
-            next : "→",
-            perPage : 5,
-            delay : 0
+        $(function () {
+            $("#holder1").jPages({
+                containerID: "propiedades",
+                previous: "←",
+                next: "→",
+                perPage: 5,
+                delay: 0
+            });
+            $("#holder2").jPages({
+                containerID: "propiedadesvendidas",
+                previous: "←",
+                next: "→",
+                perPage: 5,
+                delay: 0
+            });
+            $("#holder3").jPages({
+                containerID: "asesores",
+                previous: "←",
+                next: "→",
+                perPage: 5,
+                delay: 0
+            });
         });
-        $("#holder3").jPages({
-            containerID : "asesores",
-            previous : "←",
-            next : "→",
-            perPage : 5,
-            delay : 0
-        });
-    });
 
 
-    // EVENTOS
-    // Animación de entrada
-    $(window).on('load',function(){
-        // Animate loader off screen
-        $(".se-pre-con").fadeOut("slow");
-    });
-    $(window).on('resize', function(){
-        var win = $(this);
-        if (win.width() < 768) {
-            $('.menu').removeClass('pull-right');
-        }else{
-            $('.menu').addClass('pull-right');
-        }
-    });
-    $("a").click(function(){
-            setTimeout(function(){
+        // EVENTOS
+        // Animación de entrada
+        $(window).on('load', function () {
+            // Animate loader off screen
+            $(".se-pre-con").fadeOut("slow");
+        });
+        $(window).on('resize', function () {
+            var win = $(this);
+            if (win.width() < 768) {
+                $('.menu').removeClass('pull-right');
+            } else {
+                $('.menu').addClass('pull-right');
+            }
+        });
+        $("a").click(function () {
+            setTimeout(function () {
                 $('.list-group-item').removeAttr("style");
             }, 50);
 
         });
-    $( document ).on( 'click', '.btn-add', function ( event ) {
-        event.preventDefault();
+        $(document).on('click', '.btn-add', function (event) {
+            event.preventDefault();
 
-        var field = $(this).closest( '.form-group' );
-        var field_new = field.clone();
+            var field = $(this).closest('.form-group');
+            var field_new = field.clone();
 
-        $(this)
-        .toggleClass( 'btn-default' )
-        .toggleClass( 'btn-add' )
-        .toggleClass( 'btn-danger' )
-        .toggleClass( 'btn-remove' )
-        .html( '–' );
+            $(this)
+                .toggleClass('btn-default')
+                .toggleClass('btn-add')
+                .toggleClass('btn-danger')
+                .toggleClass('btn-remove')
+                .html('–');
 
-        field_new.find( 'input' ).val( '' );
-        field_new.insertAfter( field );
-    } );
+            field_new.find('input').val('');
+            field_new.insertAfter(field);
+        });
 
-    $( document ).on( 'click', '.btn-remove', function ( event ) {
-        event.preventDefault();
-        $(this).closest( '.form-group' ).remove();
-    } );
+        $(document).on('click', '.btn-remove', function (event) {
+            event.preventDefault();
+            $(this).closest('.form-group').remove();
+        });
 
-    $('.eliminar').click(function() {
-        $('#idpropiedad').val($(this).attr('id'));
-        $("#eliminarmodal").modal('show');
-    });
-    $('.eliminarasesor').click(function() {
-        $('#idasesor').val($(this).attr('id'));
-        $("#eliminarasesormodal").modal('show');
-    });
+        $('.eliminar').click(function () {
+            $('#idpropiedad').val($(this).attr('id'));
+            $("#eliminarmodal").modal('show');
+        });
+        $('.eliminarasesor').click(function () {
+            $('#idasesor').val($(this).attr('id'));
+            $("#eliminarasesormodal").modal('show');
+        });
 
-</script>
+        /*Inicializar mapa google*/
+        function initMap() {
+            /*Geocoder convierte una dirección en coordenadas*/
+            var geocoder = new google.maps.Geocoder();
+            /*Dirección de la propiedad del backend*/
+            var address = "Durango";
+
+            geocoder.geocode({ 'address': address }, function (results, status) {
+                /*Dirección convertida con éxito*/
+                if (status == google.maps.GeocoderStatus.OK) {
+                    var latitud = results[0].geometry.location.lat();
+                    var longitud = results[0].geometry.location.lng();
+                    $("#latitud").val(latitud);
+                    $("#longitud").val(longitud);
+                    var myLatlng = { lat: latitud, lng: longitud };
+                    var icono = '../pin.png';
+                    var mapOptions = {
+                        zoom: 16,
+                        center: myLatlng,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    }
+
+                    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+                    //Callout Content
+                    var contentString = 'Durango';
+                    //Set window width + content
+                    var infowindow = new google.maps.InfoWindow({
+                        content: contentString,
+                        maxWidth: 500
+                    });
+
+                    //Add Marker
+                    var marker = new google.maps.Marker({
+                        position: myLatlng,
+                        map: map,
+                        icon: icono,
+                        draggable: true,
+                        title: 'image title'
+                    });
+
+                    infowindow.open(map, marker);
+
+                    google.maps.event.addListener(marker, 'click', function () {
+                        infowindow.open(map, marker);
+                    });
+
+                    //Resize Function
+                    google.maps.event.addDomListener(window, "resize", function () {
+                        var center = map.getCenter();
+                        google.maps.event.trigger(map, "resize");
+                        map.setCenter(center);
+                    });
+
+                    google.maps.event.addListener(marker, 'dragend', function (evt) {
+                        var lat = evt.latLng.lat();
+                        var lang = evt.latLng.lng();
+
+                        $("#latitud").val(lat);
+                        $("#longitud").val(lang);
+
+                        infowindow.setContent($("#direccion").val());
+                        infowindow.open(map, marker);
+                    });
+                }
+            });
+        }
+    </script>
 </body>
+
 </html>

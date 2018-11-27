@@ -1,20 +1,34 @@
 // app/routes.js
-var multer  = require('multer')
-var fs = require('fs');
-var bcrypt = require('bcrypt-nodejs');
-var Feed = require('feed');
-
-var upload = multer({ 
-    dest: 'assets/fotoscasas/',
-    rename: function(fieldname, filename) {
-        return filename;
-    },
-    onFileUploadStart: function(file) {
-        if(file.mimetype !== 'image/jpg' && file.mimetype !== 'image/jpeg' && file.mimetype !== 'image/png') {
-            return false;
+const multer  = require('multer');
+const fs = require('fs');
+const bcrypt = require('bcrypt-nodejs');
+const Feed = require('feed');
+const multerS3 = require('multer-s3');
+const s3 = require('../config/aws');
+// var upload = multer({ 
+//     dest: 'assets/fotoscasas/',
+//     rename: function(fieldname, filename) {
+//         return filename;
+//     },
+//     onFileUploadStart: function(file) {
+//         if(file.mimetype !== 'image/jpg' && file.mimetype !== 'image/jpeg' && file.mimetype !== 'image/png') {
+//             return false;
+//         }
+//     } 
+// });
+const upload = multer({
+    storage: multerS3({
+        s3: s3,
+        bucket: 'goldenagenciainmobiliaria',
+        acl: 'public-read',
+        metadata: function (req, file, cb) {
+            cb(null, { fieldName: file.fieldname });
+        },
+        key: function (req, file, cb) {
+            cb(null, Date.now().toString())
         }
-    } 
-});
+    })
+})
 module.exports = function(app, passport, connection) {
     app.get("/", function(req, res) {
         connection.query('SELECT * FROM propiedades ORDER BY idpropiedades DESC', function(err, propiedades){

@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="<%=variables.nombreinmobiliaria%>">
-	<meta name="author" content="">
-	<title>Agencia Inmobiliaria <%=variables.nombreinmobiliaria%> - Ver Propiedad</title>
-	<!-- Bootstrap Core CSS -->
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
-	<link href="../css/sb-admin.css" rel="stylesheet">
-	<!-- Custom Fonts -->
-	<link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet">
-	<link href="../css/plugins/bootstrap-switch.css" rel="stylesheet">
-	<style type="text/css">
-		#page-wrapper{
-			padding-top: 25px;
-		}
-		#back-to-top{
-			margin-bottom: 25px;
-		}
-	</style>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="<%=variables.nombreinmobiliaria%>">
+  <meta name="author" content="">
+  <title>Agencia Inmobiliaria
+    <%=variables.nombreinmobiliaria%> - Ver Propiedad</title>
+  <!-- Bootstrap Core CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
+  <link href="../css/sb-admin.css" rel="stylesheet">
+  <!-- Custom Fonts -->
+  <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="../css/plugins/bootstrap-switch.css" rel="stylesheet">
+  <style type="text/css">
+    #page-wrapper {
+      padding-top: 25px;
+    }
+
+    #back-to-top {
+      margin-bottom: 25px;
+    }
+  </style>
 </head>
+
 <body>
   <!-- Loading -->
   <div class="se-pre-con"></div>
@@ -32,8 +36,9 @@
       <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-         <a class="navbar-brand" href="/" target="_blank"><!-- <img src="../logoup.png" id="logo" alt=""> -->
-          <img src="../golden.png" id="logo" height="80px" alt=""></a>
+          <a class="navbar-brand" href="/" target="_blank">
+            <!-- <img src="../logoup.png" id="logo" alt=""> -->
+            <img src="../golden.png" id="logo" height="80px" alt=""></a>
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
             <span class="sr-only">Activar Navegación</span>
             <span class="icon-bar"></span>
@@ -46,7 +51,8 @@
         <div class="collapse navbar-collapse menu pull-right" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%=user.nombre%><b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>
+                <%=user.nombre%><b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li>
                   <a href="/editarasesor"><i class="fa fa-fw fa-user"></i> Editar Perfil</a>
@@ -72,12 +78,13 @@
               <%=propiedad.nombrepropiedad%>
             </h1>
 
-          </div>	
+          </div>
 
         </div>
         <div class="row">
           <div class="col-xs-12 col-sm-4">
-            <a id="back-to-top" href="/panel" class="btn btn-default btn-block back-to-top pull-left" role="button" title="Click para regresar"><span class="glyphicon glyphicon-chevron-left"></span> Regresar Al Panel</a>
+            <a id="back-to-top" href="/panel" class="btn btn-default btn-block back-to-top pull-left" role="button"
+              title="Click para regresar"><span class="glyphicon glyphicon-chevron-left"></span> Regresar Al Panel</a>
 
           </div>
           <div class="col-xs-12 col-sm-8">
@@ -87,15 +94,21 @@
         <div id="propiedad" class="row">
           <div class="form-group col-xs-12">
             <label for="ventaorenta"><i class="fa fa-home fa-fw"></i>Venta ó Renta</label>
-            <input id="ventaorenta" type="checkbox" name="ventaorenta" data-on="success" data-off="sucess" data-on-text="VENTA" data-off-text="RENTA" value="0" <%if(propiedad.renta==0){%>checked<%}%> readonly>
+            <input id="ventaorenta" type="checkbox" name="ventaorenta" data-on="success" data-off="sucess" data-on-text="VENTA"
+              data-off-text="RENTA" value="0" <%if(propiedad.renta==0){%>checked
+            <%}%> readonly>
           </div>
           <div class="form-group col-xs-12">
             <label for="propiedad"><i class="fa fa-home fa-fw"></i>Tipo de Propiedad</label>
             <select name="tipo" class="form-control" id="tipo" readonly>
-              <option <%if(propiedad.tipo == "casa"){%>selected<%}%> value="casa">Casa</option>
-              <option <%if(propiedad.tipo == "condominio"){%>selected<%}%> value="condominio">Condominio</option>
-              <option <%if(propiedad.tipo == "terreno"){%>selected<%}%> value="terreno">Terreno</option>
-              <option <%if(propiedad.tipo == "comercial"){%>selected<%}%> value="comercial">Comercial</option>
+              <option <%if(propiedad.tipo=="casa" ){%>selected
+                <%}%> value="casa">Casa</option>
+              <option <%if(propiedad.tipo=="condominio" ){%>selected
+                <%}%> value="condominio">Condominio</option>
+              <option <%if(propiedad.tipo=="terreno" ){%>selected
+                <%}%> value="terreno">Terreno</option>
+              <option <%if(propiedad.tipo=="comercial" ){%>selected
+                <%}%> value="comercial">Comercial</option>
             </select>
           </div>
           <div class="form-group col-xs-12">
@@ -103,32 +116,36 @@
             <input class='form-control number' name='precio' readonly />
           </div>
           <div class="form-group col-xs-12">
-              <label for="m2"><object type="image/svg+xml" data="../svg/metros.svg" class="icono"></object> M2</label>
-              <input type="number" name="m2" id="m2" value="<%=propiedad.m2%>" class="form-control" readonly />
+            <label for="m2"><object type="image/svg+xml" data="../svg/metros.svg" class="icono"></object> M2</label>
+            <input type="number" name="m2" id="m2" value="<%=propiedad.m2%>" class="form-control" readonly />
           </div>
           <div class="form-group col-xs-6 col-md-3">
-              <label for="m2"><i class="fa fa-home fa-fw"></i> Metros Construidos</label>
-              <input type="number" name="metrosconstruidos" id="metrosconstruidos" value="<%=propiedad.metrosconstruidos%>" class="form-control" readonly />
+            <label for="m2"><i class="fa fa-home fa-fw"></i> Metros Construidos</label>
+            <input type="number" name="metrosconstruidos" id="metrosconstruidos" value="<%=propiedad.metrosconstruidos%>"
+              class="form-control" readonly />
           </div>
           <div class="form-group col-xs-6 col-md-3">
             <label for="recamaras"><i class="fa fa-bed fa-fw"></i> Recámaras</label>
-            <input type="number" name="recamaras" id="recamaras" value="<%=propiedad.recamaras%>" class="form-control" readonly />
+            <input type="number" name="recamaras" id="recamaras" value="<%=propiedad.recamaras%>" class="form-control"
+              readonly />
           </div>
           <div class="form-group col-xs-6 col-md-3">
             <label for="baños"><i class="fa fa-bath fa-fw"></i> Baños</label>
             <%var ymedio=false;%>
             <%if(''+propiedad.baños+''.substring(propiedad.baños.length-1,propiedad.baños.length) == "½"){%>
-              <%propiedad.baños=''+propiedad.baños+''.substring(0,propiedad.baños.length-2);%>
-              <%ymedio=true;%>
+            <%propiedad.baños=''+propiedad.baños+''.substring(0,propiedad.baños.length-2);%>
+            <%ymedio=true;%>
             <%}%>
             <input type="text" name="baños" id="baños" value="<%=propiedad.baños%>" class="form-control" readonly />
             <div class="checkbox">
-              <label class="checkbox-inline"><input type="checkbox" value="si" name="ymedio" disabled <%if(ymedio){%>checked<%}%>>Y medio</label>
+              <label class="checkbox-inline"><input type="checkbox" value="si" name="ymedio" disabled <%if(ymedio){%>checked
+                <%}%>>Y medio</label>
             </div>
           </div>
           <div class="form-group col-xs-6 col-md-3">
             <label for="cochera"><i class="fa fa-car fa-fw"></i> Cochera Para...</label>
-            <input type="number" name="cochera" id="cochera" value="<%=propiedad.cochera%>" class="form-control" readonly />
+            <input type="number" name="cochera" id="cochera" value="<%=propiedad.cochera%>" class="form-control"
+              readonly />
           </div>
           <div class="form-group col-xs-12">
             <label for="descripcion"><i class="fa fa-reorder fa-fw"></i> Descripción</label>
@@ -136,185 +153,187 @@
           </div>
           <div class="form-group col-xs-12">
             <label for="direccion"><i class="fa fa-map-marker fa-fw"></i> Dirección</label>
-            <input type="text" name="direccion" id="direccion" value="<%=propiedad.direccion%>" class="form-control" readonly />
+            <input type="text" name="direccion" id="direccion" value="<%=propiedad.direccion%>" class="form-control"
+              readonly />
           </div>
           <div class="form-group col-xs-12">
-           <label><i class="fa fa-map-marker fa-fw"></i> Mapa</label>
-           <div id="map_container"></div>
-           <div id="map"></div>
-         </div>
+            <label><i class="fa fa-map-marker fa-fw"></i> Mapa</label>
+            <div id="map_container"></div>
+            <div id="map"></div>
+          </div>
 
-         <div class="form-group col-xs-12">
-          <label for="foto"><i class="fa fa-photo fa-fw"></i> Fotos</label>
-          <img class="img-responsive" src="<%=propiedad.url%>" alt="">
+          <div class="form-group col-xs-12">
+            <label for="foto"><i class="fa fa-photo fa-fw"></i> Fotos</label>
+            <img class="img-responsive" src="<%=propiedad.url%>" alt="">
+          </div>
+          <% if (typeof(fotos) != 'undefined') {%>
+          <%var i=0;%>
+          <% fotos.forEach(function(foto) { %>
+          <div class="form-group input-group">
+            <img class="img-responsive" src="<%=foto.url%>" alt="">
+          </div>
+          <%i++;%>
+          <% }); %>
+          <%}else{%>
+          <label class="text-center"><i class="fa fa-fw fa-close"></i> NO HAY FOTOS AÚN</label>
+          <%}%>
         </div>
-        <% if (typeof(fotos) != 'undefined') {%>
-        <%var i=0;%>
-        <% fotos.forEach(function(foto) { %>
-        <div class="form-group input-group">
-          <img class="img-responsive" src="<%=foto.url%>" alt="">
-        </div>
-        <%i++;%>
-        <% }); %>
-        <%}else{%>
-        <label class="text-center"><i class="fa fa-fw fa-close"></i> NO HAY FOTOS AÚN</label>
-        <%}%>
+
       </div>
 
     </div>
-
   </div>
-</div>
-<!-- /.container-fluid -->
+  <!-- /.container-fluid -->
 
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+    crossorigin="anonymous"></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAKDKyJNGPt-XY6RtMdQofhnoAlhVN9ZM8"></script>
-<script src="../js/bootstrap-switch.js"></script>
-<script src="../js/html2canvas.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
-<script src="../js/funcioneshittek.js"></script>
+  <!-- Bootstrap Core JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBCn5x5fCG9lOB6M2mjvKbcNT_KlOzubnQ&callback=initMap"></script>
+  <script src="../js/bootstrap-switch.js"></script>
+  <script src="../js/html2canvas.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+  <script src="../js/funcioneshittek.js"></script>
 
-<script type="text/javascript">
+  <script type="text/javascript">
     // Animación de entrada
-    $(window).on('load',function(){
-        // Animate loader off screen
-        $(".se-pre-con").fadeOut("slow");
+    $(window).on('load', function () {
+      // Animate loader off screen
+      $(".se-pre-con").fadeOut("slow");
+    });
+  </script>
+
+  <script type="text/javascript">
+    /*Inicializar mapa google*/
+    function initMap() {
+      var icono = '../pin.png';
+      var latitud = '<%=propiedad.latitud%>';
+
+      var longitud = '<%=propiedad.longitud%>';
+      var myLatlng = new google.maps.LatLng(latitud, longitud);
+      var mapOptions2 = {
+        zoom: 16,
+        center: myLatlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      }
+
+      var map = new google.maps.Map(document.getElementById('map'), mapOptions2);
+      //Callout Content
+      var contentString = '<%=propiedad.direccion%>';
+      //Set window width + content
+      var infowindow = new google.maps.InfoWindow({
+        content: contentString,
+        maxWidth: 500
       });
-    </script>
 
-    <script type="text/javascript">
-     /*Inicializar mapa google*/
-     function initialize() {
-         var icono = '../pin.png';
-                     var latitud = '<%=propiedad.latitud%>';
+      //Add Marker
+      var marker = new google.maps.Marker({
+        position: myLatlng,
+        map: map,
+        icon: icono,
+        title: 'image title'
+      });
 
-                     var longitud = '<%=propiedad.longitud%>';
-                     var myLatlng = new google.maps.LatLng(latitud,longitud);
-                     var mapOptions2 = {
-                         zoom: 16,
-                         center: myLatlng,
-                         mapTypeId: google.maps.MapTypeId.ROADMAP
-                     }
+      infowindow.open(map, marker);
 
-                     var map = new google.maps.Map(document.getElementById('map'), mapOptions2);
-                     //Callout Content
-                     var contentString = '<%=propiedad.direccion%>';
-                     //Set window width + content
-                     var infowindow = new google.maps.InfoWindow({
-                         content: contentString,
-                         maxWidth: 500
-                     });
+      google.maps.event.addListener(marker, 'click', function () {
+        infowindow.open(map, marker);
+      });
 
-                     //Add Marker
-                     var marker = new google.maps.Marker({
-                         position: myLatlng,
-                         map: map,
-                         icon: icono,
-                         title: 'image title'
-                     });
+      //Resize Function
+      google.maps.event.addDomListener(window, "resize", function () {
+        var center = map.getCenter();
+        google.maps.event.trigger(map, "resize");
+        map.setCenter(center);
 
-                     infowindow.open(map,marker);
+      });
 
-                     google.maps.event.addListener(marker, 'click', function() {
-                         infowindow.open(map,marker);
-                     });
+    }
 
-                     //Resize Function
-                     google.maps.event.addDomListener(window, "resize", function() {
-                         var center = map.getCenter();
-                         google.maps.event.trigger(map, "resize");
-                         map.setCenter(center);
+  </script>
+  <script>
+    $(document).ready(function () {
+      $('.number').val(commas(<%=propiedad.precio %>));
+      $("[name='ventaorenta']").bootstrapSwitch({ onColor: 'success', offColor: 'success' });
 
-                     });
-                     
-                 }
-                     google.maps.event.addDomListener(window, 'load', initialize);
-
-   </script>
-   <script>
-     $(document).ready(function() {
-      $('.number').val(commas(<%=propiedad.precio%>));
-      $("[name='ventaorenta']").bootstrapSwitch({onColor: 'success', offColor: 'success'});
-
-      $('#imprimir').click(function() {
+      $('#imprimir').click(function () {
         $(".se-pre-con").show();
-       getDataUri('https://maps.googleapis.com/maps/api/staticmap?center=<%=propiedad.latitud%>,<%=propiedad.longitud%>&zoom=17&size=600x300&maptype=roadmap&markers=icon:https://goldenagenciainmobiliaria.com/pin.png|<%=propiedad.latitud%>,<%=propiedad.longitud%>&key=AIzaSyA6gBHZDEnlaRdwpP8BqV7lfOVcEmkQNUI', function(mapa) {
-         getDataUri('../goldenb.png',function(logo) {
-            getDataUri2('<%=propiedad.url%>',function(foto) {
-      	    	var pdf = new jsPDF('p', 'pt', 'letter'); //210mm wide and 297mm high
+        getDataUri('https://maps.googleapis.com/maps/api/staticmap?center=<%=propiedad.latitud%>,<%=propiedad.longitud%>&zoom=17&size=600x300&maptype=roadmap&markers=icon:https://goldenagenciainmobiliaria.com/pin.png|<%=propiedad.latitud%>,<%=propiedad.longitud%>&key=AIzaSyA6gBHZDEnlaRdwpP8BqV7lfOVcEmkQNUI', function (mapa) {
+          getDataUri('../goldenb.png', function (logo) {
+            getDataUri2('<%=propiedad.url%>', function (foto) {
+              var pdf = new jsPDF('p', 'pt', 'letter'); //210mm wide and 297mm high
               pdf.setFont("Helvetica");
               pdf.setFontSize(22);
-              pdf.addImage(logo, 'PNG', 10, 10,130,80);
+              pdf.addImage(logo, 'PNG', 10, 10, 130, 80);
               pdf.text(300, 45, 'Ficha Técnica', null, null, 'center');
               pdf.text(10, 120, '<%=propiedad.nombrepropiedad%>');
               pdf.setFontSize(16);
               pdf.text(10, 140, '<%=propiedad.tipo.replace(/\b\w/g, l => l.toUpperCase())%> En <%if(propiedad.renta==0){%>Renta<%}else{%>Venta<%}%>');
-              pdf.text(10,160,'Precio: $'+commas(<%=propiedad.precio%>));
-              pdf.text(10,180,'M2: <%=propiedad.m2%>  Metros Construidos:<%=propiedad.metrosconstruidos%>  Recámaras: <%=propiedad.recamaras%>  Baños: <%=propiedad.baños%>  Cochera para: <%=propiedad.cochera%> vehículos');
+              pdf.text(10, 160, 'Precio: $' + commas(<%=propiedad.precio %>));
+              pdf.text(10, 180, 'M2: <%=propiedad.m2%>  Metros Construidos:<%=propiedad.metrosconstruidos%>  Recámaras: <%=propiedad.recamaras%>  Baños: <%=propiedad.baños%>  Cochera para: <%=propiedad.cochera%> vehículos');
               var lineas = pdf.splitTextToSize('<%= propiedad.descripcion.replace(/\r\n/g, ' ') %>', 500).length;
-              pdf.text(10,200, pdf.splitTextToSize('<%= propiedad.descripcion.replace(/\r\n/g, ' ') %>', 500));
+              pdf.text(10, 200, pdf.splitTextToSize('<%= propiedad.descripcion.replace(/\r\n/g, ' ') %>', 500));
 
-              var posmapa = 200 + ( 20 * lineas );
-              pdf.text(10,posmapa,'Dirección: <%=propiedad.direccion%>');
-              pdf.addImage(mapa, 'PNG', 10, posmapa + 20 );
+              var posmapa = 200 + (20 * lineas);
+              pdf.text(10, posmapa, 'Dirección: <%=propiedad.direccion%>');
+              pdf.addImage(mapa, 'PNG', 10, posmapa + 20);
 
-              pdf.text(10,posmapa + 40 + 225,'Foto Principal:');
+              pdf.text(10, posmapa + 40 + 225, 'Foto Principal:');
 
-                     pdf.addImage(foto, 'PNG', 10, posmapa + 45 + 225, (400 * 0.75), (newheight * 0.75));
-                     pdf.save('<%=propiedad.nombrepropiedad%>.pdf');
-                     $(".se-pre-con").fadeOut("slow");
-                   
-  	    	    // pdf.output('datauri');
+              pdf.addImage(foto, 'PNG', 10, posmapa + 45 + 225, (400 * 0.75), (newheight * 0.75));
+              pdf.save('<%=propiedad.nombrepropiedad%>.pdf');
+              $(".se-pre-con").fadeOut("slow");
+
+              // pdf.output('datauri');
             });
-         });
-       });    	
-     });
+          });
+        });
+      });
 
     });
-     function commas(input) {
-         var output = input
-         if (parseFloat(input)) {
-             input = new String(input); // so you can perform string operations
-             var parts = input.split("."); // remove the decimal part
-             parts[0] = parts[0].split("").reverse().join("").replace(/(\d{3})(?!$)/g, "$1,").split("").reverse().join("");
-             output = parts.join(".");
-         }
+    function commas(input) {
+      var output = input
+      if (parseFloat(input)) {
+        input = new String(input); // so you can perform string operations
+        var parts = input.split("."); // remove the decimal part
+        parts[0] = parts[0].split("").reverse().join("").replace(/(\d{3})(?!$)/g, "$1,").split("").reverse().join("");
+        output = parts.join(".");
+      }
 
-         return output;
-     }
-     var newheight;
+      return output;
+    }
+    var newheight;
 
-     function getDataUri(url,callback) {
+    function getDataUri(url, callback) {
       var image = new Image();
       image.setAttribute('crossOrigin', 'anonymous');
       image.onload = function () {
         var canvas = document.createElement('canvas');
-          canvas.width = this.naturalWidth; // or 'width' if you want a special/scaled size
-          canvas.height = this.naturalHeight; // or 'height' if you want a special/scaled size
-          canvas.getContext('2d').drawImage(this, 0, 0);
-          callback(canvas.toDataURL('image/png'));
-        };
-        image.src = url;
-      }
+        canvas.width = this.naturalWidth; // or 'width' if you want a special/scaled size
+        canvas.height = this.naturalHeight; // or 'height' if you want a special/scaled size
+        canvas.getContext('2d').drawImage(this, 0, 0);
+        callback(canvas.toDataURL('image/png'));
+      };
+      image.src = url;
+    }
 
-      function getDataUri2(url,callback) {
-        var image = new Image();
-        image.setAttribute('crossOrigin', 'anonymous');
-        image.src = url;
-        image.onload = function () {
-          var canvas = document.createElement('canvas');
-  	        canvas.width = this.naturalWidth; // or 'width' if you want a special/scaled size
-  	        canvas.height = this.naturalHeight; // or 'height' if you want a special/scaled size
-            newheight = (image.height / image.width) * 400;
-            canvas.getContext('2d').drawImage(this, 0, 0);
-            callback(canvas.toDataURL('image/png'));
-          };
-      }
-    </script>
-  </body>
-  </html>
+    function getDataUri2(url, callback) {
+      var image = new Image();
+      image.setAttribute('crossOrigin', 'anonymous');
+      image.src = url;
+      image.onload = function () {
+        var canvas = document.createElement('canvas');
+        canvas.width = this.naturalWidth; // or 'width' if you want a special/scaled size
+        canvas.height = this.naturalHeight; // or 'height' if you want a special/scaled size
+        newheight = (image.height / image.width) * 400;
+        canvas.getContext('2d').drawImage(this, 0, 0);
+        callback(canvas.toDataURL('image/png'));
+      };
+    }
+  </script>
+</body>
+
+</html>
