@@ -284,6 +284,53 @@
                 opacity: 0.2,
                 margin: 100,
             });
+
+            /*Mapa google*/
+            function initMap() {
+                var icono = '../pin.png';
+                // Mapa Contacto
+                var latitud2 = '24.034549';
+
+                var longitud2 = '-104.672182';
+                var myLatlng2 = new google.maps.LatLng(latitud2, longitud2);
+                var mapOptions2 = {
+                    zoom: 16,
+                    center: myLatlng2,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                }
+
+                var map2 = new google.maps.Map(document.getElementById('map2'), mapOptions2);
+                //Callout Content
+                var contentString2 = '<%=variables.nombreinmobiliaria%>';
+                //Set window width + content
+                var infowindow2 = new google.maps.InfoWindow({
+                    content: contentString2,
+                    maxWidth: 500
+                });
+
+                //Add Marker
+                var marker2 = new google.maps.Marker({
+                    position: myLatlng2,
+                    map: map2,
+                    icon: icono,
+                    title: 'image title'
+                });
+
+                infowindow2.open(map2, marker2);
+
+                google.maps.event.addListener(marker2, 'click', function () {
+                    infowindow2.open(map2, marker2);
+                });
+
+                //Resize Function
+                google.maps.event.addDomListener(window, "resize", function () {
+                    var center2 = map2.getCenter();
+                    google.maps.event.trigger(map2, "resize");
+                    map2.setCenter(center2);
+
+                });
+
+            }
         });
 
 
@@ -296,53 +343,6 @@
                 scrollTop: $($.attr(this, 'href')).offset().top
             }, 500);
         });
-
-        /*Mapa google*/
-        function initMap() {
-            var icono = '../pin.png';
-            // Mapa Contacto
-            var latitud2 = '24.034549';
-
-            var longitud2 = '-104.672182';
-            var myLatlng2 = new google.maps.LatLng(latitud2, longitud2);
-            var mapOptions2 = {
-                zoom: 16,
-                center: myLatlng2,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            }
-
-            var map2 = new google.maps.Map(document.getElementById('map2'), mapOptions2);
-            //Callout Content
-            var contentString2 = '<%=variables.nombreinmobiliaria%>';
-            //Set window width + content
-            var infowindow2 = new google.maps.InfoWindow({
-                content: contentString2,
-                maxWidth: 500
-            });
-
-            //Add Marker
-            var marker2 = new google.maps.Marker({
-                position: myLatlng2,
-                map: map2,
-                icon: icono,
-                title: 'image title'
-            });
-
-            infowindow2.open(map2, marker2);
-
-            google.maps.event.addListener(marker2, 'click', function () {
-                infowindow2.open(map2, marker2);
-            });
-
-            //Resize Function
-            google.maps.event.addDomListener(window, "resize", function () {
-                var center2 = map2.getCenter();
-                google.maps.event.trigger(map2, "resize");
-                map2.setCenter(center2);
-
-            });
-
-        }
 
     </script>
 

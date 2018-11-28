@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="<%=variables.nombreinmobiliaria%>">
-	<meta name="author" content="">
-	<title>Agencia Inmobiliaria <%=variables.nombreinmobiliaria%> - Editar Propiedad</title>
-	<!-- Bootstrap Core CSS -->
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
-	<link href="../css/sb-admin.css" rel="stylesheet">
-	<!-- Custom Fonts -->
-	<link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet">
-	<link href="../css/plugins/bootstrap-switch.css" rel="stylesheet">
-	<style type="text/css">
-		#page-wrapper{
-			padding-top: 25px;
-		}
-		#back-to-top{
-			margin-bottom: 25px;
-		}
-	</style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="<%=variables.nombreinmobiliaria%>">
+    <meta name="author" content="">
+    <title>Agencia Inmobiliaria
+        <%=variables.nombreinmobiliaria%> - Editar Propiedad</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
+    <link href="../css/sb-admin.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/plugins/bootstrap-switch.css" rel="stylesheet">
+    <style type="text/css">
+        #page-wrapper {
+            padding-top: 25px;
+        }
+
+        #back-to-top {
+            margin-bottom: 25px;
+        }
+    </style>
 </head>
+
 <body>
     <!-- Loading -->
     <div class="se-pre-con"></div>
@@ -32,8 +36,9 @@
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                 <a class="navbar-brand" href="/" target="_blank"><!-- <img src="../logoup.png" id="logo" alt=""> -->
-                    <img src="../golden.png" id="logo" height="80px" alt=""></a>
+                    <a class="navbar-brand" href="/" target="_blank">
+                        <!-- <img src="../logoup.png" id="logo" alt=""> -->
+                        <img src="../golden.png" id="logo" height="80px" alt=""></a>
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                         <span class="sr-only">Activar Navegación</span>
                         <span class="icon-bar"></span>
@@ -46,7 +51,8 @@
                 <div class="collapse navbar-collapse menu pull-right" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%=user.nombre%><b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>
+                                <%=user.nombre%><b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li>
                                     <a href="/editarasesor"><i class="fa fa-fw fa-user"></i> Editar Perfil</a>
@@ -73,405 +79,434 @@
                         </h1>
                     </div>
                 </div>
-                <a id="back-to-top" href="/panel" class="btn btn-default btn-lg back-to-top pull-left" role="button" title="Click para regresar"><span class="glyphicon glyphicon-chevron-left"></span> Regresar Al Panel</a>
+                <a id="back-to-top" href="/panel" class="btn btn-default btn-lg back-to-top pull-left" role="button"
+                    title="Click para regresar"><span class="glyphicon glyphicon-chevron-left"></span> Regresar Al
+                    Panel</a>
                 <form action="/editarpropiedad" enctype='multipart/form-data' id="editar" method="POST">
-                  <div class="row">
-                      <div class="form-group col-xs-12">
-                          <label for="ventaorenta"><i class="fa fa-home fa-fw"></i>Venta ó Renta</label>
-                          <input id="ventaorenta" type="checkbox" name="ventaorenta" data-on="success" data-off="sucess" data-on-text="VENTA" data-off-text="RENTA" value="0" <%if(propiedad.renta==0){%>checked<%}%>>
-                      </div>
-                      <div class="form-group col-xs-12">
-                          <label for="propiedad"><i class="fa fa-home fa-fw"></i>Tipo de Propiedad</label>
-                          <select name="tipo" class="form-control" id="tipo">
-                            <option <%if(propiedad.tipo == "casa"){%>selected<%}%> value="casa">Casa</option>
-                            <option <%if(propiedad.tipo == "condominio"){%>selected<%}%> value="condominio">Condominio</option>
-                            <option <%if(propiedad.tipo == "terreno"){%>selected<%}%> value="terreno">Terreno</option>
-                            <option <%if(propiedad.tipo == "comercial"){%>selected<%}%> value="comercial">Comercial</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-xs-12">
-                      <input type="text" name="id" class="oculto" value="<%=propiedad.idpropiedades%>">
-                      <label for="nombrepropiedad"><i class="fa fa-home fa-fw"></i>Nombre de La Propiedad</label>
-                      <input type="text" name="nombrepropiedad" id="nombrepropiedad" class="form-control" value="<%=propiedad.nombrepropiedad%>" required />
-                  </div>
-                  <div class="form-group col-xs-12">
-                      <label for="precio"><i class="fa fa-usd fa-fw"></i>Precio</label>
-                      <input class='form-control number' placeholder="¿Cuánto?" name='precio' required />
-                  </div>
-                  <div class="form-group col-xs-12">
-                      <label for="m2"><object type="image/svg+xml" data="../svg/metros.svg" class="icono"></object> M2</label>
-                      <input type="number" step="any" name="m2" id="m2" value="<%=propiedad.m2%>" class="form-control" required />
-                  </div>
-                  <div class="form-group col-xs-6 col-md-3">
-                      <label for="m2"><i class="fa fa-home fa-fw"></i> Metros Construidos</label>
-                      <input type="number" step="any" name="metrosconstruidos" id="metrosconstruidos" value="<%=propiedad.metrosconstruidos%>" class="form-control" />
-                  </div>
-                  <div class="noterreno form-group col-xs-6 col-md-3">
-                      <label for="recamaras"><i class="fa fa-bed fa-fw"></i> Recámaras</label>
-                      <input type="number" name="recamaras" id="recamaras" value="<%=propiedad.recamaras%>" class="form-control" />
-                  </div>
-                  <div class="baños form-group col-xs-6 col-md-3">
-                      <label for="baños"><i class="fa fa-bath fa-fw"></i> Baños</label>
-                      <%var ymedio=false;%>
-                      <%if(propiedad.baños.substring(propiedad.baños.length-1,propiedad.baños.length) == "½"){%>
-                        <%propiedad.baños=propiedad.baños.substring(0,propiedad.baños.length-2);%>
-                        <%ymedio=true;%>
-                      <%}%>
-                      <input type="text" name="baños" id="baños" value="<%=propiedad.baños%>" class="form-control" />
-                      <div class="checkbox">
-                        <label class="checkbox-inline"><input type="checkbox" value="si" name="ymedio" <%if(ymedio){%>checked<%}%>>Y medio</label>
-                      </div>
-                  </div>
-                  <div class="noterreno form-group col-xs-6 col-md-3">
-                    <label for="cochera"><i class="fa fa-car fa-fw"></i> Cochera Para...</label>
-                    <input type="number" name="cochera" id="cochera" value="<%=propiedad.cochera%>" class="form-control" />
-                    <div class="checkbox">
-                      <label class="checkbox-inline"><input type="checkbox" value="si" name="sincochera">Sin cochera</label>
-                    </div>
-                </div>
-                <div class="form-group col-xs-12">
-                  <label for="descripcion"><i class="fa fa-reorder fa-fw"></i> Descripción</label>
-                  <textarea class="form-control" rows="5" id="descripcion" name="descripcion" required><%=propiedad.descripcion%></textarea>
-              </div>
-              <div class="form-group col-xs-12">
-                  <label for="direccion"><i class="fa fa-map-marker fa-fw"></i> Dirección</label>
-                  <input type="text" name="direccion" id="direccion" value="<%=propiedad.direccion%>" class="form-control" required />
-                  <button type="button" data-toggle="tooltip" title="En caso de que el marcador en el mapa, no muestre la ubicación exacta, puedes arrastrarlo" class="btn btn-block btn-warning buscar">MAPEAR</button>
-                  <input type="text" name="latitud" id="latitud" class="oculto">
-                  <input type="text" name="longitud" id="longitud" class="oculto">
+                    <div class="row">
+                        <div class="form-group col-xs-12">
+                            <label for="ventaorenta"><i class="fa fa-home fa-fw"></i>Venta ó Renta</label>
+                            <input id="ventaorenta" type="checkbox" name="ventaorenta" data-on="success" data-off="sucess"
+                                data-on-text="VENTA" data-off-text="RENTA" value="0" <%if(propiedad.renta==0){%>checked
+                            <%}%>>
+                        </div>
+                        <div class="form-group col-xs-12">
+                            <label for="propiedad"><i class="fa fa-home fa-fw"></i>Tipo de Propiedad</label>
+                            <select name="tipo" class="form-control" id="tipo">
+                                <option <%if(propiedad.tipo=="casa" ){%>selected
+                                    <%}%> value="casa">Casa</option>
+                                <option <%if(propiedad.tipo=="condominio" ){%>selected
+                                    <%}%> value="condominio">Condominio</option>
+                                <option <%if(propiedad.tipo=="terreno" ){%>selected
+                                    <%}%> value="terreno">Terreno</option>
+                                <option <%if(propiedad.tipo=="comercial" ){%>selected
+                                    <%}%> value="comercial">Comercial</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-xs-12">
+                            <input type="text" name="id" class="oculto" value="<%=propiedad.idpropiedades%>">
+                            <label for="nombrepropiedad"><i class="fa fa-home fa-fw"></i>Nombre de La Propiedad</label>
+                            <input type="text" name="nombrepropiedad" id="nombrepropiedad" class="form-control" value="<%=propiedad.nombrepropiedad%>"
+                                required />
+                        </div>
+                        <div class="form-group col-xs-12">
+                            <label for="precio"><i class="fa fa-usd fa-fw"></i>Precio</label>
+                            <input class='form-control number' placeholder="¿Cuánto?" name='precio' required />
+                        </div>
+                        <div class="form-group col-xs-12">
+                            <label for="m2"><object type="image/svg+xml" data="../svg/metros.svg" class="icono"></object>
+                                M2</label>
+                            <input type="number" step="any" name="m2" id="m2" value="<%=propiedad.m2%>" class="form-control"
+                                required />
+                        </div>
+                        <div class="form-group col-xs-6 col-md-3">
+                            <label for="m2"><i class="fa fa-home fa-fw"></i> Metros Construidos</label>
+                            <input type="number" step="any" name="metrosconstruidos" id="metrosconstruidos" value="<%=propiedad.metrosconstruidos%>"
+                                class="form-control" />
+                        </div>
+                        <div class="noterreno form-group col-xs-6 col-md-3">
+                            <label for="recamaras"><i class="fa fa-bed fa-fw"></i> Recámaras</label>
+                            <input type="number" name="recamaras" id="recamaras" value="<%=propiedad.recamaras%>" class="form-control" />
+                        </div>
+                        <div class="baños form-group col-xs-6 col-md-3">
+                            <label for="baños"><i class="fa fa-bath fa-fw"></i> Baños</label>
+                            <%var ymedio=false;%>
+                            <%if(propiedad.baños.substring(propiedad.baños.length-1,propiedad.baños.length) == "½"){%>
+                            <%propiedad.baños=propiedad.baños.substring(0,propiedad.baños.length-2);%>
+                            <%ymedio=true;%>
+                            <%}%>
+                            <input type="text" name="baños" id="baños" value="<%=propiedad.baños%>" class="form-control" />
+                            <div class="checkbox">
+                                <label class="checkbox-inline"><input type="checkbox" value="si" name="ymedio"
+                                        <%if(ymedio){%>checked
+                                    <%}%>>Y medio</label>
+                            </div>
+                        </div>
+                        <div class="noterreno form-group col-xs-6 col-md-3">
+                            <label for="cochera"><i class="fa fa-car fa-fw"></i> Cochera Para...</label>
+                            <input type="number" name="cochera" id="cochera" value="<%=propiedad.cochera%>" class="form-control" />
+                            <div class="checkbox">
+                                <label class="checkbox-inline"><input type="checkbox" value="si" name="sincochera">Sin
+                                    cochera</label>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-12">
+                            <label for="descripcion"><i class="fa fa-reorder fa-fw"></i> Descripción</label>
+                            <textarea class="form-control" rows="5" id="descripcion" name="descripcion" required><%=propiedad.descripcion%></textarea>
+                        </div>
+                        <div class="form-group col-xs-12">
+                            <label for="direccion"><i class="fa fa-map-marker fa-fw"></i> Dirección</label>
+                            <input type="text" name="direccion" id="direccion" value="<%=propiedad.direccion%>" class="form-control"
+                                required />
+                            <button type="button" data-toggle="tooltip" title="En caso de que el marcador en el mapa, no muestre la ubicación exacta, puedes arrastrarlo"
+                                class="btn btn-block btn-warning buscar">MAPEAR</button>
+                            <input type="text" name="latitud" id="latitud" class="oculto">
+                            <input type="text" name="longitud" id="longitud" class="oculto">
 
-              </div>
-              <div class="form-group col-xs-12">
-               <label><i class="fa fa-map-marker fa-fw"></i> Mapa (Para modificar el mapa, solo arrastra el marcador ó cambia la dirección arriba y presiona MAPEAR</label>
-               <div id="map_container"></div>
-               <div id="map"></div>
-           </div>
+                        </div>
+                        <div class="form-group col-xs-12">
+                            <label><i class="fa fa-map-marker fa-fw"></i> Mapa (Para modificar el mapa, solo arrastra
+                                el marcador ó cambia la dirección arriba y presiona MAPEAR</label>
+                            <div id="map_container"></div>
+                            <div id="map"></div>
+                        </div>
 
-           <div class="form-group col-xs-12">
-              <label for="foto"><i class="fa fa-photo fa-fw"></i> Fotos</label>
-              <div class="form-group input-group">
-               <img class="img-responsive" src="<%=propiedad.url%>" alt="">
-               <div>
-                <p>Reemplazar Foto</p>
-                <input class='form-control' accept="image/png, image/jpeg, image/gif" type='file' name='principal'/>
+                        <div class="form-group col-xs-12">
+                            <label for="foto"><i class="fa fa-photo fa-fw"></i> Fotos</label>
+                            <div class="form-group input-group">
+                                <img class="img-responsive" src="<%=propiedad.url%>" alt="">
+                                <div>
+                                    <p>Reemplazar Foto</p>
+                                    <input class='form-control' accept="image/png, image/jpeg, image/gif" type='file'
+                                        name='principal' />
+                                </div>
+                            </div>
+                            <% if (typeof(fotos) != 'undefined') {%>
+                            <%var i=0;%>
+                            <% fotos.forEach(function(foto) { %>
+                            <div class="form-group input-group">
+                                <img class="img-responsive" src="<%=foto.url%>" alt="">
+                                <button type="button" id="<%=foto.url%>" class="btn btn-danger eliminarfoto<%=i%>"><i
+                                        class="fa fa-fw fa-trash"></i>Eliminar Foto</button>
+                                <p>Reemplazar Foto</p>
+                                <input type="text" id="<%=i%>" name="fotos" class="oculto">
+                                <input id="input<%=i%>" class='form-control' accept="image/png, image/jpeg, image/gif"
+                                    type='file' name='image' />
+                            </div>
+                            <%i++;%>
+                            <% }); %>
+                            <%}else{%>
+                            <label class="text-center"><i class="fa fa-fw fa-close"></i> NO HAY FOTOS AÚN</label>
+                            <%}%>
+                        </div>
+                        <div class="form-group col-xs-12">
+                            <label for="foto"><i class="fa fa-photo fa-fw"></i> Agregar Más Fotos</label>
+                            <div class="form-group input-group">
+                                <input class='form-control' accept="image/png, image/jpeg, image/gif" type='file' name='nuevas' />
+                                <span class="input-group-btn"><button type="button" class="btn btn-default btn-add"><i
+                                            class="fa fa-plus fa-fw"></i>Agregar Otra Foto</button></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="form-control btn btn-success btn-block" value="EDITAR" id="enviar"
+                                form="editar">
+                        </div>
+                    </div>
+
+                </form>
             </div>
+            <!-- /.container-fluid -->
+
         </div>
-        <% if (typeof(fotos) != 'undefined') {%>
-        <%var i=0;%>
-        <% fotos.forEach(function(foto) { %>
-        <div class="form-group input-group">
-            <img class="img-responsive" src="<%=foto.url%>" alt="">
-            <button type="button" id="<%=foto.url%>" class="btn btn-danger eliminarfoto<%=i%>"><i class="fa fa-fw fa-trash"></i>Eliminar Foto</button>
-            <p>Reemplazar Foto</p>
-            <input type="text" id="<%=i%>" name="fotos" class="oculto">
-            <input id="input<%=i%>" class='form-control' accept="image/png, image/jpeg, image/gif" type='file' name='image'/>
-        </div>
-        <%i++;%>
-        <% }); %>
-        <%}else{%>
-        <label class="text-center"><i class="fa fa-fw fa-close"></i> NO HAY FOTOS AÚN</label>
-        <%}%>
+        <!-- /#page-wrapper -->
+
     </div>
-    <div class="form-group col-xs-12">
-      <label for="foto"><i class="fa fa-photo fa-fw"></i> Agregar Más Fotos</label>
-      <div class="form-group input-group">
-       <input class='form-control' accept="image/png, image/jpeg, image/gif" type='file' name='nuevas'/>
-       <span class="input-group-btn"><button type="button" class="btn btn-default btn-add"><i class="fa fa-plus fa-fw"></i>Agregar Otra Foto</button></span>
-   </div>
-</div>
-<div class="form-group">
-    <input type="submit" class="form-control btn btn-success btn-block" value="EDITAR" id="enviar" form="editar">
-</div>
-</div>
+    <!-- /#wrapper -->
+    <div id="mensajemodal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><i class="fa fa-fw fa-plus"></i>
+                        <%if (typeof(titulomensaje) != 'undefined') {%>
+                        <%=titulomensaje%>
+                        <%}%>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <%if (typeof(mensaje) != 'undefined') {%>
+                    <%=mensaje%>
+                    <%}%>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success btn-block" data-dismiss="modal">ACEPTAR</button>
+                </div>
+            </div>
 
-</form>
-</div>
-<!-- /.container-fluid -->
-
-</div>
-<!-- /#page-wrapper -->
-
-</div>
-<!-- /#wrapper -->
-<div id="mensajemodal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-lg">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"><i class="fa fa-fw fa-plus"></i><%if (typeof(titulomensaje) != 'undefined') {%>
-            <%=titulomensaje%>
-            <%}%></h4>
-        </div>
-        <div class="modal-body">
-            <%if (typeof(mensaje) != 'undefined') {%>
-            <%=mensaje%>
-            <%}%>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-success btn-block" data-dismiss="modal">ACEPTAR</button>
         </div>
     </div>
+    <div id="eliminarmodal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><i class="fa fa-fw fa-trash"></i>Eliminar</h4>
+                </div>
+                <div class="modal-body">
+                    <h4>¿Estas seguro de que quieres eliminar la foto?, ya no podrás recuperarla</h4>
+                    <form id="eliminar" action="/eliminarfoto" method="POST">
+                        <input type="text" name="fotourl" id="fotourl" class="oculto">
+                        <input type="text" name="id" id="idfoto" class="oculto">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-success" value="ELIMINAR" form="eliminar" />
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">CANCELAR</button>
+                </div>
+            </div>
 
-</div>
-</div>
-<div id="eliminarmodal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-lg">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"><i class="fa fa-fw fa-trash"></i>Eliminar</h4>
+        </div>
     </div>
-    <div class="modal-body">
-        <h4>¿Estas seguro de que quieres eliminar la foto?, ya no podrás recuperarla</h4>
-        <form id="eliminar" action="/eliminarfoto" method="POST">
-            <input type="text" name="fotourl" id="fotourl" class="oculto">
-            <input type="text" name="id" id="idfoto" class="oculto">
-        </form>
-    </div>
-    <div class="modal-footer">
-        <input type="submit" class="btn btn-success" value="ELIMINAR" form="eliminar"/>
-        <button type="button" class="btn btn-danger" data-dismiss="modal">CANCELAR</button>
-    </div>
-</div>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+        crossorigin="anonymous"></script>
 
-</div>
-</div>
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBCn5x5fCG9lOB6M2mjvKbcNT_KlOzubnQ&callback=initMap"></script>
+    <script src="../js/bootstrap-switch.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+    <script src="../js/funcioneshittek.js"></script>
+    <script type="text/javascript">
+        // Animación de entrada
+        $(window).on('load', function () {
+            // Animate loader off screen
+            $(".se-pre-con").fadeOut("slow");
+        });
+    </script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBCn5x5fCG9lOB6M2mjvKbcNT_KlOzubnQ&callback=initMap"></script>
-<script src="../js/bootstrap-switch.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
-<script src="../js/funcioneshittek.js"></script>
-<script type="text/javascript">
-    // Animación de entrada
-    $(window).on('load',function(){
-        // Animate loader off screen
-        $(".se-pre-con").fadeOut("slow");
-    });
-</script>
+    <script type="text/javascript">
+        /*EVENTO PARA BOTON MAPEAR*/
+        $("button.buscar").click(function () {
+            $("#mensaje").removeClass("oculto");
+            /*Geocoder convierte una dirección en coordenadas*/
+            var geocoder = new google.maps.Geocoder();
+            /*Dirección de la propiedad del backend*/
+            var address = $("#direccion").val();
 
-<script type="text/javascript">
- /*EVENTO PARA BOTON MAPEAR*/
- $("button.buscar").click(function () {
-     $("#mensaje").removeClass("oculto");
-     /*Geocoder convierte una dirección en coordenadas*/
-     var geocoder = new google.maps.Geocoder();
-     /*Dirección de la propiedad del backend*/
-     var address = $("#direccion").val();
+            geocoder.geocode({ 'address': address }, function (results, status) {
+                /*Dirección convertida con éxito*/
+                if (status == google.maps.GeocoderStatus.OK) {
+                    var latitud = results[0].geometry.location.lat();
+                    var longitud = results[0].geometry.location.lng();
+                    var myLatlng = new google.maps.LatLng(latitud, longitud);
+                    $("#latitud").val(latitud);
+                    $("#longitud").val(longitud);
+                    var icono = '../pin.png';
+                    var mapOptions = {
+                        zoom: 16,
+                        center: myLatlng,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    }
 
-     geocoder.geocode( { 'address': address}, function(results, status) {
-         /*Dirección convertida con éxito*/
-         if (status == google.maps.GeocoderStatus.OK) {
-             var latitud = results[0].geometry.location.lat();
-             var longitud = results[0].geometry.location.lng();
-             var myLatlng = new google.maps.LatLng(latitud,longitud);
-             $("#latitud").val(latitud);
-             $("#longitud").val(longitud);
-             var icono = '../pin.png';
-             var mapOptions = {
-                 zoom: 16,
-                 center: myLatlng,
-                 mapTypeId: google.maps.MapTypeId.ROADMAP
-             }
+                    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+                    //Callout Content
+                    var contentString = $("#direccion").val();
+                    //Set window width + content
+                    var infowindow = new google.maps.InfoWindow({
+                        content: contentString,
+                        maxWidth: 500
+                    });
 
-             var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-	            //Callout Content
-	            var contentString = $("#direccion").val();
-	            //Set window width + content
-	            var infowindow = new google.maps.InfoWindow({
-                 content: contentString,
-                 maxWidth: 500
-             });
+                    //Add Marker
+                    var marker = new google.maps.Marker({
+                        position: myLatlng,
+                        map: map,
+                        icon: icono,
+                        draggable: true,
+                        title: 'image title'
+                    });
+                    infowindow.open(map, marker);
+                    google.maps.event.addListener(marker, 'dragend', function (evt) {
+                        var lat = evt.latLng.lat();
+                        var lang = evt.latLng.lng();
 
-	            //Add Marker
-	            var marker = new google.maps.Marker({
-                 position: myLatlng,
-                 map: map,
-                 icon: icono,
-                 draggable: true,
-                 title: 'image title'
-             });
-	            infowindow.open(map, marker);
-	            google.maps.event.addListener(marker, 'dragend', function(evt){
-                 var lat = evt.latLng.lat();
-                 var lang= evt.latLng.lng();
+                        $("#latitud").val(lat);
 
-                 $("#latitud").val(lat);
+                        $("#longitud").val(lang);
 
-                 $("#longitud").val(lang);
+                        infowindow.setContent($("#direccion").val());
+                        infowindow.open(map, marker);
+                    });
 
-                 infowindow.setContent($("#direccion").val());
-                 infowindow.open(map, marker);
-             });
+                }
+            });
+        });
 
-           } 
-       }); 
- });
- /*Inicializar mapa google*/
- function initMap() {
-     /*Geocoder convierte una dirección en coordenadas*/
-     var geocoder = new google.maps.Geocoder();
-     /*Dirección de la propiedad del backend*/
-     var address = "<%=propiedad.direccion%>";
 
-     geocoder.geocode( { 'address': address}, function(results, status) {
-         /*Dirección convertida con éxito*/
-         if (status == google.maps.GeocoderStatus.OK) {
-             var latitud = <%=propiedad.latitud%>;
-             var longitud = <%=propiedad.longitud%>;
-             $("#latitud").val(latitud);
-             $("#longitud").val(longitud);
-             var myLatlng = new google.maps.LatLng(latitud,longitud);
-             var icono = '../pin.png';
-             var mapOptions = {
-                 zoom: 16,
-                 center: myLatlng,
-                 mapTypeId: google.maps.MapTypeId.ROADMAP
-             }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#latitud").val('<%=propiedad.latitud%>');
+            $("#longitud").val('<%=propiedad.longitud%>');
+            $('.number').val(commas(<%=propiedad.precio %>));
+            switch ('<%=propiedad.tipo%>') {
+                case "terreno":
+                    $(".noterreno").hide();
+                    $(".baños").hide();
+                    break;
+                case "comercial":
+                    $(".noterreno").hide();
+                    $(".baños").show();
+                    break;
+                default:
+                    $(".noterreno").show();
+                    $(".baños").show();
+                    break;
+            }
+            $("#tipo").change(function () {
+                var value = $(this).find("option:selected").attr("value");
 
-             var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-	                //Callout Content
-	                var contentString = "<%=propiedad.direccion%>";
-	                //Set window width + content
-	                var infowindow = new google.maps.InfoWindow({
-                     content: contentString,
-                     maxWidth: 500
-                 });
-
-	                //Add Marker
-	                var marker = new google.maps.Marker({
-                     position: myLatlng,
-                     map: map,
-                     icon: icono,
-                     draggable: true,
-                     title: 'image title'
-                 });
-
-	                infowindow.open(map, marker);
-
-	                google.maps.event.addListener(marker, 'click', function() {
-                     infowindow.open(map,marker);
-                 });
-
-	                //Resize Function
-	                google.maps.event.addDomListener(window, "resize", function() {
-                     var center = map.getCenter();
-                     google.maps.event.trigger(map, "resize");
-                     map.setCenter(center);
-                 });
-
-                  google.maps.event.addListener(marker, 'dragend', function(evt){
-                     var lat = evt.latLng.lat();
-                     var lang= evt.latLng.lng();
-
-                     $("#latitud").val(lat);
-                     $("#longitud").val(lang);
-
-                     infowindow.setContent($("#direccion").val());
-                     infowindow.open(map, marker);
-                 });
-               } 
-           }); 
-
- }
-
-</script>
-<script>
- $(document).ready(function() {
-    $("#latitud").val('<%=propiedad.latitud%>');
-    $("#longitud").val('<%=propiedad.longitud%>');
-    $('.number').val(commas(<%=propiedad.precio%>));
-    switch ('<%=propiedad.tipo%>'){
-      case "terreno":
-          $(".noterreno").hide();
-          $(".baños").hide();
-          break;
-      case "comercial":
-          $(".noterreno").hide();
-          $(".baños").show();
-          break;
-      default:
-          $(".noterreno").show();
-          $(".baños").show();
-          break;
-    }
-    $("#tipo").change(function(){
-      var value = $(this).find("option:selected").attr("value");
-
-      switch (value){
-        case "terreno":
-            $(".noterreno").hide();
-            $(".baños").hide();
-            break;
-        case "comercial":
-            $(".noterreno").hide();
-            $(".baños").show();
-            break;
-        default:
-            $(".noterreno").show();
-            $(".baños").show();
-            break;
-      }
-    });
-     $("[name='ventaorenta']").bootstrapSwitch({onColor: 'success', offColor: 'success'});
-     <%if (typeof(mensaje) != 'undefined') {%>
-         $("#mensajemodal").modal('show');
+                switch (value) {
+                    case "terreno":
+                        $(".noterreno").hide();
+                        $(".baños").hide();
+                        break;
+                    case "comercial":
+                        $(".noterreno").hide();
+                        $(".baños").show();
+                        break;
+                    default:
+                        $(".noterreno").show();
+                        $(".baños").show();
+                        break;
+                }
+            });
+            $("[name='ventaorenta']").bootstrapSwitch({ onColor: 'success', offColor: 'success' });
+     <%if (typeof (mensaje) != 'undefined') {%>
+                $("#mensajemodal").modal('show');
          <%}%>
 
-         <%if (typeof(fotos) != 'undefined') {%>
-          <%var i=0;%>
-          <% fotos.forEach(function(foto) { %>
-              $('#input'+<%=i%>).change(function (){
-                $('#'+<%=i%>).val(<%=i%>);
-            });
-              $('.eliminarfoto'+<%=i%>).click(function() {
-     					// body...
-     					$('#idfoto').val(<%=propiedad.idpropiedades%>);
-     					$('#fotourl').val($(this).attr("id"));
-     					$("#eliminarmodal").modal('show');
-     				});
-              <%i++;%>
+         <%if (typeof (fotos) != 'undefined') {%>
+          <%var i = 0;%>
+          <% fotos.forEach(function (foto) { %>
+                        $('#input' +<%=i %>).change(function () {
+                            $('#' +<%=i %>).val(<%=i %>);
+                        });
+                        $('.eliminarfoto' +<%=i %>).click(function () {
+                            // body...
+                            $('#idfoto').val(<%=propiedad.idpropiedades %>);
+                            $('#fotourl').val($(this).attr("id"));
+                            $("#eliminarmodal").modal('show');
+                        });
+              <% i++;%>
               <% }); %>
           <%}%>
-      });
- function commas(input) {
-     var output = input
-     if (parseFloat(input)) {
-         input = new String(input); // so you can perform string operations
-         var parts = input.split("."); // remove the decimal part
-         parts[0] = parts[0].split("").reverse().join("").replace(/(\d{3})(?!$)/g, "$1,").split("").reverse().join("");
-         output = parts.join(".");
-     }
 
-     return output;
- }
- $( document ).on( 'click', '.btn-add', function ( event ) {
-     event.preventDefault();
+                /*Inicializar mapa google*/
+                function initMap() {
+                    /*Geocoder convierte una dirección en coordenadas*/
+                    var geocoder = new google.maps.Geocoder();
+                    /*Dirección de la propiedad del backend*/
+                    var address = "<%=propiedad.direccion%>";
 
-     var field = $(this).closest( '.form-group' );
-     var field_new = field.clone();
+                    geocoder.geocode({ 'address': address }, function (results, status) {
+                        /*Dirección convertida con éxito*/
+                        if (status == google.maps.GeocoderStatus.OK) {
+                            var latitud = <%=propiedad.latitud%>;
+                            var longitud = <%=propiedad.longitud%>;
+                            $("#latitud").val(latitud);
+                            $("#longitud").val(longitud);
+                            var myLatlng = new google.maps.LatLng(latitud, longitud);
+                            var icono = '../pin.png';
+                            var mapOptions = {
+                                zoom: 16,
+                                center: myLatlng,
+                                mapTypeId: google.maps.MapTypeId.ROADMAP
+                            }
 
-     $(this)
-     .toggleClass( 'btn-default' )
-     .toggleClass( 'btn-add' )
-     .toggleClass( 'btn-danger' )
-     .toggleClass( 'btn-remove' )
-     .html( '–' );
+                            var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+                            //Callout Content
+                            var contentString = "<%=propiedad.direccion%>";
+                            //Set window width + content
+                            var infowindow = new google.maps.InfoWindow({
+                                content: contentString,
+                                maxWidth: 500
+                            });
 
-     field_new.find( 'input' ).val( '' );
-     field_new.insertAfter( field );
- } );
+                            //Add Marker
+                            var marker = new google.maps.Marker({
+                                position: myLatlng,
+                                map: map,
+                                icon: icono,
+                                draggable: true,
+                                title: 'image title'
+                            });
 
- $( document ).on( 'click', '.btn-remove', function ( event ) {
-     event.preventDefault();
-     $(this).closest( '.form-group' ).remove();
- } );
+                            infowindow.open(map, marker);
 
-</script>
+                            google.maps.event.addListener(marker, 'click', function () {
+                                infowindow.open(map, marker);
+                            });
+
+                            //Resize Function
+                            google.maps.event.addDomListener(window, "resize", function () {
+                                var center = map.getCenter();
+                                google.maps.event.trigger(map, "resize");
+                                map.setCenter(center);
+                            });
+
+                            google.maps.event.addListener(marker, 'dragend', function (evt) {
+                                var lat = evt.latLng.lat();
+                                var lang = evt.latLng.lng();
+
+                                $("#latitud").val(lat);
+                                $("#longitud").val(lang);
+
+                                infowindow.setContent($("#direccion").val());
+                                infowindow.open(map, marker);
+                            });
+                        }
+                    });
+
+                }
+        });
+        function commas(input) {
+            var output = input
+            if (parseFloat(input)) {
+                input = new String(input); // so you can perform string operations
+                var parts = input.split("."); // remove the decimal part
+                parts[0] = parts[0].split("").reverse().join("").replace(/(\d{3})(?!$)/g, "$1,").split("").reverse().join("");
+                output = parts.join(".");
+            }
+
+            return output;
+        }
+        $(document).on('click', '.btn-add', function (event) {
+            event.preventDefault();
+
+            var field = $(this).closest('.form-group');
+            var field_new = field.clone();
+
+            $(this)
+                .toggleClass('btn-default')
+                .toggleClass('btn-add')
+                .toggleClass('btn-danger')
+                .toggleClass('btn-remove')
+                .html('–');
+
+            field_new.find('input').val('');
+            field_new.insertAfter(field);
+        });
+
+        $(document).on('click', '.btn-remove', function (event) {
+            event.preventDefault();
+            $(this).closest('.form-group').remove();
+        });
+
+    </script>
 </body>
+
 </html>
