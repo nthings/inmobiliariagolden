@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var favicon = require('serve-favicon');
 var MemoryStore = require('session-memory-store')(session);
-
+require('dotenv').config();
 
 var app      = express();
 var port     = process.env.PORT || 8080;
