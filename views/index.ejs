@@ -376,7 +376,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script type="text/javascript" src="../js/jPages.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCn5x5fCG9lOB6M2mjvKbcNT_KlOzubnQ&callback=initMap"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCn5x5fCG9lOB6M2mjvKbcNT_KlOzubnQ"></script>
     <script src="
         https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"> </script>
     <script src="../js/imgLiquid-min.js"></script>
@@ -487,6 +487,8 @@
 
                 });
             }
+
+            google.maps.event.addDomListener(window, 'load', initMap);      
 
         });
         /*Animación al dar click a menú*/
