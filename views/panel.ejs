@@ -724,7 +724,7 @@
             /*Geocoder convierte una dirección en coordenadas*/
             var geocoder = new google.maps.Geocoder();
             /*Dirección de la propiedad del backend*/
-            var address = "Durango Mexico";
+            var address = "Victoria de durango";
 
             geocoder.geocode({ 'address': address }, function (results, status) {
                 /*Dirección convertida con éxito*/
@@ -743,7 +743,7 @@
 
                     var map = new google.maps.Map(document.getElementById('map'), mapOptions);
                     //Callout Content
-                    var contentString = 'Durango Mexico';
+                    var contentString = 'Victoria de durango';
                     //Set window width + content
                     var infowindow = new google.maps.InfoWindow({
                         content: contentString,
