@@ -3,22 +3,17 @@ const multer = require('multer')
 const fs = require('fs');
 const bcrypt = require('bcrypt-nodejs');
 const Feed = require('feed');
-const multerS3 = require('multer-s3');
-const s3 = require('../config/aws');
-
-const upload = multer({
-    storage: multerS3({
-        s3: s3,
-        bucket: 'goldenagenciainmobiliaria',
-        acl: 'public-read',
-        metadata: function (req, file, cb) {
-            cb(null, { fieldName: file.fieldname });
-        },
-        key: function (req, file, cb) {
-            cb(null, Date.now().toString())
+var upload = multer({ 
+    dest: 'assets/fotoscasas/',
+    rename: function(fieldname, filename) {
+        return filename;
+    },
+    onFileUploadStart: function(file) {
+        if(file.mimetype !== 'image/jpg' && file.mimetype !== 'image/jpeg' && file.mimetype !== 'image/png') {
+            return false;
         }
-    })
-})
+    } 
+});
 
 const variables = require('../config/variables');
 module.exports = function (app, passport, connection) {
@@ -166,14 +161,14 @@ module.exports = function (app, passport, connection) {
         console.log(req.files);
         console.log(req.body);
         if (typeof (req.files) != 'undefined' && req.files.length > 0) {
-            connection.query('INSERT INTO propiedades (tipo, nombrepropiedad, precio, m2, metrosconstruidos, recamaras, baños, cochera, descripcion, direccion, latitud, longitud, renta, vendida, fechaventa,fechacreacion, url, asesores_idasesores) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [req.body.tipo, req.body.nombrepropiedad, req.body.precio.replace(/,/g, ""), req.body.m2, req.body.metrosconstruidos, req.body.recamaras, req.body.baños, req.body.cochera, req.body.descripcion, req.body.direccion, req.body.latitud, req.body.longitud, ventaorenta, 0, null, fecha, req.files[0].location, req.user.idasesores], function (err, result) {
+            connection.query('INSERT INTO propiedades (tipo, nombrepropiedad, precio, m2, metrosconstruidos, recamaras, baños, cochera, descripcion, direccion, latitud, longitud, renta, vendida, fechaventa,fechacreacion, url, asesores_idasesores) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [req.body.tipo, req.body.nombrepropiedad, req.body.precio.replace(/,/g, ""), req.body.m2, req.body.metrosconstruidos, req.body.recamaras, req.body.baños, req.body.cochera, req.body.descripcion, req.body.direccion, req.body.latitud, req.body.longitud, ventaorenta, 0, null, fecha, '/fotoscasas/' + req.files[0].filename, req.user.idasesores], function (err, result) {
                 if (err) {
                     console.log(err);
                     res.redirect('/panel?agregado=0');
                 } else {
                     for (var i = 1; i < req.files.length; i++) {
                         console.log("i: " + i + "files: " + req.files.length + "length-1: " + (req.files.length - 1));
-                        connection.query('INSERT INTO fotos (url, propiedades_idpropiedades) VALUES(?,?)', [req.files[i].location, result.insertId], function (err, result2) {
+                        connection.query('INSERT INTO fotos (url, propiedades_idpropiedades) VALUES(?,?)', ['/fotoscasas/' + req.files[i].filename, result.insertId], function (err, result2) {
                             if (err) {
                                 console.log(err);
                                 res.redirect('/panel?agregado=0');
@@ -327,7 +322,7 @@ module.exports = function (app, passport, connection) {
             // body...
             if (typeof (req.files['nuevas']) != 'undefined') {
                 for (var i = 0; i < req.files['nuevas'].length; i++) {
-                    connection.query('INSERT INTO fotos (url, propiedades_idpropiedades) VALUES(?,?)', [req.files['nuevas'][i].location, req.body.id], function (err, result) {
+                    connection.query('INSERT INTO fotos (url, propiedades_idpropiedades) VALUES(?,?)', ['/fotoscasas/' + req.files['nuevas'][i].filename, req.body.id], function (err, result) {
                         console.log("NUEVA IMAGEN AGREGADA");
                     });
                 }
@@ -351,7 +346,7 @@ module.exports = function (app, passport, connection) {
                                     fs.unlink("assets" + fotos[i].url, function (err) {
                                         console.log(err);
                                     });
-                                    connection.query('UPDATE fotos SET url = ? WHERE url = ?', [req.files['image'][a].location, fotos[i].url], function (err, result) {
+                                    connection.query('UPDATE fotos SET url = ? WHERE url = ?', ['/fotoscasas/' + req.files['image'][a].filename, fotos[i].url], function (err, result) {
                                         console.log("updated");
                                     });
                                     a++;
@@ -372,7 +367,7 @@ module.exports = function (app, passport, connection) {
                 if (foto[0].url != "../picture.png") {
                     fs.unlinkSync("assets" + foto[0].url);
                 }
-                connection.query('UPDATE propiedades SET tipo = ?, nombrepropiedad = ?, precio = ?, m2 = ?,metrosconstruidos=?, recamaras = ?, baños = ?, cochera = ?, descripcion = ?, direccion = ?, latitud = ?, longitud = ?, renta = ?, url = ? WHERE idpropiedades = ?', [req.body.tipo, req.body.nombrepropiedad, req.body.precio.replace(/,/g, ""), req.body.m2, req.body.metrosconstruidos, req.body.recamaras, req.body.baños, req.body.cochera, req.body.descripcion, req.body.direccion, req.body.latitud, req.body.longitud, ventaorenta, req.files['principal'][0].location, req.body.id], function (err, result) {
+                connection.query('UPDATE propiedades SET tipo = ?, nombrepropiedad = ?, precio = ?, m2 = ?,metrosconstruidos=?, recamaras = ?, baños = ?, cochera = ?, descripcion = ?, direccion = ?, latitud = ?, longitud = ?, renta = ?, url = ? WHERE idpropiedades = ?', [req.body.tipo, req.body.nombrepropiedad, req.body.precio.replace(/,/g, ""), req.body.m2, req.body.metrosconstruidos, req.body.recamaras, req.body.baños, req.body.cochera, req.body.descripcion, req.body.direccion, req.body.latitud, req.body.longitud, ventaorenta, '/fotoscasas/' + req.files['principal'][0].filename, req.body.id], function (err, result) {
                     console.log(err);
                     if (typeof (req.files['image']) != 'undefined') {
                         connection.query('SELECT url FROM fotos WHERE propiedades_idpropiedades = ?', [req.body.id], function (err, fotos) {
@@ -385,7 +380,7 @@ module.exports = function (app, passport, connection) {
                                         fs.unlink("assets" + fotos[i].url, function (err) {
                                             console.log(err);
                                         });
-                                        connection.query('UPDATE fotos SET url = ? WHERE url = ?', [req.files['image'][a].location, fotos[i].url], function (err, result) {
+                                        connection.query('UPDATE fotos SET url = ? WHERE url = ?', ['/fotoscasas/' + req.files['image'][a].filename, fotos[i].url], function (err, result) {
                                             console.log("updated");
                                         });
                                         a++;
