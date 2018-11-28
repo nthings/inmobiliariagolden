@@ -1,9 +1,10 @@
 // app/routes.js
-var multer = require('multer')
-var fs = require('fs');
-var bcrypt = require('bcrypt-nodejs');
-var Feed = require('feed');
-var s3 = require('../config/aws');
+const multer = require('multer')
+const fs = require('fs');
+const bcrypt = require('bcrypt-nodejs');
+const Feed = require('feed');
+const multerS3 = require('multer-s3');
+const s3 = require('../config/aws');
 // var upload = multer({ 
 //     dest: 'assets/fotoscasas/',
 //     rename: function(fieldname, filename) {
