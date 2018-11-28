@@ -5,17 +5,6 @@ const bcrypt = require('bcrypt-nodejs');
 const Feed = require('feed');
 const multerS3 = require('multer-s3');
 const s3 = require('../config/aws');
-// var upload = multer({ 
-//     dest: 'assets/fotoscasas/',
-//     rename: function(fieldname, filename) {
-//         return filename;
-//     },
-//     onFileUploadStart: function(file) {
-//         if(file.mimetype !== 'image/jpg' && file.mimetype !== 'image/jpeg' && file.mimetype !== 'image/png') {
-//             return false;
-//         }
-//     } 
-// });
 
 const upload = multer({
     storage: multerS3({
