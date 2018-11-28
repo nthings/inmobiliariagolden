@@ -1,6 +1,7 @@
 // config/database.js
-const env = process.env.NODE_ENV;
-let connection = {
+const env = process.env.NODE_ENV
+console.log('Environment: ' + env);
+let config = {
     'connection': {
         'host': 'localhost',
         'user': 'root',
@@ -11,15 +12,14 @@ let connection = {
     'users_table': 'asesores'
 };
 if (env === 'production') {
-    connection = {
+    config = {
         'connection': {
             'host': process.env.DB_HOST,
             'user': process.env.DB_USER,
-            'password': process.env.DB_PASS,
-            'port': process.env.DB_PORT
+            'password': process.env.DB_PASS
         },
         'database': process.env.DB_NAME,
         'users_table': 'asesores'
     };
 }
-module.exports = connection;
+module.exports = config;
