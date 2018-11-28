@@ -361,7 +361,7 @@
                         </p>
 
                         <h3>Desarrollado por:</h3>
-                        <a href="http://hittek.mx"><img src="../hittek.png" width="150px" /></a>
+                        <a href="http://nthings.me"><img src="../logo.png" width="150px" /></a>
                     </div>
                 </div>
             </footer>
@@ -376,7 +376,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script type="text/javascript" src="../js/jPages.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCn5x5fCG9lOB6M2mjvKbcNT_KlOzubnQ&callback=initMap"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCn5x5fCG9lOB6M2mjvKbcNT_KlOzubnQ"></script>
     <script src="
         https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"> </script>
     <script src="../js/imgLiquid-min.js"></script>
@@ -447,6 +447,49 @@
                 verticalAlign: "center"
             });
 
+            /*Mapa google*/
+            function initMap() {
+                /*Dirección de la propiedad del backend*/
+                var myLatlng = { lat: 24.034549, lng: -104.672182 };
+                var icono = '../pin.png';
+                var mapOptions = {
+                    zoom: 16,
+                    center: myLatlng,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                }
+                var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+                var marker = new google.maps.Marker({
+                    position: myLatlng,
+                    map: map,
+                    icon: icono,
+                    title: 'image title'
+                });
+
+                //Callout Content
+                var contentString = '<%=variables.nombreinmobiliaria%>';
+                // Set window width + content
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString,
+                    maxWidth: 500
+                });
+
+                infowindow.open(map, marker);
+
+                google.maps.event.addListener(marker, 'click', function () {
+                    infowindow.open(map, marker);
+                });
+
+                // Resize Function
+                google.maps.event.addDomListener(window, "resize", function () {
+                    var center = map.getCenter();
+                    google.maps.event.trigger(map, "resize");
+                    map.setCenter(center);
+
+                });
+            }
+
+            google.maps.event.addDomListener(window, 'load', initMap);      
+
         });
         /*Animación al dar click a menú*/
         $(document).on('click', '.animado', function (event) {
@@ -456,47 +499,6 @@
                 scrollTop: $($.attr(this, 'href')).offset().top
             }, 500);
         });
-
-        /*Mapa google*/
-        function initMap() {
-            /*Dirección de la propiedad del backend*/
-            var myLatlng = { lat: 24.034549, lng: -104.672182 };
-            var icono = '../pin.png';
-            var mapOptions = {
-                zoom: 16,
-                center: myLatlng,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            }
-            var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-            var marker = new google.maps.Marker({
-                position: myLatlng,
-                map: map,
-                icon: icono,
-                title: 'image title'
-            });
-
-            //Callout Content
-            var contentString = '<%=variables.nombreinmobiliaria%>';
-            // Set window width + content
-            var infowindow = new google.maps.InfoWindow({
-                content: contentString,
-                maxWidth: 500
-            });
-
-            infowindow.open(map, marker);
-
-            google.maps.event.addListener(marker, 'click', function () {
-                infowindow.open(map, marker);
-            });
-
-            // Resize Function
-            google.maps.event.addDomListener(window, "resize", function () {
-                var center = map.getCenter();
-                google.maps.event.trigger(map, "resize");
-                map.setCenter(center);
-
-            });
-        }
     </script>
 </body>
 </html>
