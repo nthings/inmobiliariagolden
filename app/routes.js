@@ -89,7 +89,6 @@ module.exports = function (app, passport, connection) {
     });
 
     app.get('/login', function (req, res) {
-        if (err) throw err; // we'll not consider error handling for now
         res.render('login.ejs', {
             message: req.flash('loginMessage'),
             variables,
