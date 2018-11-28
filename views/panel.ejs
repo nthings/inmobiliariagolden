@@ -546,14 +546,14 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBCn5x5fCG9lOB6M2mjvKbcNT_KlOzubnQ&callback=initMap"></script>
-
+    
     <!-- JPages -->
     <script type="text/javascript" src="../js/jPages.js"></script>
     <script src="../js/bootstrap-switch.js"></script>
     <script src="../js/bootstrap-list-filter.min.js"></script>
-
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBCn5x5fCG9lOB6M2mjvKbcNT_KlOzubnQ&callback=initMap"></script>
     <script src="../js/jscolor.min.js"></script>
     <script src="../js/funcioneshittek.js"></script>
     <script type="text/javascript">
@@ -724,7 +724,7 @@
             /*Geocoder convierte una dirección en coordenadas*/
             var geocoder = new google.maps.Geocoder();
             /*Dirección de la propiedad del backend*/
-            var address = "Durango";
+            var address = "Durango Mexico";
 
             geocoder.geocode({ 'address': address }, function (results, status) {
                 /*Dirección convertida con éxito*/
@@ -743,7 +743,7 @@
 
                     var map = new google.maps.Map(document.getElementById('map'), mapOptions);
                     //Callout Content
-                    var contentString = 'Durango';
+                    var contentString = 'Durango Mexico';
                     //Set window width + content
                     var infowindow = new google.maps.InfoWindow({
                         content: contentString,
