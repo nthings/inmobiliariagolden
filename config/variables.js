@@ -1,4 +1,4 @@
-{
+module.exports = {
   "nombreinmobiliaria":"Golden",
   "dominio":"goldenagenciainmobiliaria.com",
   "direccion":"Av. Felipe Pescador 719 PTE. INT. B",
