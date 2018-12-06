@@ -476,7 +476,6 @@ module.exports = function (app, passport, connection) {
     });
 
     app.get('/rss', function (req, res) {
-        if (err) throw err; // we'll not consider error handling for now
         // Initializing feed object
         var feed = new Feed({
             title: variables.nombreinmobiliaria,
