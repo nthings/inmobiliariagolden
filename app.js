@@ -10,7 +10,7 @@ var MemoryStore = require('session-memory-store')(session);
 require('dotenv').config();
 
 var app      = express();
-var port     = process.env.PORT || 8080;
+var port     = process.env.PORT || 8081;
 
 var passport = require('passport');
 var flash    = require('connect-flash');

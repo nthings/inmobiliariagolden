@@ -4,10 +4,11 @@ console.log('Environment: ' + env);
 let config = {
     'connection': {
         'host': 'localhost',
-        'user': 'golden',
-        'password': 'casitas'
+        'user': 'root',
+        'password': '',
+        'port': 4000
     },
-	'database': 'inmobiliariagolden',
+    'database': 'inmobiliariagolden',
     'users_table': 'asesores'
 };
 if (env === 'production') {
