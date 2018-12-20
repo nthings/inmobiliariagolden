@@ -26,7 +26,7 @@ app.use(favicon(__dirname + '/assets/casita.ico'));
 redirect(app);
 require('./config/passport')(passport);
 // set up our express application
-app.use(morgan('dev')); // log every request to the console
+app.use(morgan('common')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.urlencoded({
     extended: true
