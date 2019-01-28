@@ -186,8 +186,15 @@
                                     <% propiedades.forEach(function(propiedad) { %>
                                     <p class="list-group-item">
                                         <%if(user.idasesores == propiedad.asesores_idasesores){%>
-                                        <a href="vendida/?id=<%=propiedad.idpropiedades%>" class="btn btn-xs btn-success"><i
-                                                class="fa fa-fw fa-usd"></i>VENDIDA</a>
+                                        <a href="vendida/?id=<%=propiedad.idpropiedades%>" class="btn btn-xs btn-success">
+                                            <i class="fa fa-fw fa-usd"></i>
+                                            <% if (propiedad.renta == 1) {%>
+                                                RENTADA
+                                            <%}else{%>
+                                                VENDIDA
+                                            <%}%>
+                                                
+                                        </a>
                                         <a href="editarpropiedad/?id=<%=propiedad.idpropiedades%>" class="btn btn-xs btn-primary"><i
                                                 class="fa fa-fw fa-pencil"></i>EDITAR</a>
                                         <%}%>
