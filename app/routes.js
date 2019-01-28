@@ -38,23 +38,23 @@ module.exports = function (app, passport, connection) {
             extras += " AND tipo = ?";
             valores.push(req.body.propiedad);
         }
-        if (req.body.recamaras != "") {
+        if (req.body.recamaras) {
             extras += " AND recamaras = ?";
             valores.push(req.body.recamaras);
         }
-        if (req.body.baños != "") {
+        if (req.body.baños) {
             extras += " AND baños = ?";
             valores.push(req.body.baños);
         }
-        if (req.body.cochera != "") {
+        if (req.body.cochera) {
             extras += " AND cochera = ?";
             valores.push(req.body.cochera);
         }
-        if (req.body.precio1 != "") {
+        if (req.body.precio1) {
             extras += " AND precio >= ?";
             valores.push(req.body.precio1.replace(/,/g, ""));
         }
-        if (req.body.precio2 != "") {
+        if (req.body.precio2) {
             extras += " AND precio <= ?";
             valores.push(req.body.precio2.replace(/,/g, ""));
         }
