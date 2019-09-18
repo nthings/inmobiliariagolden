@@ -212,7 +212,7 @@
 
       $('#imprimir').click(function () {
         $(".se-pre-con").show();
-        getDataUri('https://maps.googleapis.com/maps/api/staticmap?center=<%=propiedad.latitud%>,<%=propiedad.longitud%>&zoom=17&size=600x300&maptype=roadmap&markers=icon:https://goldenagenciainmobiliaria.com/pin.png|<%=propiedad.latitud%>,<%=propiedad.longitud%>&key=AIzaSyBCn5x5fCG9lOB6M2mjvKbcNT_KlOzubnQ', function (mapa) {
+        // getDataUri('https://maps.googleapis.com/maps/api/staticmap?center=<%=propiedad.latitud%>,<%=propiedad.longitud%>&zoom=17&size=600x300&maptype=roadmap&markers=icon:https://goldenagenciainmobiliaria.com/pin.png|<%=propiedad.latitud%>,<%=propiedad.longitud%>&key=AIzaSyBCn5x5fCG9lOB6M2mjvKbcNT_KlOzubnQ', function (mapa) {
           getDataUri('../goldenb.png', function (logo) {
             getDataUri2('<%=propiedad.url%>', function (foto) {
               var pdf = new jsPDF('p', 'pt', 'letter'); //210mm wide and 297mm high
@@ -229,19 +229,23 @@
               pdf.text(10, 200, pdf.splitTextToSize('<%= propiedad.descripcion.replace(/\r\n/g, ' ') %>', 500));
 
               var posmapa = 200 + (20 * lineas);
-              pdf.text(10, posmapa, 'Dirección: <%=propiedad.direccion%>');
-              pdf.addImage(mapa, 'PNG', 10, posmapa + 20, 100, 400, 100);
 
-              pdf.text(10, posmapa + 40 + 225, 'Foto Principal:');
+              // pdf.text(10, posmapa, 'Dirección: <%=propiedad.direccion%>');
+              // pdf.addImage(mapa, 'PNG', 10, posmapa + 20, 100, 400, 100);
 
-              pdf.addImage(foto, 'PNG', 10, posmapa + 45 + 225, (400), (newheight));
+              // pdf.text(10, posmapa + 40 + 225, 'Foto Principal:');
+              pdf.text(10, posmapa, 'Foto Principal:');
+
+              // pdf.addImage(foto, 'PNG', 10, posmapa + 45 + 225, (400), (newheight));
+              pdf.addImage(foto, 'PNG', 10, posmapa + 20, (400 * 0.75), (newheight * 0.75));
               pdf.save('<%=propiedad.nombrepropiedad%>.pdf');
+              // pdf.save('<%=propiedad.nombrepropiedad%>.pdf');
               $(".se-pre-con").fadeOut("slow");
 
               // pdf.output('datauri');
             });
           });
-        });
+        // });
       });
       /*Inicializar mapa google*/
       function initMap() {
