@@ -222,7 +222,7 @@
               pdf.text(300, 45, 'Ficha Técnica', null, null, 'center');
               pdf.text(10, 120, '<%=propiedad.nombrepropiedad%>');
               pdf.setFontSize(16);
-              pdf.text(10, 140, '<%=propiedad.tipo.replace(/\b\w/g, l => l.toUpperCase())%> En <%if(propiedad.renta==0){%>Renta<%}else{%>Venta<%}%>');
+              pdf.text(10, 140, '<%=propiedad.tipo.replace(/\b\w/g, l => l.toUpperCase())%> En <%if(propiedad.renta==1){%>Renta<%}else{%>Venta<%}%>');
               pdf.text(10, 160, 'Precio: $' + commas(<%=propiedad.precio %>));
               pdf.text(10, 180, 'M2: <%=propiedad.m2%>  Metros Construidos:<%=propiedad.metrosconstruidos%>  Recámaras: <%=propiedad.recamaras%>  Baños: <%=propiedad.baños%>  Cochera para: <%=propiedad.cochera%> vehículos');
               var lineas = pdf.splitTextToSize('<%= propiedad.descripcion.replace(/\r\n/g, ' ') %>', 500).length;
@@ -230,11 +230,11 @@
 
               var posmapa = 200 + (20 * lineas);
               pdf.text(10, posmapa, 'Dirección: <%=propiedad.direccion%>');
-              pdf.addImage(mapa, 'PNG', 10, posmapa + 20);
+              pdf.addImage(mapa, 'PNG', 10, posmapa + 20, 100, 200, 100);
 
               pdf.text(10, posmapa + 40 + 225, 'Foto Principal:');
 
-              pdf.addImage(foto, 'PNG', 10, posmapa + 45 + 225, (400 * 0.75), (newheight * 0.75));
+              pdf.addImage(foto, 'PNG', 10, posmapa + 45 + 225, (400), (newheight));
               pdf.save('<%=propiedad.nombrepropiedad%>.pdf');
               $(".se-pre-con").fadeOut("slow");
 
