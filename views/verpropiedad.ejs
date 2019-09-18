@@ -229,20 +229,11 @@
               pdf.text(10, 200, pdf.splitTextToSize('<%= propiedad.descripcion.replace(/\r\n/g, ' ') %>', 500));
 
               var posmapa = 200 + (20 * lineas);
-
-              // pdf.text(10, posmapa, 'Dirección: <%=propiedad.direccion%>');
-              // pdf.addImage(mapa, 'PNG', 10, posmapa + 20, 100, 400, 100);
-
-              // pdf.text(10, posmapa + 40 + 225, 'Foto Principal:');
               pdf.text(10, posmapa, 'Foto Principal:');
 
-              // pdf.addImage(foto, 'PNG', 10, posmapa + 45 + 225, (400), (newheight));
               pdf.addImage(foto, 'PNG', 10, posmapa + 20, (400 * 0.75), (newheight * 0.75));
               pdf.save('<%=propiedad.nombrepropiedad%>.pdf');
-              // pdf.save('<%=propiedad.nombrepropiedad%>.pdf');
               $(".se-pre-con").fadeOut("slow");
-
-              // pdf.output('datauri');
             });
           });
         // });
