@@ -3,3 +3,18 @@ node_modules/
 assets/fotoscasas/
 ecosystem.config.js
 .env
+
+
+#  Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# .tfvars files
+*.tfvars
+
+infrastructure/credentials.json
+
+infrastructure/backup
